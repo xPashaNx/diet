@@ -1,8 +1,10 @@
 <?php
 
-class NewsUrlRule extends CBaseUrlRule {
+class NewsUrlRule extends CBaseUrlRule
+{
 
-    public function createUrl($manager, $route, $params, $ampersand) {
+    public function createUrl($manager, $route, $params, $ampersand)
+    {
         if ($route == 'news/default/view') {
             if (!empty($params['id'])) {
                 if ($page = News::model()->findByPk($params['id'])) {
@@ -12,27 +14,23 @@ class NewsUrlRule extends CBaseUrlRule {
         }
         if ($route == 'news/default/') {
             if (empty($params['id'])) {
-                return 'news/';
+                return 'news';
             }
         }
         return FALSE;
     }
 
-    public function parseUrl($manager, $request, $pathInfo, $rawPathInfo) {
-        $link = explode('/', $pathInfo);
-        if (is_array($link) && count($link) > 1) {
-            $news = News::model()->find(array(
-                'condition' => 'link = :link',
-                'params' => array(':link' => substr($link[1], 0, -5)),
-            ));
-            if ($news !== NULL) {
-                return 'news/default/view/id/' . $news->id;
+    public function parseUrl($manager, $request, $pathInfo, $rawPathInfo)
+    {
+        if ($link = preg_split("/\//", $pathInfo)) {
+
+            if (count($link) == 1 && end($link) == 'news') return 'news/default';
+
+            if (count($link) > 1 && $news = News::model()->findByAttributes(array('link' => substr($link[1], 0, -5)))) {
+                if ($news !== null) return 'news/default/view/id/' . $news->id;
             }
         }
-        if (is_array($link) && count($link) == 1) {
-            return 'news/default';
-        }
-        return FALSE;
+        return false;
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
-class DefaultController extends BackEndController {
+class DefaultController extends BackEndController
+{
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -10,7 +11,8 @@ class DefaultController extends BackEndController {
     /**
      * @return array action filters
      */
-    public function filters() {
+    public function filters()
+    {
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
@@ -22,10 +24,11 @@ class DefaultController extends BackEndController {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules() {
+    public function accessRules()
+    {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'create', 'update', 'delete'),
+                'actions' => array('index', 'create', 'update', 'delete', 'deleteImage'),
                 'users' => array('admin'),
             ),
             array('deny', // deny all users
@@ -38,17 +41,18 @@ class DefaultController extends BackEndController {
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new News;
-        //$imageModel = new NewsImages();
+        $imageModel = new NewsImages();
+
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
-        $title = NewsConfig::model()->findByPk(1, array('select' => 'title'));
 
         if (isset($_POST['News'])) {
             $model->attributes = $_POST['News'];
             $model->cover_id = 0;
+
             if ($model->save()) {
                 $this->redirect(array('index'));
             }
@@ -56,8 +60,8 @@ class DefaultController extends BackEndController {
 
         $this->render('create', array(
             'model' => $model,
-            'title' => $title->title,
-                //'imageModel' => $imageModel,
+            'titleListNews' => NewsConfig::model()->getTitleListNews(),
+            'imageModel' => $imageModel,
         ));
     }
 
@@ -66,23 +70,39 @@ class DefaultController extends BackEndController {
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        $title = NewsConfig::model()->findByPk(1, array('select' => 'title'));
+        //Фотогалерея
+        $imageModel = new NewsImages();
+
+        $criteria = new CDbCriteria();
+        $criteria->compare('news_id', $id);
+
+        $imagesDataProvider = new CActiveDataProvider('NewsImages', array(
+            'criteria' => $criteria,
+            'pagination' => false,
+        ));
 
         if (isset($_POST['News'])) {
             $model->attributes = $_POST['News'];
+
+            if (isset($_POST['NewsImages']['id']))
+                $model->cover_id = $_POST['NewsImages']['id'];
+
             if ($model->save())
                 $this->redirect(array('index'));
         }
 
         $this->render('update', array(
             'model' => $model,
-            'title' => $title->title,
+            'titleListNews' => NewsConfig::model()->getTitleListNews(),
+            'imageModel' => $imageModel,
+            'imagesDataProvider' => $imagesDataProvider,
         ));
     }
 
@@ -91,18 +111,24 @@ class DefaultController extends BackEndController {
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id) {
-        $this->loadModel($id)->delete();
+    public function actionDelete($id)
+    {
+        if (Yii::app()->request->isPostRequest) {
+            $this->loadModel($id)->delete();
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if (!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        } else {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+        }
     }
 
     /**
      * Lists all models.
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         //$dataProvider = new CActiveDataProvider('News');
 
         $model = new News('search');
@@ -112,14 +138,15 @@ class DefaultController extends BackEndController {
 
         if (isset($_GET['News'])) {
             $model->attributes = $_GET['News'];
-            $criteria->addBetweenCondition('date', $_GET['beginDate'], $_GET['endDate']);
-        }
 
-        $title = NewsConfig::model()->findByPk(1, array('select' => 'title'));
+            if (isset($_GET['beginDate']) && isset($_GET['endDate'])) {
+                $criteria->addBetweenCondition('date', $_GET['beginDate'], $_GET['endDate']);
+            }
+        }
 
         $this->render('index', array(
             'model' => $model,
-            'title' => $title->title,
+            'titleListNews' => NewsConfig::model()->getTitleListNews(),
             'criteria' => $criteria,
         ));
     }
@@ -131,7 +158,8 @@ class DefaultController extends BackEndController {
      * @return News the loaded model
      * @throws CHttpException
      */
-    public function loadModel($id) {
+    public function loadModel($id)
+    {
         $model = News::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -142,23 +170,37 @@ class DefaultController extends BackEndController {
      * Performs the AJAX validation.
      * @param News $model the model to be validated
      */
-    protected function performAjaxValidation($model) {
+    protected function performAjaxValidation($model)
+    {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'news-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
     }
 
-    public function loadImageModel($id) {
-        
+    public function loadImageModel($id)
+    {
+        $model = NewsImages::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
     }
 
-    public function actionDeleteImage($id) {
-        
-    }
+    public function actionDeleteImage($id)
+    {
+        if (Yii::app()->request->isPostRequest) {
+            $model = $this->loadImageModel($id);
+            //удаляем картинку из папки
+            @unlink(News::FOLDER_UPLOAD . '/' . $model->filename);
 
-    public function actionSetCover($id, $newsId) {
-        
-    }
+            //удаляем картинку из БД
+            $model->delete();
 
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('update', 'id' => $model->news_id));
+        } else {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+        }
+    }
 }

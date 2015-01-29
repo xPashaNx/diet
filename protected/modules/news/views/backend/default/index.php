@@ -1,11 +1,11 @@
 <?php
 /* @var $this NewsController */
 /* @var $model News */
-/* @var $title NewsConfig */
+/* @var $titleListNews NewsConfig */
 /* @var $criteria CDbCriteria */
 
 $this->breadcrumbs = array(
-    $title,
+    $titleListNews,
 );
 
 if (Yii::app()->user->hasFlash('addNewsImages')):
@@ -30,7 +30,7 @@ return false;
 ");
 ?>
 
-<h1><?= $title ?></h1>
+<h1><?= $titleListNews ?></h1>
 
 <?= CHtml::link('+Добавить новость', Yii::app()->createUrl('news/default/create'), array('class' => 'add_element')) ?>
 
@@ -60,7 +60,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'id',
             'filter' => false,
         ),
-        'title',
+        array(
+            'name' => 'title',
+            'value' => 'CHtml::link($data->title, Yii::app()->createUrl("news/default/update", array("id" => $data->id)))',
+            'type' => 'raw'
+        ),
         'date',
         array(
             'class' => 'CButtonColumn',

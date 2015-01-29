@@ -1,14 +1,14 @@
 <?php
 /* @var $this NewsController */
 /* @var $dataProvider CActiveDataProvider */
-/* @var $title NewsConfig */
+/* @var $titleListNews NewsConfig */
 
 $this->breadcrumbs=array(
-	$title,
+	$titleListNews,
 );
 ?>
 
-<h1><?= $title ?></h1>
+<h1><?= $titleListNews ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

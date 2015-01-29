@@ -24,5 +24,13 @@
 <div class="inner">
     <?php echo $content; ?>
     <div class="clear"></div>
+    <br/><hr/>
+    <div>
+        <h3>Вывод виджита "LastNewsWidget":</h3>
+        <div>
+            <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
+        </div>
+    </div>
+    <br/><hr/>
 </div>
 <?php $this->endContent(); ?>

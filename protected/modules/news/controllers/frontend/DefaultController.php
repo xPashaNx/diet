@@ -1,6 +1,7 @@
 <?php
 
-class DefaultController extends FrontEndController {
+class DefaultController extends FrontEndController
+{
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -10,7 +11,8 @@ class DefaultController extends FrontEndController {
     /**
      * @return array action filters
      */
-    public function filters() {
+    public function filters()
+    {
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
@@ -22,7 +24,8 @@ class DefaultController extends FrontEndController {
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules() {
+    public function accessRules()
+    {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index', 'view'),
@@ -46,35 +49,44 @@ class DefaultController extends FrontEndController {
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         $model = $this->loadModel($id);
+
+        //Фотогалерея
+        $criteria = new CDbCriteria();
+        $criteria->compare('news_id', $id);
+
+        $imagesDataProvider = new CActiveDataProvider('NewsImages', array(
+            'criteria' => $criteria,
+            'pagination' => false,
+        ));
 
         $this->metaInfoGenerate('description', $model->meta_description);
         $this->metaInfoGenerate('keywords', $model->meta_keywords);
 
-        $titleConfig = NewsConfig::model()->findByPk(1, array('select' => 'title'));
-
         $this->render('view', array(
             'model' => $model,
-            'titleConfig' => $titleConfig->title,
+            'titleListNews' => NewsConfig::model()->getTitleListNews(),
             'titleBreadcrumbs' => $model->link,
+            'imagesDataProvider' => $imagesDataProvider,
+
         ));
     }
 
     /**
      * Lists all models.
      */
-    public function actionIndex() {
-        $title = NewsConfig::model()->findByPk(1);
-
+    public function actionIndex()
+    {
         $dataProvider = new CActiveDataProvider('News', array(
             'criteria' => array('condition' => 'public=1', 'order' => 'date DESC'),
-            'pagination' => array('pageSize' => $title->view_count),
+            'pagination' => array('pageSize' => NewsConfig::model()->findByPk(1)->view_count),
         ));
 
         $this->render('index', array(
             'dataProvider' => $dataProvider,
-            'title' => $title->title,
+            'titleListNews' => NewsConfig::model()->getTitleListNews(),
         ));
     }
 
@@ -85,7 +97,8 @@ class DefaultController extends FrontEndController {
      * @return News the loaded model
      * @throws CHttpException
      */
-    public function loadModel($id) {
+    public function loadModel($id)
+    {
         $model = News::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
@@ -96,7 +109,8 @@ class DefaultController extends FrontEndController {
      * Performs the AJAX validation.
      * @param News $model the model to be validated
      */
-    protected function performAjaxValidation($model) {
+    protected function performAjaxValidation($model)
+    {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'news-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();

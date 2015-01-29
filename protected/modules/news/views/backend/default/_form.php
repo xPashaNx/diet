@@ -5,6 +5,21 @@
 /* @var $imageModel NewsImages */
 ?>
 
+<?php
+$cs=Yii::app()->clientScript;
+$cs->registerScript('photos',"
+  $('.addPhoto').live('click', function() {
+	  block = $(this).parent('p').parent('div');
+		$('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">&ndash;</span></p>').appendTo(block);
+	});
+  $('.delPhoto').live('click', function() {
+	  block = $(this).parent('p');
+		$(block).remove();
+	});
+
+", CClientScript::POS_LOAD);
+?>
+
 <div class="form">
 
     <?php
@@ -14,6 +29,7 @@
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
         // See class documentation of CActiveForm for details on this.
+        'htmlOptions'=>array('enctype' => 'multipart/form-data'),
         'enableAjaxValidation' => false,
     ));
     ?>
@@ -47,10 +63,6 @@
         <?php echo $form->error($model, 'annotation'); ?>
     </div>
 
-    <!--    <div class="row">
-            <p class="label">Добавить фото</p>
-            <p class="more_img"><?php //echo $form->fileField($imageModel, 'filename');  ?><span class="addPhoto">+</span></p>
-        </div>-->
 
     <div class="row">
         <?php echo $form->labelEx($model, 'description'); ?>
@@ -82,6 +94,13 @@
         <?php echo $form->dropDownList($model, 'public', array(1 => 'Да', 0 => 'Нет')) ?>
         <?php echo $form->error($model, 'public'); ?>
     </div>
+
+    <hr/>
+    <div class="row">
+        <p class="label">Создание галереи:</p>
+        <p class="more_img"><?php echo $form->fileField($imageModel, 'filename[]'); ?><span class="addPhoto">+</span></p>
+    </div>
+    <hr/>
 
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
