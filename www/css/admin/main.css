@@ -193,7 +193,7 @@ div.block {background: #fff; border: 1px solid #e5e5e5; padding: 0 10px;}
 }
 
 
-div.image_block {float: left; margin: 0 15px 15px 0; padding: 10px; border: 1px solid #ececec;}
+div.image_block {float: left; margin: 0 15px 15px 0; padding: 10px; border: 1px solid #ececec; overflow: hidden;}
 div.image_block a.delete{display: block; background: url('../../images/admin/delete.png') no-repeat left top; width: 27px; height: 28px; float: right; margin: -28px 0 0 0; position: relative; z-index: 50;}
 div.image {display: table; table-layout: fixed; width: 120px; height: 120px; background: #ececec;}
 div.image a.thumb{display: table-cell; text-align: center; vertical-align: middle; line-height: 1px;}
@@ -202,6 +202,8 @@ div.image a.thumb span img{max-width: 102px; max-height: 102px; margin: 0; borde
 div.image_block .image{margin:0;}
 div.image_block .caption{width:120px;overflow:hidden;height:18px;}
 div.image_block .caption form input{border:none;padding:0;margin:0;} 
+
+div.editable {width: 120px; height: 15px; }
 
 div.section {display: table; table-layout: fixed; width: 120px; height: 120px; background: #ececec;}
 div.section p{display: table-cell; text-align: center; vertical-align: middle; line-height: 1px; cursor: pointer;}
