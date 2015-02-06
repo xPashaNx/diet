@@ -36,9 +36,7 @@ class DefaultController extends BackEndController
 		{
 			$model->attributes = $_POST['Gallery'];
 			if ($photoCover = $model->getCover())
-			{
 				$model->cover_photo_id = $photoCover->id;
-			}
 			if ($model->save())
 				$this->redirect(array('index'));
 		}
@@ -76,6 +74,8 @@ class DefaultController extends BackEndController
 		if (isset($_POST['Gallery']))
 		{
 			$model->attributes = $_POST['Gallery'];
+			if ($photoCover = $model->getCover())
+				$model->cover_photo_id = $photoCover->id;
 			if ($model->save())
 				$this->redirect(array('index'));
 		}

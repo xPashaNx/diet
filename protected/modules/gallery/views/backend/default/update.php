@@ -63,6 +63,9 @@ $cs->registerScript('photo_delete', "
             'itemView'=>'_photoview',
             'emptyText'=>'Нет фотографий',
             'template'=>'{items}',
+			'viewData' => array(
+                'coverPhotoId' => $model->cover_photo_id,
+            ),
         )); ?>
         <div class="clear"></div>
 

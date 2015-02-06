@@ -23,4 +23,14 @@ Yii::app()->clientScript->registerScript('jeditable', "
                                         'default/deletephoto',
                                         'id' => $data->id), array('class' => 'delete'));?>
 	<div class="editable" id=<?=$data->id?>><?=$data->alt_text?></div>
+	
+	<?php
+		if ($data->id == $coverPhotoId):
+			echo CHtml::activeRadioButton($data, 'id', array('value' => $data->id, 'uncheckValue' => null, 'checked' => 'checked'));
+			echo CHtml::label('Обложка', 'for');
+		else:
+			echo CHtml::activeRadioButton($data, 'id', array('value' => $data->id, 'uncheckValue' => null, 'checked' => ''));
+			echo CHtml::label('Сделать обложкой', 'for');
+		endif;
+	?>
 </div>
