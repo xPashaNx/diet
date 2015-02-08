@@ -97,10 +97,4 @@ class NewsConfig extends CActiveRecord
     {
         return parent::model($className);
     }
-
-    public function getTitleListNews()
-    {
-        $array = self::model()->findByPk(1, array('select' => 'title'));
-        return $array->title;
-    }
 }

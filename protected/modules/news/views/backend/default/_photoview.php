@@ -2,7 +2,7 @@
 <div class="image">
     <a href="#" class="thumb">
             <span>
-                <?php echo CHtml::image('/upload/userfiles/images/' . $data->filename); ?>
+                <?php echo CHtml::image('/' . $folder_upload . $data->filename); ?>
             </span>
     </a>
 </div>

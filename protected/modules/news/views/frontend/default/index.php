@@ -2,6 +2,7 @@
 /* @var $this NewsController */
 /* @var $dataProvider CActiveDataProvider */
 /* @var $titleListNews NewsConfig */
+/* @var $folder_upload News */
 
 $this->breadcrumbs=array(
 	$titleListNews,
@@ -13,4 +14,7 @@ $this->breadcrumbs=array(
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
+    'viewData' => array(
+        'folder_upload' => $folder_upload,
+    ),
 )); ?>

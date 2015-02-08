@@ -4,6 +4,7 @@
 /* @var titleListNews NewsConfig */
 /* @var titleBreadcrumbs News */
 /* @var $imagesDataProvider NewsImages */
+/* @var $folder_upload News */
 
 $this->breadcrumbs = array(
     $titleListNews => array('../news'),
@@ -61,6 +62,9 @@ $cs->registerScript('images', "
             'dataProvider' => $imagesDataProvider,
             'itemView' => '_photoview',
             'template' => '{items}',
+            'viewData' => array(
+                'folder_upload' => $folder_upload,
+            ),
         )); ?>
     </div>
 

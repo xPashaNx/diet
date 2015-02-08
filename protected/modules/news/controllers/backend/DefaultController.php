@@ -8,6 +8,13 @@ class DefaultController extends BackEndController
      */
     //public $layout = '//layouts/column2';
 
+    private $config;
+
+    public function init()
+    {
+        $this->config = NewsConfig::model()->find();
+    }
+
     /**
      * @return array action filters
      */
@@ -16,24 +23,6 @@ class DefaultController extends BackEndController
         return array(
             'accessControl', // perform access control for CRUD operations
             'postOnly + delete', // we only allow deletion via POST request
-        );
-    }
-
-    /**
-     * Specifies the access control rules.
-     * This method is used by the 'accessControl' filter.
-     * @return array access control rules
-     */
-    public function accessRules()
-    {
-        return array(
-            array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'create', 'update', 'delete', 'deleteImage'),
-                'users' => array('admin'),
-            ),
-            array('deny', // deny all users
-                'users' => array('*'),
-            ),
         );
     }
 
@@ -60,7 +49,7 @@ class DefaultController extends BackEndController
 
         $this->render('create', array(
             'model' => $model,
-            'titleListNews' => NewsConfig::model()->getTitleListNews(),
+            'titleListNews' => $this->config->title,
             'imageModel' => $imageModel,
         ));
     }
@@ -100,9 +89,10 @@ class DefaultController extends BackEndController
 
         $this->render('update', array(
             'model' => $model,
-            'titleListNews' => NewsConfig::model()->getTitleListNews(),
+            'titleListNews' => $this->config->title,
             'imageModel' => $imageModel,
             'imagesDataProvider' => $imagesDataProvider,
+            'folder_upload' => News::FOLDER_UPLOAD,
         ));
     }
 
@@ -146,7 +136,7 @@ class DefaultController extends BackEndController
 
         $this->render('index', array(
             'model' => $model,
-            'titleListNews' => NewsConfig::model()->getTitleListNews(),
+            'titleListNews' => $this->config->title,
             'criteria' => $criteria,
         ));
     }
@@ -164,18 +154,6 @@ class DefaultController extends BackEndController
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
-    }
-
-    /**
-     * Performs the AJAX validation.
-     * @param News $model the model to be validated
-     */
-    protected function performAjaxValidation($model)
-    {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'news-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
     }
 
     public function loadImageModel($id)

@@ -4,6 +4,7 @@
 /* @var $titleListNews NewsConfig */
 /* @var $imageModel NewsImages */
 /* @var $imagesDataProvider NewsImages */
+/* @var $folder_upload News */
 
 $this->breadcrumbs = array(
     $titleListNews => array('index'),
@@ -136,6 +137,7 @@ $cs->registerScript('photo_delete', "
             'template' => '{items}',
             'viewData' => array(
                 'cover_id' => $model->cover_id,
+                'folder_upload' => $folder_upload,
             ),
         )); ?>
         <div class="clear"></div>

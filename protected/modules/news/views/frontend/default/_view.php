@@ -1,13 +1,14 @@
 <?php
 /* @var $this NewsController */
 /* @var $data News */
+/* @var $folder_upload News */
 ?>
 
 <div class="news">
     <?php if ($data->cover_id == 0 && $data->newsImages): ?>
         <b>
             <?php echo CHtml::link(
-                CHtml::image('/upload/userfiles/images/' . $data->newsImages[0]->filename, '', array(
+                CHtml::image('/' . $folder_upload . $data->newsImages[0]->filename, '', array(
                     'style' => 'width:50%; height:50%; float: left; margin-right: 20px;')),
                 Yii::app()->createUrl('news/default/view', array('id' => $data->id)));?>
         </b>
@@ -17,7 +18,7 @@
         <?php if ($image->id == $data->cover_id) : ?>
             <b>
                 <?php echo CHtml::link(
-                    CHtml::image('/upload/userfiles/images/' . $image->filename, '', array(
+                    CHtml::image('/' . $folder_upload . $image->filename, '', array(
                         'style' => 'width:50%; height:50%; float: left; margin-right: 20px;')),
                     Yii::app()->createUrl('news/default/view', array('id' => $data->id)));?>
             </b>
