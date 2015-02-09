@@ -205,18 +205,6 @@ class Gallery extends CActiveRecord
 					$this->cover_photo_id = $coverPhoto->id;
 				}
 			}
-			/*else
-			{
-				if ($this->photos and !$this->cover_photo_id)
-				{
-					$criteria = new CDbCriteria;
-					$criteria->order = 'sort_order';
-					$criteria->condition = 'gallery_id=:gallery_id';
-					$criteria->params = array(':gallery_id' => $this->id);
-					$coverPhoto = GalleryPhoto::model()->find($criteria);
-					$this->cover_photo_id = $coverPhoto->id;
-				}
-			}*/
 			
 			return true;
 		}

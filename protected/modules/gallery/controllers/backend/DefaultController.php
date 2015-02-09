@@ -103,7 +103,7 @@ class DefaultController extends BackEndController
 			// we only allow deletion via POST request
 			$model = $this->loadModelPhoto($id);
 			$gallery = $this->loadModel($model->gallery_id);
-//echo '<pre>'.print_r($gallery->photos,true).'</pre>'; die;
+			
             $folder = 'upload/gallery';
             // удаляем картинки
             @unlink($folder . '/' .$model->file);
