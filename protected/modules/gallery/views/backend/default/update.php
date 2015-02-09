@@ -18,23 +18,76 @@ $cs->registerScript('photos',"
 ", CClientScript::POS_LOAD);
 
 $cs->registerScript('photo_delete', "
-        $('#photo-list a.delete').live('click',function() {
-            if(!confirm('Вы уверены в удалении фотографии?')) return false;
-            var th=this;
-            var afterDelete=function(){};
-            $.fn.yiiListView.update('photo-list', {
-                type:'POST',
-                url:$(this).attr('href'),
-                success:function(data) {
-                    $.fn.yiiListView.update('photo-list');
-                    afterDelete(th,true,data);
-                },
-                error:function(XHR) {
-                    return afterDelete(th,false,XHR);
-                }
-            });
-            return false;
-        });
+	$('#photo-list a.delete').live('click',function() {
+		if(!confirm('Вы уверены в удалении фотографии?')) return false;
+		var th=this;
+		var afterDelete=function(){};
+		$.fn.yiiListView.update('photo-list', {
+			type:'POST',
+			url:$(this).attr('href'),
+			success:function(data) {
+				$.fn.yiiListView.update('photo-list');
+				afterDelete(th,true,data);
+			},
+			error:function(XHR) {
+				return afterDelete(th,false,XHR);
+			}
+		});
+		return false;
+	});
+
+", CClientScript::POS_READY);
+
+$cs->registerScript('photo_sort', "
+	$('#photo-list a.sort-prev').live('click',function() {
+		var currentSort = $(this).parents('.image_block').data('sort'),
+			sortArr = [];
+			
+		$('.image_block').each(function(i) {
+			sortArr.push($(this).data('sort'));
+		});
+		for (var i = 0; i < sortArr.length; i++) {
+			if ((sortArr[i] == currentSort) && (i != 0)) {
+				sortArr[i] = sortArr[i-1];
+				sortArr[i-1] = currentSort;
+				break;
+			}
+		}
+		$.ajax({
+			type: 'POST',
+			url: $(this).prop('href'),
+			data: {sortArr:sortArr},
+			success: function() {
+				location.reload();
+			},
+		});
+		return false;
+	});
+	
+	$('#photo-list a.sort-next').live('click',function() {
+		var currentSort = $(this).parents('.image_block').data('sort'),
+			sortArr = [];
+		
+		$('.image_block').each(function(i) {
+			sortArr.push($(this).data('sort'));
+		});
+		for (var i = 0; i < sortArr.length; i++) {
+			if ((sortArr[i] == currentSort) && (i != sortArr.length-1)) {
+				sortArr[i] = sortArr[i+1];
+				sortArr[i+1] = currentSort;
+				break;
+			}
+		}
+		$.ajax({
+			type: 'POST',
+			url: $(this).prop('href'),
+			data: {sortArr:sortArr},
+			success: function() {
+				location.reload();
+			},
+		});
+		return false;
+	});
 
 ", CClientScript::POS_READY);
 
@@ -58,14 +111,17 @@ $cs->registerScript('photo_delete', "
 
 	<div class="row">
         <?php $this->widget('zii.widgets.CListView', array(
-            'id'=>'photo-list',
-            'dataProvider'=>$photoDataProvider,
-            'itemView'=>'_photoview',
-            'emptyText'=>'Нет фотографий',
-            'template'=>'{items}',
+            'id' => 'photo-list',
+            'dataProvider' => $photoDataProvider,
+            'itemView' => '_photoview',
+            'emptyText' => 'Нет фотографий',
+            'template' => '{items}',
 			'viewData' => array(
                 'coverPhotoId' => $model->cover_photo_id,
             ),
+			'sortableAttributes'=>array(
+				'sort_order',
+			),
         )); ?>
         <div class="clear"></div>
 

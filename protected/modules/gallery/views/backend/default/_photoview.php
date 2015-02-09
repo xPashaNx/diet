@@ -11,7 +11,7 @@ Yii::app()->clientScript->registerScript('jeditable', "
 
 ?>
 
-<div class="image_block">
+<div class="image_block" data-sort="<?=$data->sort_order?>">
     <div class="image">
         <a href="#" class="thumb">
             <span>
@@ -19,9 +19,7 @@ Yii::app()->clientScript->registerScript('jeditable', "
             </span>
         </a>
     </div>
-    <? echo CHtml::link('', array(
-                                        'default/deletephoto',
-                                        'id' => $data->id), array('class' => 'delete'));?>
+    <? echo CHtml::link('', array('default/deletephoto', 'id' => $data->id), array('class' => 'delete'));?>
 	<div class="editable" id=<?=$data->id?>><?=$data->alt_text?></div>
 	
 	<?php
@@ -32,5 +30,9 @@ Yii::app()->clientScript->registerScript('jeditable', "
 			echo CHtml::activeRadioButton($data, 'id', array('value' => $data->id, 'uncheckValue' => null, 'checked' => ''));
 			echo CHtml::label('Сделать обложкой', 'for');
 		endif;
+	
+		echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('default/sortPhoto', 'galleryId' => $data->gallery_id), array('class' => 'sort-prev'));
+		echo '&nbsp';
+		echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('default/sortPhoto', 'galleryId' => $data->gallery_id), array('class' => 'sort-next'));
 	?>
 </div>

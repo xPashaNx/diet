@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 
 <?php echo CHtml::link('+ Создать галерею', array('/gallery/default/create'), array('class'=>'add_element')); ?>
 <?php $this->widget('application.extensions.admingrid.MyGridView', array(
-	'id'=>'gallery-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
+	'id' => 'gallery-grid',
+	'dataProvider' => $model->search(),
+	'filter' => $model,
+	'columns' => array(
 		'title',
 		array(
 		    'header' => 'Обложка галереи',
@@ -22,11 +22,11 @@ $this->breadcrumbs=array(
 		    },
         ),
 		array(
-			'class'=>'MyButtonColumn',
+			'class' => 'MyButtonColumn',
 			'template' => '{update}{delete}',
 		),
 		array(
-            'class'=>'application.extensions.SSortable.SSortableColumn',
+            'class' => 'application.extensions.SSortable.SSortableColumn',
         ),
 	),
 )); ?>

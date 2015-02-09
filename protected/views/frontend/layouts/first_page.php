@@ -24,5 +24,6 @@
 <div class="inner">
     <?php echo $content; ?>
     <div class="clear"></div>
+	<?$this->widget('application.modules.gallery.widgets.GalleryWidget');?>
 </div>
 <?php $this->endContent(); ?>

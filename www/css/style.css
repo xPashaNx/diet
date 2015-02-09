@@ -109,3 +109,6 @@ img { border: none; }
 .content .services .block.management:after { background-position: -168px center; }
 .content .services .block.support:after { background-position: -280px center; }
 .content .services .block div, .content .services .block p { height: 56px; vertical-align: middle; display: table-cell; margin: 0; }
+
+.content .galleries .gallery { float: left; margin: 0 10px 10px 0; }
+.content .photo { float: left; margin: 0 10px 10px 0; }

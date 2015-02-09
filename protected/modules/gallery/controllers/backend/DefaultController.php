@@ -76,8 +76,12 @@ class DefaultController extends BackEndController
 			$model->attributes = $_POST['Gallery'];
 			if (isset($_POST['GalleryPhoto']['id']))
 				$model->cover_photo_id = $_POST['GalleryPhoto']['id'];
+			
 			if ($model->save())
+			{
 				$this->redirect(array('index'));
+			}
+				
 		}
 
 		$this->render('update',array(
@@ -96,24 +100,28 @@ class DefaultController extends BackEndController
 	{
 		if (Yii::app()->request->isPostRequest)
 		{
-
 			// we only allow deletion via POST request
 			$model = $this->loadModelPhoto($id);
 			$gallery = $this->loadModel($model->gallery_id);
-
+//echo '<pre>'.print_r($gallery->photos,true).'</pre>'; die;
             $folder = 'upload/gallery';
             // удаляем картинки
             @unlink($folder . '/' .$model->file);
             @unlink($folder . '/small/' .$model->file);
             @unlink($folder . '/medium/' .$model->file);
-			
-			if ($gallery->cover_photo_id == $id)
-			{
-				$gallery->cover_photo_id = null;
-				$gallery->save('cover_photo_id');
-			}
 
-            $model->delete();
+            if ($model->delete())
+			{
+				$criteria = new CDbCriteria;
+				$criteria->order = 'sort_order';
+				$criteria->condition = 'gallery_id=:gallery_id';
+				$criteria->params = array(':gallery_id' => $gallery->id);
+				if ($coverPhoto = GalleryPhoto::model()->find($criteria))
+				{
+					$gallery->cover_photo_id = $coverPhoto->id;
+					$gallery->save('cover_photo_id');
+				}
+			}
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if (!isset($_GET['ajax']))
@@ -146,9 +154,8 @@ class DefaultController extends BackEndController
 	{
 		$model = new Gallery('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Gallery']))
+		if (isset($_GET['Gallery']))
 			$model->attributes=$_GET['Gallery'];
-
 		$this->render('index',array(
 			'model'=>$model,
 		));
@@ -203,6 +210,20 @@ class DefaultController extends BackEndController
 			$model->alt_text = $_POST['value'];
 			$model->save('alt_text');
 			echo $model->alt_text;
+		}
+	}
+	
+	public function actionSortPhoto($galleryId)
+	{
+		if (isset($_POST['sortArr']))
+		{
+			$sortData = $_POST['sortArr'];
+			$photos = GalleryPhoto::model()->findAllByAttributes(array('gallery_id' => $galleryId), array('order' => 'sort_order'));
+			foreach ($photos as $key => $photo)
+			{
+				$photo->sort_order = $sortData[$key];
+				$photo->save('sort_order');
+			}
 		}
 	}
 }

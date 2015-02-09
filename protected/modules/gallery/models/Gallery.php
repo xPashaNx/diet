@@ -57,6 +57,7 @@ class Gallery extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'photos' => array(self::HAS_MANY, 'GalleryPhoto', 'gallery_id'),
+			'cover' => array(self::BELONGS_TO, 'GalleryPhoto', 'cover_photo_id'),
 		);
 	}
 
@@ -125,14 +126,14 @@ class Gallery extends CActiveRecord
             // Если указана обложка - возвращаем ее
             if ($this->cover_photo_id)
 			{
-                $cover_photo = GalleryPhoto::model()->findByPk($this->cover_photo_id);
-                if ($cover_photo)
+                $coverPhoto = GalleryPhoto::model()->findByPk($this->cover_photo_id);
+                if ($coverPhoto)
 				{
-                    return $cover_photo;
+                    $result = $coverPhoto;
                 }
 				else
 				{
-                    return false;
+                    $result = false;
                 }
             }
 			else
@@ -142,12 +143,16 @@ class Gallery extends CActiveRecord
                 $criteria->order = 'sort_order';
                 $criteria->condition = 'gallery_id=:gallery_id';
                 $criteria->params = array(':gallery_id' => $this->id);
-                $cover_photo = GalleryPhoto::model()->find($criteria);
-                return $cover_photo;
+                $coverPhoto = GalleryPhoto::model()->find($criteria);
+                $result = $coverPhoto;
             }
-        }else{
-            return false;
         }
+		else
+		{
+            $result = false;
+        }
+		
+		return $result;
     }
 
     protected function beforeSave()
@@ -186,25 +191,38 @@ class Gallery extends CActiveRecord
 			{
 				$this->sort_order = $this->getMaxSortOrder() + 10;
 			}
-            
+		
+			if (!empty($this->uploaded_photos)) 
+			{
+				foreach($this->uploaded_photos as $photo)
+				{
+					$photo->gallery_id = $this->id;
+					$photo->save();
+				}
+
+				if ($this->photos and $coverPhoto = $this->getCover())
+				{
+					$this->cover_photo_id = $coverPhoto->id;
+				}
+			}
+			/*else
+			{
+				if ($this->photos and !$this->cover_photo_id)
+				{
+					$criteria = new CDbCriteria;
+					$criteria->order = 'sort_order';
+					$criteria->condition = 'gallery_id=:gallery_id';
+					$criteria->params = array(':gallery_id' => $this->id);
+					$coverPhoto = GalleryPhoto::model()->find($criteria);
+					$this->cover_photo_id = $coverPhoto->id;
+				}
+			}*/
+			
 			return true;
 		}
 		else
 			return false;
 	}
-
-    protected function afterSave(){
-        parent::afterSave();
-
-		if (!empty($this->uploaded_photos)) 
-		{
-			foreach($this->uploaded_photos as $photo)
-			{
-				$photo->gallery_id = $this->id;
-				$photo->save();
-			}
-		}
-    }
 
     protected function beforeDelete(){
 
@@ -240,9 +258,47 @@ class Gallery extends CActiveRecord
         }
 		else
 		{
-			$max_order=0;
+			$max_order = 0;
 		}
 
 		return $max_order;
 	}
+	
+	public function getMinSortOrder()
+	{
+		$models = Gallery::model()->findAll();
+		foreach ($models as $model) 
+		{
+			$sort_orders[] = $model->sort_order;
+		}
+        if (!empty($sort_orders))
+		{
+            asort($sort_orders);
+            $min_order = current($sort_orders);
+        }
+		else
+		{
+			$min_order = 0;
+		}
+
+		return $min_order;
+	}
+	
+	public static function getFirstGallery()
+	{
+        return Gallery::model()->findByAttributes(array('sort_order' => self::getMinSortOrder()));
+    }
+	
+	public static function getRandomGallery()
+	{
+        $criteria = new CDbCriteria;
+        $criteria->select = "*, rand() as rand";
+        $criteria->order = "rand";
+        return Gallery::model()->find($criteria);
+    }
+	
+	public static function getSelectedGallery($id)
+	{
+        return Gallery::model()->findByPk($id);
+    }
 }

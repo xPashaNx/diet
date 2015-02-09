@@ -42,7 +42,6 @@ class GalleryPhoto extends CActiveRecord
 		return array(
 			'SSortableBehavior' => array(
 				'class' => 'application.extensions.SSortable.SSortableBehavior',
-                'categoryField' => 'gallery_id',
 			),
 		);
 
@@ -115,6 +114,23 @@ class GalleryPhoto extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	protected function beforeDelete(){
+
+        if(parent::beforeDelete())
+        {
+			if ($this->id == $this->gallery->cover_photo_id)
+			{
+				$gallery = Gallery::model()->findByPk($this->gallery_id);
+				$gallery->cover_photo_id = null;
+				$gallery->save();
+			}
+
+            return true;
+        }
+        else
+            return false;
+    }
 	
 	public static function getRandomPhoto(){
         $criteria = new CDbCriteria;

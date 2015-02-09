@@ -17,14 +17,15 @@ class m150205_094403_gallery extends CDbMigration
 			CREATE TABLE IF NOT EXISTS `gallery_config` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `title` varchar(255) DEFAULT NULL,
-			  `count` int(11) DEFAULT NULL,
+			  `limit` int(11) DEFAULT NULL,
 			  `display_mode` int(11) DEFAULT NULL,
+			  `selected_gallery_id` int(11) DEFAULT NULL,
 			  `prev_x` int(11) DEFAULT NULL,
 			  `prev_y` int(11) DEFAULT NULL,
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 			
-			INSERT INTO `gallery_config` (`id`, `title`, `count`, `display_mode`, `prev_x`, `prev_y`) VALUES
+			INSERT INTO `gallery_config` (`id`, `title`, `limit`, `display_mode`, `prev_x`, `prev_y`) VALUES
 				(1, 'Фотогалереи', '', '', '', '');
 			
 			CREATE TABLE IF NOT EXISTS `gallery_photo` (

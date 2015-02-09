@@ -193,7 +193,7 @@ div.block {background: #fff; border: 1px solid #e5e5e5; padding: 0 10px;}
 }
 
 
-div.image_block {float: left; margin: 0 15px 15px 0; padding: 10px; border: 1px solid #ececec; overflow: hidden;}
+div.image_block {float: left; height: 190px; width: 145px; margin: 0 15px 15px 0; padding: 10px; border: 1px solid #ececec; overflow: hidden;}
 div.image_block a.delete{display: block; background: url('../../images/admin/delete.png') no-repeat left top; width: 27px; height: 28px; float: right; margin: -28px 0 0 0; position: relative; z-index: 50;}
 div.image {display: table; table-layout: fixed; width: 120px; height: 120px; background: #ececec;}
 div.image a.thumb{display: table-cell; text-align: center; vertical-align: middle; line-height: 1px;}
