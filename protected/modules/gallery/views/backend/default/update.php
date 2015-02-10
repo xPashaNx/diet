@@ -6,19 +6,25 @@ $this->breadcrumbs=array(
 
 $cs=Yii::app()->clientScript;
 $cs->registerScript('photos',"
-  $('.addPhoto').live('click', function() {
-	  block = $(this).parent('p').parent('div');
+
+	$(document).off('click', 'a.add');
+	$(document).on('click', '.addPhoto', function(){
+		block = $(this).parent('p').parent('div');
 		$('<p class=\"more_img\"><input type=\"file\" name=\"GalleryPhoto[image][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">&ndash;</span></p>').appendTo(block);
 	});
-  $('.delPhoto').live('click', function() {
-	  block = $(this).parent('p');
+	
+	$(document).off('click', '.delPhoto');
+	$(document).on('click', '.delPhoto', function(){
+		block = $(this).parent('p');
 		$(block).remove();
 	});
 
 ", CClientScript::POS_LOAD);
 
 $cs->registerScript('photo_delete', "
-	$('#photo-list a.delete').live('click',function() {
+	
+	$(document).off('click', '#photo-list a.delete');
+	$(document).on('click', '#photo-list a.delete', function(){
 		if(!confirm('Вы уверены в удалении фотографии?')) return false;
 		var th=this;
 		var afterDelete=function(){};
@@ -39,7 +45,9 @@ $cs->registerScript('photo_delete', "
 ", CClientScript::POS_READY);
 
 $cs->registerScript('photo_sort', "
-	$('#photo-list a.sort-prev').live('click',function() {
+
+	$(document).off('click', '#photo-list a.sort-prev');
+	$(document).on('click', '#photo-list a.sort-prev', function(){
 		var currentSort = $(this).parents('.image_block').data('sort'),
 			sortArr = [];
 			
@@ -64,7 +72,8 @@ $cs->registerScript('photo_sort', "
 		return false;
 	});
 	
-	$('#photo-list a.sort-next').live('click',function() {
+	$(document).off('click', '#photo-list a.sort-next');
+	$(document).on('click', '#photo-list a.sort-next', function(){
 		var currentSort = $(this).parents('.image_block').data('sort'),
 			sortArr = [];
 		
