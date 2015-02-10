@@ -50,12 +50,16 @@ return CMap::mergeArray(
 			'ih' => array(
 				'class' => 'CImageHandler',
 			),
+			'file'=>array(
+                'class'=>'application.extensions.file.CFile',
+            ),
 			'config' => array(
 				'class' => 'CConfig',
 			),
 		),
 		'modules' => array(
 			'callback',	
+			'banners',
 		),
 		'behaviors' => array(
 			'runBranch' => array(

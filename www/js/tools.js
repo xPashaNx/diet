@@ -1,5 +1,5 @@
 var speedSlider  = 500;  // скорость смены слайда
-var periodSlider = 3000; // период автоматической смены слайда
+var periodSlider = 1000; // период автоматической смены слайда
 var timerSlider  = null;
 
 var speedNews = 500; // скорость смены новостей

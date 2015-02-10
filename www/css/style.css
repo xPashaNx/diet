@@ -42,8 +42,9 @@ header .top a.logo img { vertical-align: middle; }
 header .top .title { display: inline-block; vertical-align: middle; font: 22px 'Futuris'; text-transform: uppercase; color: #090909; padding-left: 25px; position: relative; }
 header .top .title .bullet { width: 6px; height: 6px; border-radius: 3px; background: #949494; position: absolute; left: 0; top: 50%; margin-top: -3px; }
 header .top .phones { display: inline-block; vertical-align: middle; position: absolute; right: 0; font: 22px/24px 'Futuris'; top: 50%; margin-top: -12px; color: #0b0b0b; }
-header .banners { height: 276px; }
-header .banners .banner { width: 100%; height: 100%; max-width: 100%; background: no-repeat top center; -webkit-background-size: auto 100%; -moz-background-size: auto 100%; background-size: auto 100%; }
+header .banners { height: 276px; width: 1100px; margin: 0 auto; }
+header .banners .banner { width: 100%; height: 100%; max-width: 100%; background: no-repeat top center; -webkit-background-size: auto 100%; -moz-background-size: auto 100%; background-size: auto 100%; position: relative; }
+header .banners .banner img { position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
 header .bot { height: 65px; }
 header .bot .menu { width: 800px; height: 35px; padding: 15px 0; }
@@ -109,3 +110,18 @@ img { border: none; }
 .content .services .block.management:after { background-position: -168px center; }
 .content .services .block.support:after { background-position: -280px center; }
 .content .services .block div, .content .services .block p { height: 56px; vertical-align: middle; display: table-cell; margin: 0; }
+
+
+
+.slider { float:left; position:relative; height: 276px; width: 1100px; margin: 0 auto; }
+.slider-content { position:absolute; width:100%; height:100%; }
+.sliderArrows a { display: block; text-indent: -9999px; outline: none; z-index: 50; background-image: url(../images/slider/prev_next.png); width: 42px; height: 42px; position: absolute; top: 50%; margin-top: -15px; }
+.prev { left: 15px; }
+.prev:hover { background-position: 0 -44px; }
+.next { right: 15px; background-position: -44px 0; }
+.next:hover { background-position: -44px -44px; }
+.slider-content .item { position: absolute; width: 100%; height: 100%; background: #fff; }
+.sliderBullets {position: absolute; bottom: 0; left: 50%; z-index:50; margin-left: -45px; margin-bottom: 10px; }
+.sliderBullets a { display: block; float: left; text-indent: -9999px; outline: none; margin-left: 5px; width: 10px; height: 11px; background: url(../images/slider/bullets.png) no-repeat; }
+.sliderBullets .active { background-position: 0 -11px; }
+.slider-content a { outline: none; }

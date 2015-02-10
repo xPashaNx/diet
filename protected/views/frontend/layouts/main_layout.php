@@ -21,7 +21,9 @@
 				</div>
 			</div>
 			<div class="banners">
-				<div class="banner" style="background-image: url('/images/banner.jpg');"></div>
+				<div class="banner">
+					<?php $this->widget('application.modules.banners.widgets.BannersWidget', array('areaname' => 'slajder'));?>
+				</div>
 			</div>
 			<div class="inner">
 				<div class="bot">
