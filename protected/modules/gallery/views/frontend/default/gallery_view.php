@@ -9,16 +9,18 @@ $cs->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD)
 //$cs->registerScriptFile('/js/jquery.mousewheel-3.0.4.pack.js', CClientScript::POS_HEAD);
 $cs->registerCssFile('/css/jquery.fancybox-1.3.4.css');
 $cs->registerScript('images', "
-	$('a[rel=example_group]').fancybox({
-		overlayShow: true,
-		overlayOpacity: 0.5,
-		zoomSpeedIn: 300,
-		zoomSpeedOut:300
-	});
-	
-	$('a[rel=example_group]').each( function() {
-		var alt = $(this).find('img').prop('alt');
-		$(this).prop('title',alt);
+	$(document).ready(function() {
+		$('a[rel=example_group]').fancybox({
+			overlayShow: true,
+			overlayOpacity: 0.5,
+			zoomSpeedIn: 300,
+			zoomSpeedOut:300
+		});
+		
+		$('a[rel=example_group]').each( function() {
+			var alt = $(this).find('img').prop('alt');
+			$(this).prop('title',alt);
+		});
 	});
 ", CClientScript::POS_READY);
 
