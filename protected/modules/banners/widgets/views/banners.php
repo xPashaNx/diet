@@ -1,5 +1,5 @@
 <?php
-if (!$typeRotation)
+if (!$typeRotation and $dataProvider->totalItemCount > 1)
 {
 	$cs = Yii::app()->clientScript;
 	$cs->registerScriptFile('/js/tools.js', CClientScript::POS_HEAD);
