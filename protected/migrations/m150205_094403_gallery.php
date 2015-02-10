@@ -26,7 +26,7 @@ class m150205_094403_gallery extends CDbMigration
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 			
 			INSERT INTO `gallery_config` (`id`, `title`, `limit`, `display_mode`, `prev_x`, `prev_y`) VALUES
-				(1, 'Фотогалереи', '', '', '', '');
+				(1, 'Фотогалереи', '', '', '100', '100');
 			
 			CREATE TABLE IF NOT EXISTS `gallery_photo` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -39,6 +39,15 @@ class m150205_094403_gallery extends CDbMigration
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 		")->execute();
+		
+		mkdir(dirname(__FILE__).'/../../www/upload/gallery');
+		chmod(dirname(__FILE__).'/../../www/upload/gallery', 0777);
+		
+		mkdir(dirname(__FILE__).'/../../www/upload/gallery/medium');
+		chmod(dirname(__FILE__).'/../../www/upload/gallery/medium', 0777);
+		
+		mkdir(dirname(__FILE__).'/../../www/upload/gallery/small');
+		chmod(dirname(__FILE__).'/../../www/upload/gallery/small', 0777);
 	}
 
 	public function down()
@@ -50,5 +59,9 @@ class m150205_094403_gallery extends CDbMigration
 			DROP TABLE `gallery_photo`;
 
 		")->execute();
+		
+		rmdir(dirname(__FILE__).'/../../www/upload/gallery/medium');
+		rmdir(dirname(__FILE__).'/../../www/upload/gallery/small');
+		rmdir(dirname(__FILE__).'/../../www/upload/gallery');
 	}
 }
