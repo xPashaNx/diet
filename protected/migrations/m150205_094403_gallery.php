@@ -54,9 +54,9 @@ class m150205_094403_gallery extends CDbMigration
 	{
 		$this->dbConnection->createCommand("
 
-			DROP TABLE `gallery`;
-			DROP TABLE `gallery_config`;
-			DROP TABLE `gallery_photo`;
+			DROP TABLE IF EXISTS `gallery`;
+			DROP TABLE IF EXISTS `gallery_config`;
+			DROP TABLE IF EXISTS `gallery_photo`;
 
 		")->execute();
 		
