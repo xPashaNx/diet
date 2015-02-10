@@ -22,7 +22,7 @@ class m150209_142657_banners extends CDbMigration
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 			
-			CREATE TABLE IF NOT EXISTS `bannerarea` (
+			CREATE TABLE IF NOT EXISTS `banner_area` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `name` varchar(255) DEFAULT NULL,
 			  `title` varchar(255) DEFAULT NULL,
@@ -33,9 +33,20 @@ class m150209_142657_banners extends CDbMigration
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 			
 		")->execute();
+		
+		mkdir(dirname(__FILE__).'/../../www/upload/banners');
+		chmod(dirname(__FILE__).'/../../www/upload/banners', 0777);
 	}
 
 	public function down()
 	{
+		$this->dbConnection->createCommand("
+
+			DROP TABLE IF EXISTS `banners`;
+			DROP TABLE IF EXISTS `banner_area`;
+
+		")->execute();
+		
+		rmdir(dirname(__FILE__).'/../../www/upload/banners');
 	}
 }

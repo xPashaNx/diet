@@ -42,7 +42,7 @@ class Bannerarea extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'bannerarea';
+		return 'banner_area';
 	}
 
 	/**
