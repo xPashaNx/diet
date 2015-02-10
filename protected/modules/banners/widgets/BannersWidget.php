@@ -21,15 +21,23 @@ class BannersWidget extends CWidget
 			$banners = array();
 			$typeRotation = false;
             $criteria = new CDbCriteria;
-            $criteria->order = 'sort_order';
+			
+            $criteria->order = /*'sort_order'*/new CDbExpression('RAND()');
             $criteria->condition = 'bannerarea=:bannerarea AND notactive<>1';
             $criteria->params = array('bannerarea' => $bannerarea->id);
+			
+			switch ($bannerarea->mode)
+			{
+				case Bannerarea::SHOW_ALL:
+					$criteria->order = 'sort_order';
+					break;
+				case Bannerarea::RANDOM_ALL:
+					$criteria->order = new CDbExpression('RAND()');
+					break;
+			}
 
             $dataProvider = new CActiveDataProvider('Banners', array(
                 'criteria' => $criteria,
-                'sort' => array(
-                    'defaultOrder' => 'sort_order ASC',
-                ),
             ));
           
             switch ($bannerarea->mode)
