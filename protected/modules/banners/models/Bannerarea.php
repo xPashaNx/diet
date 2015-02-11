@@ -8,7 +8,7 @@
  * @property string $name
  * @property string $title
  * @property string $mode
- * @property string $widget
+ * @property string $queue
  */
 class Bannerarea extends CActiveRecord
 {
@@ -54,13 +54,13 @@ class Bannerarea extends CActiveRecord
 		// will receive user inputs.
 		return array(
             array('mode', 'numerical', 'integerOnly'=>true),
-			array('name, title, widget', 'length', 'max'=>255),
+			array('name, title', 'length', 'max'=>255),
             array('name, title', 'required'),
             array('name', 'unique', 'message' => 'Рекламное место с именем {value} уже существует!'),
             array('name', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, title, mode, widget', 'safe', 'on'=>'search'),
+			array('id, name, title, mode, queue', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,7 +86,7 @@ class Bannerarea extends CActiveRecord
 			'name' => 'Имя',
 			'title' => 'Название',
             'mode' => 'Режим отображения',
-			'widget' => 'Виджет для отображения',
+			'queue' => 'Очередь',
 		);
 	}
 
@@ -105,7 +105,7 @@ class Bannerarea extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('mode',$this->mode,true);
-		$criteria->compare('widget',$this->widget,true);
+		$criteria->compare('queue',$this->queue,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

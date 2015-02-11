@@ -27,7 +27,6 @@ class m150209_142657_banners extends CDbMigration
 			  `name` varchar(255) DEFAULT NULL,
 			  `title` varchar(255) DEFAULT NULL,
 			  `mode` int(11) DEFAULT NULL,
-			  `widget` varchar(255) DEFAULT NULL,
 			  `queue` int(11) DEFAULT NULL,
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

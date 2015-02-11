@@ -21,8 +21,6 @@ class BannersWidget extends CWidget
 			$banners = array();
 			$typeRotation = false;
             $criteria = new CDbCriteria;
-			
-            $criteria->order = /*'sort_order'*/new CDbExpression('RAND()');
             $criteria->condition = 'bannerarea=:bannerarea AND notactive<>1';
             $criteria->params = array('bannerarea' => $bannerarea->id);
 			

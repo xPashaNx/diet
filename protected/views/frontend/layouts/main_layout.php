@@ -22,7 +22,7 @@
 			</div>
 			<div class="banners">
 				<div class="banner">
-					<?php $this->widget('application.modules.banners.widgets.BannersWidget', array('areaname' => 'slajder'));?>
+					<?php $this->widget('application.modules.banners.widgets.BannersWidget', array('areaname' => 'main'));?>
 				</div>
 			</div>
 			<div class="inner">
