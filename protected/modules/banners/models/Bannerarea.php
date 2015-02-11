@@ -12,13 +12,22 @@
  */
 class Bannerarea extends CActiveRecord
 {
+    /**
+     * @const SHOW_ALL - Show all banners
+     * @const ONE_AT_ROTATION - Show one banner at rotation
+     * @const RANDOM_ROTATION - Show one random banner at rotation
+     * @const RANDOM_ALL - Show all random banners
+     * @const SLIDER - Show banners in slider
+     */
 	const SHOW_ALL = 1;
 	const ONE_AT_ROTATION = 2;
 	const RANDOM_ROTATION = 3;
 	const RANDOM_ALL = 4;
 	const SLIDER = 5;
-	
-    //Режимы отображения
+
+    /**
+     * @var array - Banner modes
+     */
     public $modes = array(
 		self::SHOW_ALL => 'Показывать все', 
 		self::ONE_AT_ROTATION => 'Поочередная ротация', 
@@ -112,12 +121,20 @@ class Bannerarea extends CActiveRecord
 		));
 	}
 
+    /**
+     * @return array - List of banner areas
+     */
 	public static function createAreaList()
 	{
-		$bannerAreas = Bannerarea::model()->findAll();
-		foreach ($bannerAreas as $bannerArea){
-			$areaList[$bannerArea['id']] = $bannerArea['title'];
+		$areaList = array();
+		if ($bannerAreas = Bannerarea::model()->findAll())
+		{
+			foreach ($bannerAreas as $bannerArea)
+			{
+				$areaList[$bannerArea['id']] = $bannerArea['title'];
+			}
 		}
+		
 		return $areaList;
 	}
 }

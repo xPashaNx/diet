@@ -4,23 +4,22 @@ $cs->registerScriptFile('/js/mobilyslider.js', CClientScript::POS_HEAD);
 $cs->registerScript('slider', "
 
 	$('.slider').mobilyslider({
-		content: '.slider-content', 		// селектор для слайдера
-		//children: 'div',					// селектор для дочерних элементов
-		transition: 'fade', 				// переходы: horizontal, vertical, fade
-		animationSpeed: 300, 				// скорость перехода в миллисекундах
+		content: '.slider-content',
+		transition: 'fade',
+		animationSpeed: 300,
 		autoplay: true,
-		autoplaySpeed: 3000, 				// время между переходами (миллисекунды)
-		pauseOnHover: false, 				// останавливать навигацию при наведении на слайдер: false, true
-		bullets: true, 						// генерировать навигацию (true/false, class: sliderBullets)
-		arrows: true, 						// генерировать стрелки вперед и назад (true/false, class: sliderArrows)
-		arrowsHide: true, 					// показывать стрелки только при наведении
-		prev: 'prev', 						// название класса для кнопки назад
-		next: 'next', 						// название класса для кнопки вперед
-		animationStart: function(){}, 		// вызывать функцию при старте перехода
-		animationComplete: function(){} 	// вызывать функцию когда переход завершен
+		autoplaySpeed: 3000,
+		pauseOnHover: true,
+		bullets: true,
+		arrows: true,
+		arrowsHide: true,
+		prev: 'prev',
+		next: 'next',
+		animationStart: function(){},
+		animationComplete: function(){}
 	});
 
-	", CClientScript::POS_READY);
+", CClientScript::POS_READY);
 ?>
 
 <div class="slider">

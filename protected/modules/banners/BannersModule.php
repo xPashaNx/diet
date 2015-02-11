@@ -18,11 +18,12 @@ class BannersModule extends CWebModule
 		$this->viewPath = $this->getViewPath() . DIRECTORY_SEPARATOR . Yii::app()->branch;
 	}
 
-	/**
-	 * @param CController $controller
-	 * @param CAction $action
-	 * @return bool
-	 */
+    /**
+     * @param CController $controller
+     * @param CAction $action
+     *
+     * @return bool
+     */
 	public function beforeControllerAction($controller, $action)
 	{
 		if (parent::beforeControllerAction($controller, $action))

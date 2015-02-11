@@ -17,16 +17,24 @@
  */
 class Banners extends CActiveRecord
 {
+	/**
+	 * @const TYPE_IMAGE - Banner type image
+	 * @const TYPE_CODE - Banner type code
+	 */
 	const TYPE_IMAGE = 1;
 	const TYPE_CODE = 2;
 	
-    // Тип контента
+	/**
+	 * @var array banner content type
+	 */
     public $content_type_list = array(
 		self::TYPE_IMAGE => 'Картинка со ссылкой', 
 		self::TYPE_CODE => 'Код'
 	);
 
-    // Фолдер для картинок
+	/**
+	 * @var string banner image upload folder
+	 */
     public $folder = 'upload/banners';
     
 	/**
@@ -68,6 +76,9 @@ class Banners extends CActiveRecord
 		);
 	}
 
+    /**
+     * @return array behaviors
+     */
 	public function behaviors()
 	{
 		return array(
@@ -119,7 +130,7 @@ class Banners extends CActiveRecord
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
@@ -133,39 +144,52 @@ class Banners extends CActiveRecord
 		$criteria->compare('notactive',$this->notactive);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
+    /**
+     * Increment banner view
+     */
     public function incViews()
 	{
         $this->views++;
         $this->save();
     }
 
+    /**
+     * Before save model
+     * @return bool
+     */
     protected function beforeSave()
 	{
 		if(parent::beforeSave())
 		{
-            // Если это не новая запись - Берем старую модель для удаления старой картинки
-            if(!$this->isNewRecord)
+            if (!$this->isNewRecord)
             {
-               $old_model=Banners::model()->findByPk($this->id);
-               $old_image=$old_model->image;
-            }else{
-                $old_image='';
+               $old_model = Banners::model()->findByPk($this->id);
+               $old_image = $old_model->image;
+            }
+			else
+			{
+                $old_image = '';
             }
 
-			if	($image = CUploadedFile::getInstance($this, 'image')){
+			if ($image = CUploadedFile::getInstance($this, 'image'))
+			{
 				$name = md5(time().$image).'.'.$image->getExtensionName();
 				$this->image = $name;
 				$image->saveAs($this->folder . '/' . $name);
 
-                if($old_image){
-                        //Удаляем старые картинки
-                        @unlink($this->folder . '/' .$old_image);
+                if ($old_image)
+				{
+                    @unlink($this->folder . '/' .$old_image);
                 }
-			}else {$this->image = $old_image;}
+			}
+			else 
+			{
+				$this->image = $old_image;
+			}
 
 			return true;
 		}

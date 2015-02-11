@@ -2,18 +2,30 @@
 
 Yii::import('zii.widgets.CWidget');
 Yii::import('application.modules.banners.models.*');
-/*
-Класс виджета для вывода баннеров
 
-*/
+/**
+ * Class BannersWidget to display banners
+ */
 class BannersWidget extends CWidget 
 {
-
-    // имя рекламного места
+    /**
+     * @var string banner area name
+     */
     public $areaname = '';
+
+    /**
+     * @var string view name
+     */
     public $viewName = 'banners';
+
+    /**
+     * @var string item view name
+     */
     public $itemViewName = '_banner';
 
+    /**
+     * @method run
+     */
 	public function	run() 
 	{
         if ($bannerarea = Bannerarea::model()->find('name=:name', array('name' => $this->areaname)))

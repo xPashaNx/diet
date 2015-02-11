@@ -6,4 +6,4 @@
 			echo CHtml::image('/'.$data->folder.'/'.$data->image, $data->title);
 	?>
 </li>
-<?$data->incViews();// Увеличиваем счетчик показов?>
+<?$data->incViews();?>
