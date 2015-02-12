@@ -2,7 +2,9 @@
 <?
     $cs=Yii::app()->clientScript;
     $cs->registerScript('bannerarea_delete', "
-        $('#banners-list a.delete_area').live('click',function() {
+
+        $(document).off('click', '#banners-list a.delete_area');
+        $(document).on('click', '#banners-list a.delete_area', function(){
             if(!confirm('Вы уверены в удалении рекламного места?')) return false;
             var th=this;
             var afterDelete=function(){};
