@@ -18,7 +18,8 @@
 <div class="inner">
     <div class="services">
         <h1>Наши услуги</h1>
-        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'uslugi-na-glavnoj')); ?>
+        <?php $this->widget('application.modules.services.widgets.CatalogCatToMainWidget'); ?>
+        <?php //$this->widget('application.widgets.OutAreaWidget', array('name' => 'uslugi-na-glavnoj')); ?>
     </div>
 </div>
 <div class="inner">

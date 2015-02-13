@@ -1,0 +1,18 @@
+div.osn_photo{float: left; margin-right: 30px;}
+div.osn_photo img{height: 250px;}
+div.dop_photo img{height: 100px;}
+
+a.showhide{color: #999999; border-bottom: 1px dashed #999999; text-decoration: none;}
+
+table.viewattr tr{background: #FAF6ED}
+table.viewattr td{
+    border: none;
+    padding: 0px;
+}
+table.viewattr td.label{
+    background: url('dots.gif') bottom repeat-x;
+}
+
+table.viewattr td.label span{color: #7f7f7f; background: #FAF6ED}
+
+a.shadd{color: #860701; font-size: 16px; text-decoration: none; border-bottom: 1px dashed;}

@@ -1,0 +1,74 @@
+<h1><?php echo $category->short_title;?></h1>
+<?if ($category->id == 0):?>
+<div class="block">
+<h2>Список категорий</h2>
+<?php 
+echo CHtml::link('+ Добавить категорию', array('default/create', 'id'=>$category->id), array('class'=>'add_element'));
+$this->widget('application.extensions.admingrid.MyGridView', array(
+	'id' => 'category-grid',
+	'dataProvider' => $categoryDataProvider,
+	'emptyText' => 'Нет категорий',
+	'hideHeader' => true,
+	'columns' => array(
+		array(
+			'name' => 'short_title',
+			'type' => 'raw',
+			'value' => 'CHtml::link(CHtml::encode($data->short_title), array("index", "id" => $data->id))',
+		),
+		array(
+			'class' => 'MyButtonColumn',
+			'template' => '{update}{delete}',
+		),
+        array(
+            'class'=>'application.modules.services.components.SSortable.SSortableCatalogCategoryColumn',
+        ),
+	),
+)); 
+
+?>
+</div>
+
+<?else:?>
+<h2>Список услуг</h2>
+<?php
+echo CHtml::link('+ Добавить услугу', array('service/create', 'id_category' => $category->id), array('class'=>'add_element'));
+$this->widget('application.extensions.admingrid.MyGridView', array(
+	'id' => 'services-grid',
+	'dataProvider' => $services->search(),
+	'filter' => $services,
+	'emptyText' => 'Нет услуг в данной категории',
+	'columns' => array(
+		array(
+			'name' => 'id',
+			'filter' => false,
+		),
+		array(
+			'name' => 'short_title',
+			'type' => 'raw',
+			'value' => 'CHtml::link(CHtml::encode($data->short_title), array("service/view", "id" => $data->id))'
+		),
+		array(
+			'class' => 'MyButtonColumn',
+			'template' => '{update}{delete}',
+			'buttons' => array(
+				'update' => array(
+					'imageUrl' => Yii::app()->request->baseUrl.'/images/admin/edit.png',
+					'url' => 'Yii::app()->createUrl("services/service/update", array("id" => $data->id))',
+				),
+				'delete' => array(
+					'imageUrl' => Yii::app()->request->baseUrl.'/images/admin/del.png',
+					'url' => 'Yii::app()->createUrl("services/service/delete", array("id" => $data->id))',
+				),
+			),
+
+		),
+        array(
+            'class'=>'application.modules.services.components.SSortable.SSortableCatalogColumn',
+        ),
+	),
+)); 
+
+?>
+<?endif;?>
+
+

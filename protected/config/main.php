@@ -55,8 +55,8 @@ return CMap::mergeArray(
 			),
 		),
 		'modules' => array(
-			'callback',	
-			'catalog',
+			'callback',
+			'services',
 		),
 		'behaviors' => array(
 			'runBranch' => array(

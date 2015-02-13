@@ -32,7 +32,8 @@ class BackEndController extends BaseController
 			$this->widget("application.widgets.AdminmenuWidget");
 			
 		foreach(Yii::app()->modulesMenus as $path)
-			$this->widget($path);
+            var_dump($path).'<br>';
+			//$this->widget($path);
     }
 }
 ?>
