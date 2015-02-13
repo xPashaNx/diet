@@ -11,12 +11,13 @@
  * @property string $sort_order
  *
  * The followings are the available model relations:
- * @property CatalogProduct $idProduct
+ * @property CatalogService $idService
  */
 class CatalogImage extends CActiveRecord
 {
 	/**
-	 * Returns the static model of the specified AR class.
+	 * Returns the static model of the specified AR class
+     *
 	 * @return CatalogImage the static model class
 	 */
 	public static function model($className=__CLASS__)
@@ -33,7 +34,7 @@ class CatalogImage extends CActiveRecord
 	}
 
 	/**
-	 * @return array validation rules for model attributes.
+	 * @return array validation rules for model attributes
 	 */
 	public function rules()
 	{
@@ -51,7 +52,7 @@ class CatalogImage extends CActiveRecord
 	}
 
 	/**
-	 * @return array relational rules.
+	 * @return array relational rules
 	 */
 	public function relations()
 	{
@@ -76,8 +77,9 @@ class CatalogImage extends CActiveRecord
 	}
 
 	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 * Retrieves a list of models based on the current search/filter conditions
+     *
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions
 	 */
 	public function search()
 	{
@@ -85,12 +87,11 @@ class CatalogImage extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('id_service',$this->id_product,true);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('alt_text',$this->alt_text,true);
-		$criteria->compare('sort_order',$this->alt_text,true);
+		$criteria->compare('sort_order',$this->sort_order,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

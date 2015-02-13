@@ -201,7 +201,9 @@ div.image a.thumb span{display: block;}
 div.image a.thumb span img{max-width: 102px; max-height: 102px; margin: 0; border: 1px solid #ececec;}
 div.image_block .image{margin:0;}
 div.image_block .caption{width:120px;overflow:hidden;height:18px;}
-div.image_block .caption form input{border:none;padding:0;margin:0;} 
+div.image_block .caption form input{border:none;padding:0;margin:0;}
+
+div.editable {width: 136px; height: 15px; border: 1px dashed; }
 
 div.section {display: table; table-layout: fixed; width: 120px; height: 120px; background: #ececec;}
 div.section p{display: table-cell; text-align: center; vertical-align: middle; line-height: 1px; cursor: pointer;}

@@ -41,6 +41,7 @@ class DefaultController extends BaseCatalogController
 
     /**
      * List categories
+     *
      * @param string $link
      *
      * @throws CHttpException
@@ -92,7 +93,8 @@ class DefaultController extends BaseCatalogController
 	}
 
     /**
-     * List services
+     * List service
+     *
      * @param integer $id
      *
      * @throws CHttpException
@@ -112,6 +114,7 @@ class DefaultController extends BaseCatalogController
 
     /**
      * Load category model
+     *
      * @param string $link
      *
      * @return mixed
@@ -128,6 +131,7 @@ class DefaultController extends BaseCatalogController
 
     /**
      * Load product model
+     *
      * @param integer $id
      *
      * @return mixed
@@ -144,6 +148,7 @@ class DefaultController extends BaseCatalogController
 
     /**
      * Create url
+     *
      * @param string $route
      * @param array  $params
      * @param string $ampersand

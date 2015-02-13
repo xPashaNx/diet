@@ -1,22 +1,23 @@
 <?php
 
+/**
+ * Class ServiceController
+ */
 class ServiceController extends BackEndController
 {
-	/**
-	 * Контроллер товаровъ
-     *
-	 */
-	public $layout='//layouts/column2';
-
+    /**
+     * @return array
+     */
 	public function actions()
 	{
 		return array(
-			'move'=>'application.modules.services.components.SSortable.SSortableAction',
+			'move' => 'application.modules.services.components.SSortable.SSortableAction',
 		);
 	} 
 
     /**
-     * Displays a particular model
+     * Displays CatalogService model
+     *
      * @param integer $id the ID of the model to be displayed
      *
      * @throws CHttpException
@@ -36,6 +37,7 @@ class ServiceController extends BackEndController
     /**
      * Creates a new model
      * If creation is successful, the browser will be redirected to the 'view' page
+     *
      * @param integer $id_category
      */
 	public function actionCreate($id_category)
@@ -66,6 +68,7 @@ class ServiceController extends BackEndController
     /**
      * Updates a particular model
      * If update is successful, the browser will be redirected to the 'view' page
+     *
      * @param integer $id the ID of the model to be updated
      *
      * @throws CHttpException
@@ -97,6 +100,7 @@ class ServiceController extends BackEndController
 
     /**
      * Delete a particular model
+     *
      * @param integer $id the ID of the model to be deleted
      *
      * @throws CHttpException
@@ -119,6 +123,7 @@ class ServiceController extends BackEndController
     /**
      * Returns the data model based on the primary key given in the GET variable
      * If the data model is not found, an HTTP exception will be raised
+     *
      * @param $id the ID of the model to be loaded
      *
      * @return mixed
@@ -133,21 +138,8 @@ class ServiceController extends BackEndController
         return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if (isset($_POST['ajax']) && $_POST['ajax']==='catalog-service-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
-
     /**
-     * Creates Alt Text
+     * Create Alt Text
      */
     public function actionCreateAltText()
     {

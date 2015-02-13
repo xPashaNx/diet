@@ -5,13 +5,21 @@
  */
 class DefaultController extends BackEndController
 {
+    /**
+     * @return array
+     */
 	public function actions()
 	{
 		return array(
 			'move'=>'application.modules.services.components.SSortable.SSortableAction',
 		);
 	}
-    
+
+    /**
+     * Output category
+     *
+     * @param integer $id
+     */
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -22,13 +30,14 @@ class DefaultController extends BackEndController
     /**
      * Creates a new model
      * If creation is successful, the browser will be redirected to the 'view' page
-     * @param $id
+     *
+     * @param integer $id
      */
 	public function actionCreate($id)
 	{
 		$model = new CatalogCategory;
 		$model->parent_id = $id;
-		$this->breadcrumbs['Каталог услуг'] = array('/catalog');
+		$this->breadcrumbs['Каталог услуг'] = array('/services');
 		$this->breadcrumbs[] = 'Добавление категории';
 
 		// Uncomment the following line if AJAX validation is needed
@@ -50,13 +59,13 @@ class DefaultController extends BackEndController
      * Updates a particular model
      * If update is successful, the browser will be redirected to the 'view' page
      *
-     * @param $id
+     * @param integer $id
      *
      * @throws CHttpException
      */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model = $this->loadModel($id);
 
 		$this->breadcrumbs = CatalogCategory::getParents($model->id);
 		$this->breadcrumbs[] = $model->short_title;
@@ -67,8 +76,8 @@ class DefaultController extends BackEndController
 
 		if (isset($_POST['CatalogCategory']))
 		{
-			$model->attributes=$_POST['CatalogCategory'];
-			if($model->save())
+			$model->attributes = $_POST['CatalogCategory'];
+			if ($model->save())
 				$this->redirect(array('index','id' => $model->parent_id));
 		}
 
@@ -77,26 +86,26 @@ class DefaultController extends BackEndController
 		));
 	}
 
-	/** Удаление категории
+    /**
+     * Delete category
      * todo запретить удаление при наличии подкатегорий и товаров в категории
-	 */
+     *
+     * @param integer $id
+     *
+     * @throws CHttpException
+     */
 	public function actionDelete($id)
 	{
 		if (Yii::app()->request->isPostRequest)
 		{
-			// загружаем модель
-            $model=$this->loadModel($id);
+            $model = $this->loadModel($id);
+            @unlink($model->folder . '/' .$model->image);
+            @unlink($model->folder . '/small/' .$model->image);
 
-            $folder='upload/catalog/category';
-            // удаляем картинки
-            @unlink($folder . '/' .$model->image);
-            @unlink($folder . '/small/' .$model->image);
-
-            // удаляем модель
 			$model->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
+			if (!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('manage'));
 		}
 		else
@@ -104,7 +113,8 @@ class DefaultController extends BackEndController
 	}
 
     /**
-     * Conclusion category (categories and services)
+     * Output category (categories and services)
+     *
      * @param int $id
      */
 	public function actionIndex($id = 0)
@@ -146,6 +156,7 @@ class DefaultController extends BackEndController
 
     /**
      * Load category model
+     *
      * @param $id
      *
      * @return mixed
@@ -160,12 +171,13 @@ class DefaultController extends BackEndController
 	}
 
 	/**
-	 * Performs the AJAX validation.
+	 * Performs the AJAX validation
+     *
 	 * @param CModel the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='catalog-category-form')
+		if(isset($_POST['ajax']) && $_POST['ajax'] === 'catalog-category-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

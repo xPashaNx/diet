@@ -50,5 +50,3 @@ class OutAreaWidget extends CWidget
             echo "Область вывода " . $this->name . " не найдена.";
     }
 }
-
-?>

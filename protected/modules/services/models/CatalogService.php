@@ -403,9 +403,9 @@ class CatalogService extends CActiveRecord
     public function getFullLink()
     {
         if (isset($this->idCategory))
-            return '/catalog'.CatalogCategory::getCategoryRoute($this->idCategory->link).'/'.$this->link.'.html';
+            return '/services'.CatalogCategory::getCategoryRoute($this->idCategory->link).'/'.$this->link.'.html';
         else
-            return '/catalog/'.$this->link.'.html';
+            return '/services/'.$this->link.'.html';
     }
 
     /**

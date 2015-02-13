@@ -34,7 +34,7 @@ Yii::app()->clientScript->registerScript('images', "
         <div class="dop_photo">
             <?php if (isset($model->catalogImages)):
                 foreach ($model->catalogImages as $image) :?>
-                <?php if ($image->image) echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $model->short_title), '/upload/catalog/service/moreimages/' . $image->image, array('rel' => 'example_group')); ?>
+                <?php if ($image->image) echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $image->alt_text), '/upload/catalog/service/moreimages/' . $image->image, array('rel' => 'example_group')); ?>
                 <?php
                     endforeach;
                 endif; ?>
@@ -43,7 +43,7 @@ Yii::app()->clientScript->registerScript('images', "
         <?php echo $model->text; ?>
     </div>
 </div>
-<div class="right" style="margin-top:43px;" >
+<!--div class="right" style="margin-top:43px;" >
 	<div class="random_project" style="text-align:left;">
 		<h2>Фотографии</h2>
 		<?php if ((isset($model->catalogImages)) && (count($model->catalogImages)>0)):?>
@@ -58,6 +58,6 @@ Yii::app()->clientScript->registerScript('images', "
 		<!--a href="/gallery" class="all"><span> Все работы</span> &raquo;</a-->
 		<?endif;?>
 	</div>
-</div>
+</div-->
 
    

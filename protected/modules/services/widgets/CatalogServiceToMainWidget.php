@@ -2,10 +2,10 @@
 
 Yii::import('zii.widgets.CPortlet');
 Yii::import('application.modules.services.models.*');
-/*
- *Класс виджета для вывода товаров на главную страницу
- *
-*/
+
+/**
+ * Class CatalogServiceToMainWidget
+ */
 class CatalogServiceToMainWidget extends CPortlet
 {
 	public function	run()

@@ -1,29 +1,18 @@
 <?php
-Yii::app()->clientScript->registerScript('product',"
-  $('.addFasad').live('click', function() {
-	  block = $(this).parent('p').parent('div');
-		$('<p class=\"more_img\"><input type=\"file\" name=\"CatalogImage[image][]\"><span class=\"addFasad\">+</span><span class=\"delFasad\">&ndash;</span></p>').appendTo(block);
+Yii::app()->clientScript->registerScriptFile('/js/jquery.jeditable.js', CClientScript::POS_HEAD);
+Yii::app()->clientScript->registerScript('jeditable',"
+    $(document).ready(function() {
+		$('.editable').editable('CreateAltText', {
+			onblur: 'submit',
+		});
 	});
-  $('.delFasad').live('click', function() {
-	  block = $(this).parent('p');
-		$(block).remove();
+
+	$(document).on('click', '.editable', function(){
+		$(this).css('border', '0');
 	});
-  $('.addPlan').live('click', function() {
-	  number = 0+String(parseInt($(this).prev('input').attr(\"name\").replace('CatalogProductAttribute[0', ''))+1);
-	  attr = 0+String(parseInt($(this).prev('input').attr(\"name\").replace('CatalogProductAttribute[0', '')));
 
-	  text = '<div class=\"attribute clear\"><input type=\"hidden\" id=\"kind_'+number+'\" name=\"kind['+number+']\" value=\"14\" \/><input type=\"text\" id=\"CatalogProductAttribute_'+number+'_title\" name=\"CatalogProductAttribute['+number+'][title]\" value=\"\" \/><input type=\"file\" id=\"CatalogProductAttribute_'+number+'_value\" name=\"CatalogProductAttribute['+number+'][value]\" value=\"\" \/><span class=\"addPlan\">+<\/span><span class=\"delPlan\">-<\/span><\/div>';
-		$(this).parent('div').after(text);
-		$(this).next('span').remove();
-		$(this).remove();
-
-	});
-  $('.delPlan').live('click', function() {
-	  attr = $(this).parent('div').prev('div');
-		$('<span class=\"addPlan\">+</span><span class=\"delPlan\">-</span>').appendTo(attr);
-
-	  block = $(this).parent('div');
-		$(block).remove();
+	$(document).on('blur', '.editable', function(){
+		$(this).css('border', '1px dashed');
 	});
 ", CClientScript::POS_LOAD);
 
@@ -105,7 +94,7 @@ Yii::app()->clientScript->registerScript('jeditable', "
 		<?php echo $form->labelEx($model,'photo'); ?>
         <?php
             if ($model->photo)
-            echo CHtml::image('/upload/catalog/product/small/'.$model->photo);
+            echo CHtml::image('/upload/catalog/service/small/'.$model->photo);
         ?>
 		<?php echo $form->fileField($model,'photo'); ?>
 		<?php echo $form->error($model,'photo'); ?>

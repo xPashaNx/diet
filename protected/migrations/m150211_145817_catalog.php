@@ -70,6 +70,8 @@ class m150211_145817_catalog extends CDbMigration
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+            UPDATE `menu_item` SET `link` = '/services' WHERE `title` = 'Услуги';
+
 		")->execute();
 
         mkdir(dirname(__FILE__).'/../../www/upload/catalog');
@@ -111,6 +113,8 @@ class m150211_145817_catalog extends CDbMigration
 			DROP TABLE IF EXISTS `catalog_category`;
 			DROP TABLE IF EXISTS `catalog_service`;
 			DROP TABLE IF EXISTS `catalog_image`;
+
+            UPDATE `menu_item` SET `link` = '/service' WHERE `title` = 'Услуги';
 
 		")->execute();
 

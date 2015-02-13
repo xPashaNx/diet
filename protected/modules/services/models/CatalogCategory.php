@@ -222,7 +222,7 @@ class CatalogCategory extends CActiveRecord
      * Get parents
      *
      * @param integer $id
-     * @param bool $product
+     * @param bool    $service
      *
      * @return array
      */
@@ -265,31 +265,6 @@ class CatalogCategory extends CActiveRecord
     }
 
     /**
-     * Get children category for select list
-     *
-     * @param int $spaced
-     *
-     * @return array
-     */
-    /*public function getAllChildsList($spaced = 0)
-    {
-        $allchilds = array();
-
-        $criteria=new CDbCriteria;
-        $criteria->compare('parent_id', $this->id);
-        $criteria->order = 'sort_order ASC';
-
-        $thischilds = CatalogCategory::model()->findAll($criteria);
-        foreach ($thischilds as $thischild)
-        {
-            $allchilds[$thischild->id] = str_repeat ('___', $spaced).$thischild->short_title;
-            $allchilds = $allchilds + $thischild->getAllChildsList($spaced + 1);
-        }
-
-        return $allchilds;
-    }*/
-
-    /**
      * Get parent
      *
      * @param $id
@@ -318,12 +293,12 @@ class CatalogCategory extends CActiveRecord
 		if ($id != 0)
         {
 			$parents = CatalogCategory::model()->findByPk($id);
-            if ($service==true)
+            if ($service == true)
                 $data[$parents->short_title] = array('/services'.CatalogCategory::getCategoryRoute($parents->link));
             while ($parents = CatalogCategory::getParent($parents->parent_id))
                 $data[$parents->short_title] = array('/services'.CatalogCategory::getCategoryRoute($parents->link));
 		}
-		$data[$catalogConfig->title] = array('/service');
+		$data[$catalogConfig->title] = array('/services');
 
 		return array_reverse($data);
 	}
@@ -370,7 +345,8 @@ class CatalogCategory extends CActiveRecord
      *
      * @return int|mixed
      */
-	public function getMaxSortOrder(){
+	public function getMaxSortOrder()
+    {
 		$models = CatalogCategory::model()->findAll();
 		foreach ($models as $model)
 			$sort_orders[] = $model->sort_order;
