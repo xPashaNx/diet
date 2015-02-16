@@ -112,12 +112,6 @@ $cs->registerScript('translit', "
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_category'); ?>
-		<?php echo $form->dropDownList($model,'id_category',CatalogCategory::getListed()); ?>
-		<?php echo $form->error($model,'id_category'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'short_title'); ?>
 		<?php echo $form->textField($model,'short_title',array('size'=>60,'maxlength'=>256, 'id'=>'serviceTitle')); ?>
 		<?php echo $form->error($model,'short_title'); ?>

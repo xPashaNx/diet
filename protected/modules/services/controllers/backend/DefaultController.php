@@ -99,10 +99,15 @@ class DefaultController extends BackEndController
 		if (Yii::app()->request->isPostRequest)
 		{
             $model = $this->loadModel($id);
-            @unlink($model->folder . '/' .$model->image);
-            @unlink($model->folder . '/small/' .$model->image);
 
-			$model->delete();
+            if ($model->catalogServices)
+                throw new CHttpException(403,'Невозможно удалить категорию.');
+            else
+            {
+                @unlink($model->folder . '/' .$model->image);
+                @unlink($model->folder . '/small/' .$model->image);
+                $model->delete();
+            }
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if (!isset($_GET['ajax']))
