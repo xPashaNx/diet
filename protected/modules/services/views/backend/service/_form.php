@@ -106,7 +106,7 @@ Yii::app()->clientScript->registerScript('jeditable', "
 		<?php
 		if($model->catalogImages)
 			foreach($model->catalogImages as $image) {
-				echo '<div class="image_block">';
+				echo '<div class="image_block" data-sort="'.$image->sort_order.'">';
 				echo '<div class="image"><a href="#" class="thumb"><span>';
 				echo CHtml::image('/upload/catalog/service/moreimages/small/'.$image->image);
 				echo '</span></a>';
@@ -116,6 +116,9 @@ Yii::app()->clientScript->registerScript('jeditable', "
                     'id' => $image->id), array(
                         'confirm' => 'Вы уверены в удалении изображения?', 'class' => 'delete'));
                 echo '<div class="editable" id='.$image->id.'>'.$image->alt_text.'</div>';
+                echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-prev'));
+                echo '&nbsp';
+                echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-next'));
 				echo "</div>";
 			}
 		echo '<div class="clear"></div>';

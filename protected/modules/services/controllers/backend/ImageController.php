@@ -109,4 +109,24 @@ class ImageController extends BackEndController
 
 		return $model;
 	}
+
+    /**
+     * Sort photo
+     *
+     * @param integer $serviceId
+     */
+    public function actionSortPhoto($serviceId)
+    {
+        echo '<pre>'.print_r($_POST,true).'</pre>';
+        if (isset($_POST['sortArr']))
+        {
+            $sortData = $_POST['sortArr'];
+            $photos = CatalogImage::model()->findAllByAttributes(array('id_service' => $serviceId), array('order' => 'sort_order'));
+            foreach ($photos as $key => $photo)
+            {
+                $photo->sort_order = $sortData[$key];
+                $photo->save('sort_order');
+            }
+        }
+    }
 }
