@@ -1,6 +1,8 @@
 <?php
-Yii::app()->clientScript->registerScriptFile('/js/jquery.jeditable.js', CClientScript::POS_HEAD);
-Yii::app()->clientScript->registerScript('jeditable',"
+
+$cs = Yii::app()->clientScript;
+$cs->registerScriptFile('/js/jquery.jeditable.js', CClientScript::POS_HEAD);
+$cs->registerScript('jeditable',"
     $(document).ready(function() {
 		$('.editable').editable('CreateAltText', {
 			onblur: 'submit',
@@ -16,28 +18,78 @@ Yii::app()->clientScript->registerScript('jeditable',"
 	});
 ", CClientScript::POS_LOAD);
 
-$cs=Yii::app()->clientScript;
-$cs->registerScriptFile('/js/admin/jquery.synctranslit.js', CClientScript::POS_HEAD);
-$cs->registerScript('translit', "
-    $('#serviceTitle').syncTranslit({destination: 'slug'});
+$cs->registerScript('photos',"
 
-", CClientScript::POS_READY);
+	$(document).off('click', '.addPhoto');
+	$(document).on('click', '.addPhoto', function(){
+	    block = $(this).parent('p').parent('div');
+		$('<p class=\"more_img\"><input type=\"file\" name=\"CatalogImage[image][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">&ndash;</span></p>').appendTo(block);
+	});
 
-Yii::app()->clientScript->registerScriptFile('/js/jquery.jeditable.js', CClientScript::POS_HEAD);
-Yii::app()->clientScript->registerScript('jeditable', "
-	$(document).ready(function() {
-		$('.editable').editable('CreateAltText', {
-			onblur: 'submit',
+    $(document).off('click', '.delPhoto');
+	$(document).on('click', '.delPhoto', function(){
+	    block = $(this).parent('p');
+		$(block).remove();
+	});
+
+", CClientScript::POS_LOAD);
+
+$cs->registerScript('photo_sort', "
+
+	$(document).off('click', '.image_block a.sort-prev');
+	$(document).on('click', '.image_block a.sort-prev', function(){
+		var currentSort = $(this).parents('.image_block').data('sort'),
+			sortArr = [];
+
+		$('.image_block').each(function(i) {
+			sortArr.push($(this).data('sort'));
 		});
+		for (var i = 0; i < sortArr.length; i++) {
+			if ((sortArr[i] == currentSort) && (i != 0)) {
+				sortArr[i] = sortArr[i-1];
+				sortArr[i-1] = currentSort;
+				break;
+			}
+		}
+		$.ajax({
+			type: 'POST',
+			url: $(this).prop('href'),
+			data: {sortArr:sortArr},
+			success: function() {
+				location.reload();
+			},
+		});
+
+		return false;
 	});
 
-	$(document).on('click', '.editable', function(){
-		$(this).css('border', '0');
+	$(document).off('click', '.image_block a.sort-next');
+	$(document).on('click', '.image_block a.sort-next', function(){
+		var currentSort = $(this).parents('.image_block').data('sort'),
+			sortArr = [];
+
+		$('.image_block').each(function(i) {
+			sortArr.push($(this).data('sort'));
+		});
+		for (var i = 0; i < sortArr.length; i++) {
+			if ((sortArr[i] == currentSort) && (i != sortArr.length-1)) {
+				sortArr[i] = sortArr[i+1];
+				sortArr[i+1] = currentSort;
+				break;
+			}
+		}
+		$.ajax({
+			type: 'POST',
+			url: $(this).prop('href'),
+			data: {sortArr:sortArr},
+			success: function() {
+				location.reload();
+			},
+		});
+
+		return false;
 	});
 
-	$(document).on('blur', '.editable', function(){
-		$(this).css('border', '1px dashed');
-	});
 ", CClientScript::POS_READY);
 
 ?>
@@ -104,8 +156,8 @@ Yii::app()->clientScript->registerScript('jeditable', "
 	<div class="row">
 		<p class="label">Дополнительные фото</p>
 		<?php
-		if($model->catalogImages)
-			foreach($model->catalogImages as $image) {
+		if ($model->catalogImages)
+			foreach ($model->catalogImages as $image) {
 				echo '<div class="image_block" data-sort="'.$image->sort_order.'">';
 				echo '<div class="image"><a href="#" class="thumb"><span>';
 				echo CHtml::image('/upload/catalog/service/moreimages/small/'.$image->image);
@@ -123,7 +175,7 @@ Yii::app()->clientScript->registerScript('jeditable', "
 			}
 		echo '<div class="clear"></div>';
 		?>
-		<p class="more_img"><?php echo $form->fileField($serviceImages,'image[]'); ?><span class="addFasad">+</span></p>
+		<p class="more_img"><?php echo $form->fileField($serviceImages,'image[]'); ?><span class="addPhoto">+</span></p>
 	</div>
 
 	<div class="row">

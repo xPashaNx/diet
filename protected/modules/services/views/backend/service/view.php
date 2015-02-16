@@ -1,10 +1,8 @@
-<?
+<?php
 
-$cs=Yii::app()->clientScript;
-//Подключаем специальный css
+$cs = Yii::app()->clientScript;
 $cs->registerCssFile('/css/catalog/admin/catalog_admin.css');
 
-// Подключаем фанси-бокс
 $cs->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD);
 //$cs->registerScriptFile('/js/jquery.mousewheel-3.0.4.pack.js', CClientScript::POS_HEAD);
 $cs->registerCssFile('/css/jquery.fancybox-1.3.4.css');
@@ -22,7 +20,6 @@ $cs->registerScript('images', "
     });
 ", CClientScript::POS_READY);
 
-// Показать-скрыть
 $cs->registerScript('showhide', "
   $('a.showhide').click(function(){
       if ( $(this).next().css('display') == 'none' ) {
@@ -31,18 +28,6 @@ $cs->registerScript('showhide', "
       } else {
             $(this).next().animate({height: 'hide'}, 200);
             $(this).text('Показать');
-      }
-		return false;
-	});
-", CClientScript::POS_READY);
-
-// Показать-скрыть (добавление сопутствующих товаров)
-$cs->registerScript('shadd', "
-  $('a.shadd').click(function(){
-      if ( $(this).next().css('display') == 'none' ) {
-            $(this).next().animate({height: 'show'}, 400);
-      } else {
-            $(this).next().animate({height: 'hide'}, 200);
       }
 		return false;
 	});

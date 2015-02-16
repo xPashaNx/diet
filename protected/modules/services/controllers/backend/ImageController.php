@@ -117,7 +117,6 @@ class ImageController extends BackEndController
      */
     public function actionSortPhoto($serviceId)
     {
-        echo '<pre>'.print_r($_POST,true).'</pre>';
         if (isset($_POST['sortArr']))
         {
             $sortData = $_POST['sortArr'];

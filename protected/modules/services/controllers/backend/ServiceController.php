@@ -30,7 +30,7 @@ class ServiceController extends BackEndController
 		$this->breadcrumbs[] = 'Просмотр';
 
 		$this->render('view',array(
-			'model'=>$model,
+			'model' => $model,
 		));
 	}
 
@@ -152,6 +152,4 @@ class ServiceController extends BackEndController
             echo $model->alt_text;
         }
     }
-
-
 }

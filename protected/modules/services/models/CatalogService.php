@@ -96,7 +96,7 @@ class CatalogService extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'catalogImages' => array(self::HAS_MANY, 'CatalogImage', 'id_service'),
+			'catalogImages' => array(self::HAS_MANY, 'CatalogImage', 'id_service', 'order'=>'sort_order'),
 			'idCategory' => array(self::BELONGS_TO, 'CatalogCategory', 'id_category'),
 		);
 	}
@@ -122,8 +122,9 @@ class CatalogService extends CActiveRecord
 	}
 
 	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 * Retrieves a list of models based on the current search/filter conditions
+     *
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions
 	 */
 	public function search()
 	{
@@ -161,6 +162,7 @@ class CatalogService extends CActiveRecord
 
     /**
      * Before save
+     *
      * @return bool
      */
     protected function beforeSave()
@@ -274,8 +276,9 @@ class CatalogService extends CActiveRecord
 	}
 
 	/**
-	 * This is invoked before the record is saved.
-	 * @return boolean whether the record should be saved.
+	 * This is invoked before the record is saved
+     *
+	 * @return boolean whether the record should be saved
 	 */
     protected function afterSave()
     {
@@ -291,6 +294,7 @@ class CatalogService extends CActiveRecord
 
     /**
      * Remove the related model
+     *
      * @return bool
      */
     protected function beforeDelete()
@@ -319,27 +323,14 @@ class CatalogService extends CActiveRecord
             return false;
     }
 
-
-    /**
-     * Get images
-     * @return string
-     */
-	public function getImages()
-    {
-		$attribute = '';
-		foreach ($this->catalogImages as $image)
-			$attribute.='{url: "/images/catalog/fasad/'.$image->image.'"},';
-
-		return $attribute;
-	}
-
     /**
      * Get max sort order
+     *
      * @return int|mixed
      */
 	public function getMaxSortOrder()
     {
-		$models = CatalogService::model()->findAll();
+		$models = self::model()->findAll();
 		foreach ($models as $model)
 			$sort_orders[]=$model->sort_order;
         if (!empty($sort_orders))
@@ -354,50 +345,8 @@ class CatalogService extends CActiveRecord
 	}
 
     /**
-     * Format price
-     * @param int    $decimals
-     * @param string $decpoint
-     * @param string $groupspace
-     *
-     * @return string
-     */
-    public function priceFormat($decimals = 2, $decpoint = ',', $groupspace = '')
-    {
-        return number_format($this->price, $decimals, $decpoint, $groupspace);
-    }
-
-    /**
-     * Output a formatted price prefixed currency
-     * @param string $template
-     * @param int    $decimals
-     * @param string $decpoint
-     * @param string $groupspace
-     *
-     * @return string
-     */
-    public function outPrice($template = '{price}', $decimals = 2, $decpoint = ',', $groupspace = '')
-    {
-        if ($this->thisCurrency->beforeprefix)
-            return $this->thisCurrency->prefix.str_replace('{price}', $this->priceFormat($decimals, $decpoint, $groupspace), $template);
-        else
-            return str_replace('{price}', $this->priceFormat($decimals, $decpoint, $groupspace), $template).$this->thisCurrency->prefix;
-    }
-
-    /**
-     * Format price
-     * @param int    $decimals
-     * @param string $decpoint
-     * @param string $groupspace
-     *
-     * @return string
-     */
-    public function old_priceFormat($decimals = 2, $decpoint = ',', $groupspace = '')
-    {
-        return number_format($this->old_price, $decimals, $decpoint, $groupspace);
-    }
-
-    /**
      * Returns the full link to the service
+     *
      * @return string
      */
     public function getFullLink()
@@ -407,18 +356,4 @@ class CatalogService extends CActiveRecord
         else
             return '/services/'.$this->link.'.html';
     }
-
-    /**
-     * Get random project
-     * @return mixed
-     */
-	public static function getRandomProject()
-    {
-        $criteria = new CDbCriteria;
-        $criteria->limit = 1;
-        $criteria->select = "*, rand() as rand";
-        $criteria->order = "rand";
-        return CatalogService::model()->find($criteria);
-    }
-
 }

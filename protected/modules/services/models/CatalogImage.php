@@ -97,4 +97,43 @@ class CatalogImage extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /**
+     * Before save
+     *
+     * @return bool
+     */
+    protected function beforeSave()
+    {
+        if(parent::beforeSave())
+        {
+            if ($this->isNewRecord)
+                $this->sort_order = $this->getMaxSortOrder() + 10;
+
+            return true;
+        }
+        else
+            return false;
+    }
+
+    /**
+     * Get max sort order
+     *
+     * @return int|mixed
+     */
+    public function getMaxSortOrder()
+    {
+        $models = self::model()->findAll();
+        foreach ($models as $model)
+            $sort_orders[]=$model->sort_order;
+        if (!empty($sort_orders))
+        {
+            arsort($sort_orders);
+            $max_order = current($sort_orders);
+        }
+        else
+            $max_order = 0;
+
+        return $max_order;
+    }
 }
