@@ -313,10 +313,6 @@ class CatalogService extends CActiveRecord
             @unlink ($this->folder . '/medium/' . $this->photo);
             @unlink ($this->folder . '/small/' . $this->photo);
 
-            if (isset($this->complectations))
-                foreach($this->complectations as $complectation)
-                   $complectation->delete();
-
             return true;
         }
         else
