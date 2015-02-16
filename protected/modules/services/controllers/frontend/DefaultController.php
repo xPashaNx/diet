@@ -19,15 +19,7 @@ class DefaultController extends BaseCatalogController
 		$services_criteria = new CDbCriteria;
         $services_criteria->compare('id_category', 0);
 
-		$serviceDataProvider = new CActiveDataProvider('CatalogService', array(
-			'criteria' => $services_criteria,
-			'pagination' => array(
-				'pageSize' => $this->catalog_config->service_perpage,
-			),
-			'sort' => array(
-				'defaultOrder' => 'sort_order ASC',
-			),
-		));
+        $categories = CatalogCategory::model()->findAll();
 
         $this->metaInfoGenerate($this->catalog_config->title, $this->catalog_config->keywords, $this->catalog_config->description);
 
@@ -35,7 +27,7 @@ class DefaultController extends BaseCatalogController
             $this->layout = $this->catalog_config->layout;
 
 		$this->render('index',array(
-            'serviceDataProvider' => $serviceDataProvider,
+            'categories' => $categories,
 		));
 	}
 
@@ -54,40 +46,10 @@ class DefaultController extends BaseCatalogController
 
         $this->metaInfoGenerate($category->short_title, $category->keywords, $this->catalog_config->description);
 
-		$criteria = new CDbCriteria;
-		$criteria->compare('parent_id', $category->id);
-
-		$dataProvider = new CActiveDataProvider('CatalogCategory', array(
-			'criteria' => $criteria,
-			'pagination' => array(
-				'pageSize' => $this->catalog_config->category_perpage,
-			),
-			'sort' => array(
-				'defaultOrder' => 'sort_order ASC',
-			),
-		));
-
-		$services_criteria = new CDbCriteria;
-		$services_criteria->compare('id_category', $category->id);
-		$services_criteria->compare('on_main', true);
-
-		$serviceDataProvider = new CActiveDataProvider('CatalogService', array(
-			'criteria' => $services_criteria,
-			'pagination' => array(
-				'pageSize' => $this->catalog_config->service_perpage,
-			),
-			'sort' => array(
-				'defaultOrder' => 'sort_order ASC',
-			),
-		));
-
-		$this->category = $category->id;
 	    if($this->catalog_config->layout)
             $this->layout = $this->catalog_config->layout;
   
 		$this->render('view',array(
-			'dataProvider' => $dataProvider,
-            'serviceDataProvider' => $serviceDataProvider,
 			'category' => $category,
 		));
 	}

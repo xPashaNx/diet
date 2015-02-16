@@ -43,21 +43,5 @@ Yii::app()->clientScript->registerScript('images', "
         <?php echo $model->text; ?>
     </div>
 </div>
-<!--div class="right" style="margin-top:43px;" >
-	<div class="random_project" style="text-align:left;">
-		<h2>Фотографии</h2>
-		<?php if ((isset($model->catalogImages)) && (count($model->catalogImages)>0)):?>
-		<?foreach($model->catalogImages as $image):?>
-		<div class="image">
-		<?php echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $image->alt_text), '/upload/catalog/service/moreimages/' . $image->image, array('rel' => 'example_group')); ?>
-        </div>
-		<br/>
-		<?endforeach;?>
-		<?elseif(count($model->catalogImages)==0):?>
-		<span>нет фотографий</span>
-		<!--a href="/gallery" class="all"><span> Все работы</span> &raquo;</a-->
-		<?endif;?>
-	</div>
-</div-->
 
    
