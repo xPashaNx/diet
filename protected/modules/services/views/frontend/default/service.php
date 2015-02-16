@@ -1,6 +1,6 @@
 <?php
 
-$cs=Yii::app()->clientScript;
+$cs = Yii::app()->clientScript;
 $cs->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD);
 //$cs->registerScriptFile('/js/jquery.mousewheel-3.0.4.pack.js', CClientScript::POS_HEAD);
 $cs->registerCssFile('/css/jquery.fancybox-1.3.4.css');

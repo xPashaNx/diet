@@ -103,7 +103,7 @@ class CatalogConfig extends CActiveRecord
 			'description' => 'Описание (метатег description)',
             'layout' => 'Шаблон первой страницы',
             'category_perpage' => 'Категорий на странице',
-            'service_perpage' => 'Товаров на странице',
+            'service_perpage' => 'Услуг на странице',
             'c_image_small_w' => 'Ширина превью',
             'c_image_small_h' => 'Высота превью',
             's_image_middle_w' => 'Ширина среднего превью',
