@@ -1,28 +1,22 @@
-<?
-$cs=Yii::app()->clientScript;
+<?php
+
+$cs = Yii::app()->clientScript;
 $cs->registerScriptFile('/js/admin/jquery.synctranslit.js', CClientScript::POS_HEAD);
 $cs->registerScript('translit', "
     $('#productTitle').syncTranslit({destination: 'slug'});
-
 ", CClientScript::POS_READY);
 ?>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'catalog-category-form',
-	'htmlOptions'=>array('enctype' => 'multipart/form-data'),
-	'enableAjaxValidation'=>false,
+	'id' => 'catalog-category-form',
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
+	'enableAjaxValidation' => false,
 )); ?>
 
 	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<!--div class="row">
-		<?/*php echo $form->labelEx($model,'parent_id'); ?>
-		<?php echo $form->dropDownList($model,'parent_id',CatalogCategory::getListed()); ?>
-		<?php echo $form->error($model,'parent_id'); */?>
-	</div-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'short_title'); ?>
@@ -53,12 +47,6 @@ $cs->registerScript('translit', "
         <?php echo $form->textArea($model, 'description', array('cols' => 60, 'rows' => 4)); ?>
         <?php echo $form->error($model, 'description'); ?>
     </div>
-
-	<!--div class="row">
-		<?/*php echo $form->labelEx($model,'layout'); ?>
-		<?php echo $form->textField($model,'layout',array('size'=>60,'maxlength'=>256)); ?>
-		<?php echo $form->error($model,'layout'); */?>
-	</div-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>

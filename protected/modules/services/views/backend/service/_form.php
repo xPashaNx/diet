@@ -2,6 +2,7 @@
 
 $cs = Yii::app()->clientScript;
 $cs->registerScriptFile('/js/jquery.jeditable.js', CClientScript::POS_HEAD);
+$cs->registerScriptFile('/js/admin/jquery.synctranslit.js', CClientScript::POS_HEAD);
 $cs->registerScript('jeditable',"
     $(document).ready(function() {
 		$('.editable').editable('CreateAltText', {
@@ -90,6 +91,10 @@ $cs->registerScript('photo_sort', "
 		return false;
 	});
 
+", CClientScript::POS_READY);
+
+$cs->registerScript('translit', "
+    $('#serviceTitle').syncTranslit({destination: 'slug'});
 ", CClientScript::POS_READY);
 
 ?>
