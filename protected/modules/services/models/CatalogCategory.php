@@ -195,6 +195,30 @@ class CatalogCategory extends CActiveRecord
 	}
 
     /**
+     * Get listed
+     *
+     * @param int $id
+     *
+     * @return array
+     */
+	public static function getListed($id = 0)
+	{
+		$subitems = array();
+		$space = '';
+
+		foreach (CatalogCategory::model()->findAll('parent_id = ' . $id) as $model)
+        {
+			$space .= ' ';
+			$subitems[$model->id] = $space.$model->short_title;
+			if ($items = CatalogCategory::getListed($model->id))
+                foreach ($items as $key => $value)
+                    $subitems[$key] = $value;
+		}
+
+		return $subitems;
+	}
+
+    /**
      * Get parents
      *
      * @param integer $id
