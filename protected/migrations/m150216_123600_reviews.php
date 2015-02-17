@@ -12,7 +12,7 @@ class m150216_123600_reviews extends CDbMigration
 			  `reviews_perpage` int(11) DEFAULT NULL,
 			  `show_captcha` tinyint(1) DEFAULT NULL,
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11;
 
 			CREATE TABLE IF NOT EXISTS `reviews` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,8 +21,9 @@ class m150216_123600_reviews extends CDbMigration
 			  `email` varchar(255) DEFAULT NULL,
 			  `text` text DEFAULT NULL,
 			  `captcha` varchar(255) DEFAULT NULL,
+			  `public` tinyint(1) DEFAULT NULL,
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11;
 
 			INSERT INTO `reviews_config` (`id`, `premoder`, `reviews_perpage`, `show_captcha`) VALUES
 				(1, 0, 10, 0);
