@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'catalog_category':
  * @property integer $id
- * @property integer $parent_id
  * @property string $short_title
  * @property string $long_title
  * @property string $link
@@ -58,10 +57,10 @@ class CatalogCategory extends CActiveRecord
 			array('short_title', 'length', 'max' => 100),
 			array('link','unique', 'message' => 'Категория со ссылкой {value} уже существует!'),
             array('link', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
-            array('id, parent_id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe'),
+            array('id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, parent_id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe', 'on'=>'search'),
+			array('id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,10 +73,8 @@ class CatalogCategory extends CActiveRecord
 	{
 		return array(
 			'SSortableBehavior' => array(
-				'class' => 'application.modules.services.components.SSortable.SSortableCatalogBehavior',
-                'categoryField' => 'parent_id',
+				'class' => 'application.extensions.SSortable.SSortableBehavior',
 			),
-            //'CAdvancedArBehavior' => array('class' => 'application.extensions.EAdvancedArBehavior.EAdvancedArBehavior')
 		);
 
 	}     
@@ -91,11 +88,6 @@ class CatalogCategory extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'catalogServices' => array(self::HAS_MANY, 'CatalogService', 'id_category','condition'=>'catalogServices.on_main=1', 'order'=>'sort_order'),
-			'parent' => array(self::BELONGS_TO, 'CatalogCategory', 'parent_id'),
-			'childs' => array(self::HAS_MANY, 'CatalogCategory', 'parent_id'),
-
-            //атрибуты товаров, которые используются в данной категории
-            'use_attribute' => array(self::MANY_MANY, 'CatalogAttribute', 'catalog_category_attribute(id_category, id_attribute)'),
 		);
 	}
 
@@ -106,7 +98,6 @@ class CatalogCategory extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'parent_id' => 'Родительская категория',
 			'short_title' => 'Короткий заголовок',
 			'long_title' => 'Длинный заголовок',
 			'link' => 'Имя',
@@ -129,13 +120,8 @@ class CatalogCategory extends CActiveRecord
 		// should not be searched.
 
 		$criteria = new CDbCriteria;
-		if (isset($_GET['id']))
-			$this->parent_id = $_GET['id'];
-		else
-            $this->parent_id = 0;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('parent_id',$this->parent_id);
 		$criteria->compare('short_title',$this->short_title,true);
 		$criteria->compare('long_title',$this->long_title,true);
 		$criteria->compare('link',$this->link,true);
@@ -197,22 +183,17 @@ class CatalogCategory extends CActiveRecord
     /**
      * Get listed
      *
-     * @param int $id
-     *
      * @return array
      */
-	public static function getListed($id = 0)
+	public static function getListed()
 	{
 		$subitems = array();
 		$space = '';
 
-		foreach (CatalogCategory::model()->findAll('parent_id = ' . $id) as $model)
+		foreach (CatalogCategory::model()->findAll() as $model)
         {
 			$space .= ' ';
 			$subitems[$model->id] = $space.$model->short_title;
-			if ($items = CatalogCategory::getListed($model->id))
-                foreach ($items as $key => $value)
-                    $subitems[$key] = $value;
 		}
 
 		return $subitems;
@@ -233,9 +214,7 @@ class CatalogCategory extends CActiveRecord
         {
 			$parents = CatalogCategory::model()->findByPk($id);
             if ($service == true)
-                $data[$parents->short_title] = array('/services/default/index', 'id'=>$parents->id);
-            while ($parents = CatalogCategory::getParent($parents->parent_id))
-                $data[$parents->short_title] = array('/services/default/index', 'id'=>$parents->id);
+                $data[$parents->short_title] = array('/services/default/index', 'id' => $parents->id);
 			$data['Каталог услуг'] = array('/services/default/index');
 		}
 
@@ -252,11 +231,11 @@ class CatalogCategory extends CActiveRecord
         $allchilds = array();
 
         $criteria = new CDbCriteria;
-        $criteria->compare('parent_id', $this->id);
         $criteria->order = 'sort_order ASC';
 
         $thischilds = CatalogCategory::model()->findAll($criteria);
-        foreach ($thischilds as $thischild){
+        foreach ($thischilds as $thischild)
+        {
             $allchilds[] = $thischild->id;
             $allchilds = array_merge($allchilds, $thischild->allChildIds);
         }
@@ -295,28 +274,10 @@ class CatalogCategory extends CActiveRecord
 			$parents = CatalogCategory::model()->findByPk($id);
             if ($service == true)
                 $data[$parents->short_title] = array('/services'.CatalogCategory::getCategoryRoute($parents->link));
-            while ($parents = CatalogCategory::getParent($parents->parent_id))
-                $data[$parents->short_title] = array('/services'.CatalogCategory::getCategoryRoute($parents->link));
 		}
 		$data[$catalogConfig->title] = array('/services');
 
 		return array_reverse($data);
-	}
-
-    /**
-     * Get menu
-     *
-     * @param int $id
-     *
-     * @return array
-     */
-	public static function getMenu($id = 0)
-	{
-		$subitems = array();
-		foreach (CatalogCategory::model()->findAll('parent_id = ' . $id) as $model)
-			$subitems[] = array('label' => $model->short_title, 'url' => '/services/'.$model->link, 'active' => (strstr($_SERVER['REQUEST_URI'], '/'.$model->link)) ? true : false );
-
-		return $subitems;
 	}
 
     /**
@@ -330,11 +291,7 @@ class CatalogCategory extends CActiveRecord
     {
         if ($category = CatalogCategory::model()->find('link=:link', array('link' => $link)))
         {
-            if ($parent = CatalogCategory::model()->findByPk($category->parent_id))
-                $route = CatalogCategory::getCategoryRoute($parent->link)."/".$link;
-            else
-                $route = "/".$link;
-
+            $route = "/".$link;
             return $route;
         } else
             return false;

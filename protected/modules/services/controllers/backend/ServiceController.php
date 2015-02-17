@@ -11,7 +11,7 @@ class ServiceController extends BackEndController
 	public function actions()
 	{
 		return array(
-			'move' => 'application.modules.services.components.SSortable.SSortableAction',
+			'move' => 'application.extensions.SSortable.SSortableAction',
 		);
 	} 
 

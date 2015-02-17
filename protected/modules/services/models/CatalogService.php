@@ -55,7 +55,7 @@ class CatalogService extends CActiveRecord
 	{
 		return array(
 			'SSortableBehavior' => array(
-				'class' => 'application.modules.services.components.SSortable.SSortableCatalogBehavior',
+				'class' => 'application.extensions.SSortable.SSortableBehavior',
                 'categoryField' => 'id_category',
 			),
 		);

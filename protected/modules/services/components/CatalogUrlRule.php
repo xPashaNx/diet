@@ -36,7 +36,6 @@ class CatalogUrlRule extends CBaseUrlRule
         {
 			$pages = preg_split("/\//",$pathInfo);
             $element_arr = explode ('.', end($pages));
-            //var_dump($pages); die;
             $element = $element_arr[0];
 			if ($page = CatalogCategory::model()->find(array('condition'=>'link=:link', 'params'=>array(':link'=>$element),)))
 				return '/services/default/category/link/'.$element;

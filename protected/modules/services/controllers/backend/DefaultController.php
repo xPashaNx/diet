@@ -11,7 +11,7 @@ class DefaultController extends BackEndController
 	public function actions()
 	{
 		return array(
-			'move'=>'application.modules.services.components.SSortable.SSortableAction',
+			'move'=>'application.extensions.SSortable.SSortableAction',
 		);
 	}
 
@@ -33,10 +33,10 @@ class DefaultController extends BackEndController
      *
      * @param integer $id
      */
-	public function actionCreate($id)
+	public function actionCreate(/*$id*/)
 	{
 		$model = new CatalogCategory;
-		$model->parent_id = $id;
+		//$model->parent_id = $id;
 		$this->breadcrumbs['Каталог услуг'] = array('/services');
 		$this->breadcrumbs[] = 'Добавление категории';
 
@@ -88,7 +88,6 @@ class DefaultController extends BackEndController
 
     /**
      * Delete category
-     * todo запретить удаление при наличии подкатегорий и товаров в категории
      *
      * @param integer $id
      *
@@ -124,7 +123,6 @@ class DefaultController extends BackEndController
      */
 	public function actionIndex($id = 0)
 	{
-
         if (!$category = $this->loadModel($id))
         {
             $category = new CatalogCategory();

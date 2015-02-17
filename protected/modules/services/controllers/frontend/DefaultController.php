@@ -19,7 +19,7 @@ class DefaultController extends BaseCatalogController
 		$services_criteria = new CDbCriteria;
         $services_criteria->compare('id_category', 0);
 
-        $categories = CatalogCategory::model()->findAll();
+        $categories = CatalogCategory::model()->findAll(array('order' => 'sort_order'));
 
         $this->metaInfoGenerate($this->catalog_config->title, $this->catalog_config->keywords, $this->catalog_config->description);
 

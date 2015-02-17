@@ -20,7 +20,7 @@ $this->widget('application.extensions.admingrid.MyGridView', array(
 			'template' => '{update}{delete}',
 		),
         array(
-            'class'=>'application.modules.services.components.SSortable.SSortableCatalogCategoryColumn',
+            'class'=>'application.extensions.SSortable.SSortableCatalogCategoryColumn',
         ),
 	),
 )); 
@@ -63,7 +63,7 @@ $this->widget('application.extensions.admingrid.MyGridView', array(
 
 		),
         array(
-            'class'=>'application.modules.services.components.SSortable.SSortableCatalogColumn',
+            'class'=>'application.extensions.SSortable.SSortableCatalogServiceColumn',
         ),
 	),
 )); 
