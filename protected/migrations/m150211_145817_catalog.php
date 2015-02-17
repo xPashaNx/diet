@@ -34,7 +34,6 @@ class m150211_145817_catalog extends CDbMigration
 
 			CREATE TABLE IF NOT EXISTS `catalog_category` (
 			  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-			  `parent_id` int(11) NOT NULL,
 			  `short_title` varchar(100) DEFAULT NULL,
 			  `long_title` varchar(255) DEFAULT NULL,
 			  `link` varchar(255) DEFAULT NULL,

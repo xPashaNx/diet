@@ -11,7 +11,7 @@ class DefaultController extends BackEndController
 	public function actions()
 	{
 		return array(
-			'move'=>'application.extensions.SSortable.SSortableAction',
+			'move' => 'application.extensions.SSortable.SSortableAction',
 		);
 	}
 
@@ -30,13 +30,10 @@ class DefaultController extends BackEndController
     /**
      * Creates a new model
      * If creation is successful, the browser will be redirected to the 'view' page
-     *
-     * @param integer $id
      */
-	public function actionCreate(/*$id*/)
+	public function actionCreate()
 	{
 		$model = new CatalogCategory;
-		//$model->parent_id = $id;
 		$this->breadcrumbs['Каталог услуг'] = array('/services');
 		$this->breadcrumbs[] = 'Добавление категории';
 
@@ -47,7 +44,7 @@ class DefaultController extends BackEndController
 		{
 			$model->attributes = $_POST['CatalogCategory'];
 			if ($model->save())
-				$this->redirect(array('index','id' => $model->parent_id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -78,7 +75,7 @@ class DefaultController extends BackEndController
 		{
 			$model->attributes = $_POST['CatalogCategory'];
 			if ($model->save())
-				$this->redirect(array('index','id' => $model->parent_id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -132,11 +129,7 @@ class DefaultController extends BackEndController
 		$this->breadcrumbs = CatalogCategory::getParents($category->id);
 		$this->breadcrumbs[] = $category->short_title;
 
-        $category_criteria = new CDbCriteria;
-		$category_criteria->compare('parent_id',$category->id);
-
 		$categoryDataProvider = new CActiveDataProvider('CatalogCategory', array(
-			'criteria' => $category_criteria,
 			'sort' => array(
 				'defaultOrder' => 'sort_order ASC',
 			),
