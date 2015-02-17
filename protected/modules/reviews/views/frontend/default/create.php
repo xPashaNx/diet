@@ -1,6 +1,7 @@
 <?php
 $this->breadcrumbs = array(
-    'Отзывы',
+    'Отзывы' => array('index'),
+    'Добавление отзыва',
 );
 ?>
 
@@ -37,16 +38,13 @@ $this->breadcrumbs = array(
             <?php echo $form->textArea($model, 'text', array('cols' => 60, 'rows' => 4)); ?>
             <?php echo $form->error($model, 'text'); ?>
         </div>
-        <div class="row">
-            <?php echo $form->labelEx($model,'public'); ?>
-            <?php echo $form->checkBox($model,'public'); ?>
-            <?php echo $form->error($model, 'public'); ?>
-        </div>
+        <? if ($reviewsConfig->show_captcha): ?>
         <div class="row">
             <?php echo $form->labelEx($model,'verifyCode'); ?>
             <?php $this->widget('CCaptcha'); ?>
             <?php echo $form->textField($model, 'verifyCode'); ?>
         </div>
+        <? endif; ?>
 
         <div class="row submit">
             <?php echo CHtml::submitButton('Сохранить'); ?>

@@ -5,20 +5,22 @@
  *
  * The followings are the available columns in table 'reviews':
  * @property integer $id
- * @property string $date
+ * @property string $date_create
  * @property string $name
  * @property string $email
  * @property string $text
- * @property string $captcha
  * @property integer $public
+ * @property integer $checked
  */
 class Reviews extends CActiveRecord
 {
-    // результат проверки
     /**
      * @var captcha check result
      */
     public $verifyCode;
+
+    public $arActions = array(
+    );
 
 	/**
 	 * @return string the associated database table name
@@ -37,14 +39,15 @@ class Reviews extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, email, text', 'required'),
-			array('name, email, captcha', 'length', 'max'=>255),
+			array('name', 'length', 'max' => 100),
+			array('text', 'length', 'max' => 1000),
+            array('email', 'email'),
             array(
                 'verifyCode',
                 'captcha',
-                //'allowEmpty'=>!Yii::app()->user->isGuest || !CCaptcha::checkRequirements(),
             ),
-			array('date, name, text, public', 'safe'),
-			array('id, date, name, email, text, captcha, public', 'safe', 'on'=>'search'),
+			array('date_create, name, text, public, checked', 'safe'),
+			array('id, date_create, name, email, text, public, checked', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -66,12 +69,12 @@ class Reviews extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'date' => 'Date',
+			'date_create' => 'Дата создания',
 			'name' => 'Имя',
 			'email' => 'Email',
 			'text' => 'Текст',
-			'captcha' => 'Captcha',
 			'public' => 'Опубликовать',
+			'checked' => 'Отмеченный',
             'verifyCode' => 'Код проверки',
 		);
 	}
@@ -95,15 +98,15 @@ class Reviews extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('date',$this->date,true);
+		$criteria->compare('date_create',$this->date_create,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('text',$this->text,true);
-		$criteria->compare('captcha',$this->captcha,true);
 		$criteria->compare('public',$this->public,true);
+		$criteria->compare('checked',$this->checked,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
@@ -127,8 +130,7 @@ class Reviews extends CActiveRecord
     {
         if(parent::beforeSave())
         {
-            $this->date = date('Y-m-d H:i:s');
-
+            $this->date_create = date('Y-m-d H:i:s');
             return true;
         }
         else
