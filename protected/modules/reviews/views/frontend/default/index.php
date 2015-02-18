@@ -51,12 +51,6 @@ $cs->registerScript('check', "
         return false;
     });
 
-    /*$(document).off('click', '.delete-checked');
-	$(document).on('click', '.delete-checked', function(){
-        if (confirm('Вы уверены, что хотите удалить данный элемент?'))
-            location.href = 'reviews/default/deleteChecked';
-    });*/
-
 ", CClientScript::POS_READY);
 
 if (Yii::app()->user->role == 'admin')
@@ -64,18 +58,9 @@ if (Yii::app()->user->role == 'admin')
     $this->widget(
         'zii.widgets.grid.CGridView', array(
             'id' => 'review-grid',
-            'dataProvider' => $reviewDataProvider,
-            //'emptyText' => 'Нет отзывов',
-            //'hideHeader' => true,
+            'dataProvider' => $model->search(),
+            'filter' => $model,
             'columns' => array(
-                /*array(
-                    'class' => 'CCheckBoxColumn',
-                    'selectableRows' => 2,
-                    'checkBoxHtmlOptions' => array(
-                        'class' => 'check',
-                        'checked' => '$data->checked',
-                    ),
-                ),*/
                 array(
                     'type'  => 'raw',
                     'value' => 'CHtml::checkbox("", CHtml::encode($data->checked), array("class" => "check", "data-id" => $data->id))',
@@ -88,6 +73,12 @@ if (Yii::app()->user->role == 'admin')
                 ),
                 array(
                     'name' => 'text',
+                ),
+                array(
+                    'filter' => $model->arFilter,
+                    'name' => 'public',
+                    'type' => 'raw',
+                    'value' => '($data->public) ? "Опубликован" : "Не опубликован"',
                 ),
                 array(
                     'type'  => 'raw',
@@ -105,7 +96,7 @@ if (Yii::app()->user->role == 'admin')
     echo 'Отмеченные: <br>';
     echo CHtml::link('Скрыть<br>', array('default/publicChecked/flag/0'), array('class' => 'public-checked'));
     echo CHtml::link('Опубликовать<br>', array('default/publicChecked/flag/1'), array('class' => 'hide-checked'));
-    echo CHtml::link('Удалить<br>', 'default/deleteChecked', array('class' => 'delete-checked'));
+    echo CHtml::link('Удалить<br>', array('default/deleteChecked'), array('confirm' => 'Вы уверены, что хотите удалить данный элемент?', 'class' => 'delete-checked'));
     echo '<br>';
 }
 else
@@ -113,8 +104,9 @@ else
     if ($reviews)
         foreach ($reviews as $review)
         {
-            echo 'Имя: '.$review->name.'<br>';
-            echo 'Текст: '.$review->text.'<br><br>';
+            echo 'Дата: '.$review->date_create.'<br>';
+            echo 'Имя пользователя: '.$review->name.'<br>';
+            echo 'Текст отзыва: '.$review->text.'<br><br>';
         }
     else
         echo 'Нет отзывов!<br>';

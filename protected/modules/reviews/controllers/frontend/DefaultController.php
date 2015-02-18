@@ -23,6 +23,7 @@ class DefaultController extends BaseReviewsController
 
         $criteria = new CDbCriteria;
         $criteria->limit = $reviewsConfig->reviews_perpage;
+        $criteria->order = 'date_create DESC';
 
         if ($reviewsConfig->premoder and Yii::app()->user->isGuest)
         {
@@ -32,18 +33,15 @@ class DefaultController extends BaseReviewsController
 
         $reviews = Reviews::model()->findAll($criteria);
 
-        $reviewDataProvider = new CActiveDataProvider('Reviews', array(
-            'sort' => array(
-                'defaultOrder' => 'name ASC',
-            ),
-            'pagination'=>array(
-                'pageSize' => 8,
-            ),
-        ));
+        $model = new Reviews('search');
+        $model->unsetAttributes();
+
+        if (isset($_GET['Reviews']))
+            $model->attributes = $_GET['Reviews'];
 
         $this->render('index',array(
             'reviews' => $reviews,
-            'reviewDataProvider' => $reviewDataProvider,
+            'model' => $model,
         ));
     }
 
@@ -58,11 +56,13 @@ class DefaultController extends BaseReviewsController
         $model = new Reviews;
         $reviewsConfig = ReviewsConfig::model()->find();
 
+        if ($reviewsConfig->show_captcha)
+            $model->setScenario('captcha');
+
         if (isset($_POST['Reviews']))
         {
             $model->attributes = $_POST['Reviews'];
-            if ($reviewsConfig->show_captcha)
-                $model->setScenario('captcha');
+            $model->date_create = date('Y-m-d H:i:s');
 
             if ($model->save())
                 if ($reviewsConfig->premoder)
@@ -87,7 +87,6 @@ class DefaultController extends BaseReviewsController
     public function actionDelete($id)
     {
         $model = $this->loadModel($id);
-
         if ($model->delete())
             $this->redirect(array('index'));
     }

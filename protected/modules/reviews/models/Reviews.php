@@ -19,6 +19,11 @@ class Reviews extends CActiveRecord
      */
     public $verifyCode;
 
+    public $arFilter = array(
+        0 => 'Не опубликован',
+        1 => 'Опубликован',
+    );
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,6 +44,7 @@ class Reviews extends CActiveRecord
 			array('name', 'length', 'max' => 100),
 			array('text', 'length', 'max' => 1000),
             array('email', 'email'),
+            array('name, email, text', 'validateHtmlTag'),
             array('verifyCode', 'captcha', 'on' => 'captcha'),
 			array('date_create, name, text, public, checked', 'safe'),
 			array('id, date_create, name, email, text, public, checked', 'safe', 'on' => 'search'),
@@ -89,7 +95,7 @@ class Reviews extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('date_create',$this->date_create,true);
@@ -101,6 +107,9 @@ class Reviews extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
+            'sort'=>array(
+                'defaultOrder'=>'date_create DESC',
+            ),
 		));
 	}
 
@@ -116,6 +125,27 @@ class Reviews extends CActiveRecord
 	}
 
     /**
+     * Get checked reviews
+     *
+     * @return mixed
+     */
+    public static function getCheckedReviews()
+    {
+        return self::model()->findAllByAttributes(array('checked' => true));
+    }
+
+    /**
+     * Custom validator
+     *
+     * @param string $attribute
+     */
+    public function validateHtmlTag($attribute)
+    {
+        if ((strpos($this->$attribute, 'http://') !== false) or (strpos($this->$attribute, 'https://') !== false))
+            $this->addError($attribute, 'Строка не должна содержать "http://" или "https://"');
+    }
+
+    /**
      * Before save
      *
      * @return bool
@@ -124,15 +154,12 @@ class Reviews extends CActiveRecord
     {
         if(parent::beforeSave())
         {
-            $this->date_create = date('Y-m-d H:i:s');
+            $this->name = strip_tags($this->name);
+            $this->email = strip_tags($this->email);
+            $this->text = strip_tags($this->text);
             return true;
         }
         else
             return false;
-    }
-
-    public static function getCheckedReviews()
-    {
-        return self::model()->findAllByAttributes(array('checked' => true));
     }
 }
