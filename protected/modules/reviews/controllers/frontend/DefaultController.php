@@ -61,6 +61,9 @@ class DefaultController extends BaseReviewsController
         if (isset($_POST['Reviews']))
         {
             $model->attributes = $_POST['Reviews'];
+            if ($reviewsConfig->show_captcha)
+                $model->setScenario('captcha');
+
             if ($model->save())
                 if ($reviewsConfig->premoder)
                     Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен и будет опубликован после проверки модератором!");
@@ -90,6 +93,19 @@ class DefaultController extends BaseReviewsController
     }
 
     /**
+     * Delete checked reviews
+     *
+     * @throws CHttpException
+     */
+    public function actionDeleteChecked()
+    {
+        $checkedReviews = Reviews::getCheckedReviews();
+        foreach ($checkedReviews as $checkedReview)
+            $checkedReview->delete();
+        $this->redirect(array('index'));
+    }
+
+    /**
      * Public review
      *
      * @param integer $id
@@ -107,7 +123,30 @@ class DefaultController extends BaseReviewsController
     }
 
     /**
+     * Public checked review
      *
+     * @param integer $flag
+     *
+     * @throws CHttpException
+     */
+    public function actionPublicChecked($flag)
+    {
+        $checkedReviews = Reviews::getCheckedReviews();
+        foreach ($checkedReviews as $checkedReview)
+        {
+            $checkedReview->public = $flag;
+            $checkedReview->update();
+        }
+        $this->redirect(array('index'));
+    }
+
+    /**
+     * Check
+     *
+     * @param integer $id
+     * @param string $flag
+     *
+     * @throws CHttpException
      */
     public function actionCheck($id, $flag)
     {
@@ -115,7 +154,7 @@ class DefaultController extends BaseReviewsController
         {
             $model = $this->loadModel($id);
             if ($flag == 'true')
-                $model->checked = $flag;
+                $model->checked = true;
             else
                 $model->checked = false;
             if ($model->update())
@@ -124,21 +163,38 @@ class DefaultController extends BaseReviewsController
     }
 
     /**
-     *
+     * Check all
      */
-    /*public function actionCheckAll($id, $flag)
+    public function actionCheckAll()
     {
-        if (isset($id))
+        if (isset($_POST['checkedIds']))
         {
-            $model = $this->loadModel($id);
-            //if ($flag == 'true')
-            $model->checked = $flag;
-            /* else
-                 $model->checked = false;*/
-            /*if ($model->update())
-                $this->redirect(array('index'));
+            foreach ($_POST['checkedIds'] as $checkedId)
+            {
+                $model = $this->loadModel($checkedId);
+                $model->checked = true;
+                $model->update();
+            }
         }
-    }*/
+        $this->redirect(array('index'));
+    }
+
+    /**
+     * Clear all
+     */
+    public function actionClearAll()
+    {
+        if (isset($_POST['checkedIds']))
+        {
+            foreach ($_POST['checkedIds'] as $checkedId)
+            {
+                $model = $this->loadModel($checkedId);
+                $model->checked = false;
+                $model->update();
+            }
+        }
+        $this->redirect(array('index'));
+    }
 
     /**
      * Load product model

@@ -19,9 +19,6 @@ class Reviews extends CActiveRecord
      */
     public $verifyCode;
 
-    public $arActions = array(
-    );
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -42,10 +39,7 @@ class Reviews extends CActiveRecord
 			array('name', 'length', 'max' => 100),
 			array('text', 'length', 'max' => 1000),
             array('email', 'email'),
-            array(
-                'verifyCode',
-                'captcha',
-            ),
+            array('verifyCode', 'captcha', 'on' => 'captcha'),
 			array('date_create, name, text, public, checked', 'safe'),
 			array('id, date_create, name, email, text, public, checked', 'safe', 'on' => 'search'),
 		);
@@ -135,5 +129,10 @@ class Reviews extends CActiveRecord
         }
         else
             return false;
+    }
+
+    public static function getCheckedReviews()
+    {
+        return self::model()->findAllByAttributes(array('checked' => true));
     }
 }
