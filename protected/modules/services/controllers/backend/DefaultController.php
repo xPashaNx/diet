@@ -34,7 +34,7 @@ class DefaultController extends BackEndController
 	public function actionCreate()
 	{
 		$model = new CatalogCategory;
-		$this->breadcrumbs['Каталог услуг'] = array('/services');
+		$this->breadcrumbs['Управление услугами'] = array('/services');
 		$this->breadcrumbs[] = 'Добавление категории';
 
 		// Uncomment the following line if AJAX validation is needed
@@ -97,7 +97,7 @@ class DefaultController extends BackEndController
             $model = $this->loadModel($id);
 
             if ($model->catalogServices)
-                throw new CHttpException(403,'Невозможно удалить категорию.');
+                throw new CHttpException(403,'Сначала необходимо удалить все услуги из категории или перенести их в другую категорию.');
             else
             {
                 @unlink($model->folder . '/' .$model->image);
@@ -124,7 +124,7 @@ class DefaultController extends BackEndController
         {
             $category = new CatalogCategory();
             $category->id = 0;
-            $category->short_title = 'Каталог услуг';
+            $category->short_title = 'Управление услугами';
         }
 		$this->breadcrumbs = CatalogCategory::getParents($category->id);
 		$this->breadcrumbs[] = $category->short_title;

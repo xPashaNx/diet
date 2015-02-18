@@ -72,7 +72,8 @@ class CatalogService extends CActiveRecord
 		return array(
 			array('short_title, link', 'required'),
 			array('sort_order', 'numerical', 'integerOnly' => true),
-			array('long_title, link', 'length', 'max' => 256),
+			array('short_title', 'length', 'max' => 100),
+			array('long_title, link', 'length', 'max' => 255),
             array('link','unique', 'message' => 'Товар со ссылкой {value} уже существует!'),
             array('link', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
 			array('id, id_category, short_title, long_title, link, keywords, description, photo, on_main, text, sort_order', 'safe'),
@@ -132,10 +133,6 @@ class CatalogService extends CActiveRecord
 		// should not be searched.
 
 		$criteria = new CDbCriteria;
-		/*if (isset($_GET['id']))
-			$this->id_category = $_GET['id'];
-		else
-		    $this->id_category = 0;*/
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('id_category',$this->id_category,true);

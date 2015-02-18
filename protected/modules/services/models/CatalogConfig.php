@@ -62,9 +62,10 @@ class CatalogConfig extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, layout', 'length', 'max'=>255),
+			array('title', 'length', 'max' => 100),
+			array('layout', 'length', 'max' => 255),
             array('title, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode', 'required'),
-            array('category_perpage, service_perpage', 'numerical', 'integerOnly' => true),
+            array('category_perpage, service_perpage', 'numerical', 'min' => 0, 'integerOnly' => true),
             array('c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, watermark_x, watermark_y', 'numerical', 'min' => 1, 'integerOnly' => true),
 			array(
                 'watermark_image',

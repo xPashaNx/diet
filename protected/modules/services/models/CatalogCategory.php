@@ -52,11 +52,17 @@ class CatalogCategory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('short_title, long_title, link', 'required'),
-			array('long_title, link', 'length', 'max' => 256),
+			array('short_title, link', 'required'),
+			array('long_title, link', 'length', 'max' => 255),
 			array('short_title', 'length', 'max' => 100),
 			array('link','unique', 'message' => 'Категория со ссылкой {value} уже существует!'),
             array('link', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
+            array(
+                'image',
+                'file',
+                'types' => 'gif, jpg, jpeg, png',
+                'allowEmpty' => true,
+            ),
             array('id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -215,7 +221,7 @@ class CatalogCategory extends CActiveRecord
 			$parents = CatalogCategory::model()->findByPk($id);
             if ($service == true)
                 $data[$parents->short_title] = array('/services/default/index', 'id' => $parents->id);
-			$data['Каталог услуг'] = array('/services/default/index');
+			$data['Управление услугами'] = array('/services/default/index');
 		}
 
 		return array_reverse($data);

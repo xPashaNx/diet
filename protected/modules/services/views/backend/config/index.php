@@ -1,10 +1,10 @@
 <?php
-$this->breadcrumbs=array(
-	'Настройки каталога',
+$this->breadcrumbs = array(
+	'Конфигурация',
 );
 ?>
 
-<h1>Настройки каталога</h1>
+<h1>Конфигурация</h1>
 
 <?php if(Yii::app()->user->hasFlash('success')):?>
     <div class="flash-success">
