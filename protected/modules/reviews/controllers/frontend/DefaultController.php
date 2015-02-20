@@ -88,7 +88,7 @@ class DefaultController extends BaseReviewsController
     {
         $model = $this->loadModel($id);
         if ($model->delete())
-            $this->redirect(array('index'));
+            $this->redirect(array('/reviews'));
     }
 
     /**
@@ -101,7 +101,7 @@ class DefaultController extends BaseReviewsController
         $checkedReviews = Reviews::getCheckedReviews();
         foreach ($checkedReviews as $checkedReview)
             $checkedReview->delete();
-        $this->redirect(array('index'));
+        $this->redirect(array('/reviews'));
     }
 
     /**
@@ -118,7 +118,7 @@ class DefaultController extends BaseReviewsController
         $model->public = $flag;
 
         if ($model->update())
-            $this->redirect(array('index'));
+            $this->redirect(array('/reviews'));
     }
 
     /**
@@ -136,7 +136,7 @@ class DefaultController extends BaseReviewsController
             $checkedReview->public = $flag;
             $checkedReview->update();
         }
-        $this->redirect(array('index'));
+        $this->redirect(array('/reviews'));
     }
 
     /**
@@ -157,7 +157,7 @@ class DefaultController extends BaseReviewsController
             else
                 $model->checked = false;
             if ($model->update())
-                $this->redirect(array('index'));
+                $this->redirect(array('/reviews'));
         }
     }
 
@@ -175,7 +175,7 @@ class DefaultController extends BaseReviewsController
                 $model->update();
             }
         }
-        $this->redirect(array('index'));
+        $this->redirect(array('/reviews'));
     }
 
     /**
@@ -192,7 +192,7 @@ class DefaultController extends BaseReviewsController
                 $model->update();
             }
         }
-        $this->redirect(array('index'));
+        $this->redirect(array('/reviews'));
     }
 
     /**

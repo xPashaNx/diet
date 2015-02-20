@@ -11,7 +11,7 @@ $cs->registerScript('check', "
 
 		$.ajax({
 			type: 'GET',
-			url: 'check/id/'+checkedId+'/flag/'+flag,
+			url: 'reviews/default/check/id/'+checkedId+'/flag/'+flag,
 		});
 
 		return true;
@@ -27,7 +27,7 @@ $cs->registerScript('check', "
 
         $.ajax({
 			type: 'POST',
-			url: 'checkAll',
+			url: 'reviews/default/checkAll',
 			data: {checkedIds:checkedIds},
 		});
 
@@ -44,7 +44,7 @@ $cs->registerScript('check', "
 
         $.ajax({
 			type: 'POST',
-			url: 'clearAll',
+			url: 'reviews/default/clearAll',
 			data: {checkedIds:checkedIds},
 		});
 
