@@ -21,7 +21,7 @@ $cs->registerScript('check', "
 	$(document).on('click', '.check-all', function(){
 	    var checkedIds = [];
         $('.check').each(function(){
-            $(this).attr('checked','checked');
+            $(this).attr('checked',true);
             checkedIds.push($(this).data('id'));
         });
 
@@ -29,6 +29,9 @@ $cs->registerScript('check', "
 			type: 'POST',
 			url: 'reviews/default/checkAll',
 			data: {checkedIds:checkedIds},
+			complete: function(){
+				$('#review-grid').yiiGridView('update');
+			},
 		});
 
         return false;
@@ -46,6 +49,9 @@ $cs->registerScript('check', "
 			type: 'POST',
 			url: 'reviews/default/clearAll',
 			data: {checkedIds:checkedIds},
+			complete: function(){
+				$('#review-grid').yiiGridView('update');
+			},
 		});
 
         return false;
