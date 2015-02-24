@@ -1,6 +1,6 @@
 <div class="image_block"">
 <div class="image">
-    <a href="#" class="thumb">
+    <a href="<?php echo '/' . $folder_upload . $data->filename; ?>" class="thumb" rel="example_group">
             <span>
                 <?php echo CHtml::image('/' . $folder_upload . $data->filename); ?>
             </span>

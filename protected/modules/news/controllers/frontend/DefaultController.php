@@ -13,6 +13,7 @@ class DefaultController extends FrontEndController
     public function init()
     {
         $this->config = NewsConfig::model()->find();
+        $this->title = $this->config->title;
     }
 
     /**
@@ -43,8 +44,10 @@ class DefaultController extends FrontEndController
             'pagination' => false,
         ));
 
-        $this->metaInfoGenerate('description', $model->meta_description);
-        $this->metaInfoGenerate('keywords', $model->meta_keywords);
+        //формируем title страницы, description, keywords
+        $this->title = $model->title . " - " . $this->title;
+        $this->description = $model->meta_description;
+        $this->keywords = $model->meta_keywords;
 
         $this->render('view', array(
             'model' => $model,

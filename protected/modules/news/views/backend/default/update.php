@@ -19,23 +19,21 @@ Yii::app()->clientScript
     ->registerScript('translit', "
         $('#news-title').syncTranslit({destination: 'news-link'});
     ", CClientScript::POS_READY);
-?>
 
-<?php
-$cs = Yii::app()->clientScript;
-$cs->registerScript('photos', "
-  $('.addPhoto').live('click', function() {
-	  block = $(this).parent('p').parent('div');
-		$('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">&ndash;</span></p>').appendTo(block);
-	});
-  $('.delPhoto').live('click', function() {
-	  block = $(this).parent('p');
-		$(block).remove();
-	});
+Yii::app()->clientScript
+    ->registerScript('photos', "
+      $('.addPhoto').live('click', function() {
+          block = $(this).parent('p').parent('div');
+            $('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">&ndash;</span></p>').appendTo(block);
+        });
+      $('.delPhoto').live('click', function() {
+          block = $(this).parent('p');
+            $(block).remove();
+        });
+    ", CClientScript::POS_LOAD);
 
-", CClientScript::POS_LOAD);
-
-$cs->registerScript('photo_delete', "
+Yii::app()->clientScript
+    ->registerScript('photo_delete', "
         $('#photo-list a.delete').live('click',function() {
             if(!confirm('Вы уверены в удалении фотографии?')) return false;
             var th=this;
@@ -54,8 +52,23 @@ $cs->registerScript('photo_delete', "
             return false;
         });
 
+    ", CClientScript::POS_READY);
+
+// Подключаем фанси-бокс
+Yii::app()->clientScript
+    ->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD)
+    ->registerCssFile('/css/jquery.fancybox-1.3.4.css')
+    ->registerScript('images', "
+  $('a[rel=example_group]').fancybox({
+		overlayShow: true,
+		overlayOpacity: 0.5,
+		zoomSpeedIn: 300,
+		zoomSpeedOut:300
+	});
 ", CClientScript::POS_READY);
 ?>
+
+
 
 <div class="form">
 

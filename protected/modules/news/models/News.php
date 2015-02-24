@@ -39,6 +39,7 @@ class News extends CActiveRecord
         // will receive user inputs.
         return array(
             array('title, link, annotation, description, meta_keywords, meta_description, public, cover_id', 'required'),
+            array('link', 'match', 'pattern' => '/^[a-zA-Z-]+$/', 'message' => 'В поле "Имя" можно вводить только латинские буквы и тире.'),
             array('public, cover_id', 'numerical', 'integerOnly' => true),
             array('title, link, annotation', 'length', 'max' => 255),
             array('date', 'default', 'value' => date("Y-m-d H:i:s")),
