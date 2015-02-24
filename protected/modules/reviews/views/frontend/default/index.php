@@ -4,6 +4,7 @@ $cs = Yii::app()->clientScript;
 
 $cs->registerScript('check', "
 
+	$(document).off('click', '.check');
 	$(document).on('click', '.check', function(){
 	    var checkedId = $(this).data('id'),
 	        flag = $(this).prop('checked');
@@ -16,10 +17,11 @@ $cs->registerScript('check', "
 		return true;
 	});
 
+    $(document).off('click', '.check-all');
 	$(document).on('click', '.check-all', function(){
 	    var checkedIds = [];
         $('.check').each(function(){
-            $(this).attr('checked',true);
+            $(this).attr('checked','checked');
             checkedIds.push($(this).data('id'));
         });
 
@@ -32,6 +34,7 @@ $cs->registerScript('check', "
         return false;
     });
 
+    $(document).off('click', '.clear-all');
 	$(document).on('click', '.clear-all', function(){
 	    var checkedIds = [];
         $('.check').each(function(){
