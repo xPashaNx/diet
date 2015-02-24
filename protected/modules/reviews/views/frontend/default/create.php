@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    'Отзывы' => array('index'),
+    'Отзывы' => array('/reviews'),
     'Добавление отзыва',
 );
 ?>
