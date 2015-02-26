@@ -146,6 +146,10 @@ class News extends CActiveRecord
 
         if ($imagesUpload = CUploadedFile::getInstances($images, 'filename')
         ) {
+			//проверка существования пити, если нет создать
+			if(!file_exists(self::FOLDER_UPLOAD))
+				mkdir(self::FOLDER_UPLOAD, 0777, true);
+			
             foreach ($imagesUpload as $file) {
                 $image = new NewsImages();
                 $imageName = md5(time().$file->name) . '.' . $file->getExtensionName();
