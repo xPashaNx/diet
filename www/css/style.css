@@ -126,3 +126,7 @@ img { border: none; }
 
 .content .galleries .gallery { float: left; margin: 0 10px 10px 0; }
 .content .photo { float: left; margin: 0 10px 10px 0; }
+
+div.form .errorSummary { padding: 7px 7px 12px 7px; margin: 0 0 20px 0; background: #FEE; font-size: 13px; color: #cd0900; }
+div.form .errorMessage { color: red; font-size: 0.9em; }
+

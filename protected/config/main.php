@@ -26,7 +26,7 @@ return CMap::mergeArray(
 		),
 		'components' => array(
 			'user' => array(
-				'class' => 'CWebUser',
+				'class' => 'WebUser',
 				'allowAutoLogin' => true,
 			),
 			'authManager' => array(
@@ -62,6 +62,7 @@ return CMap::mergeArray(
 			'banners',
 			'services',
 			'gallery',
+			'reviews',
 		),
 		'behaviors' => array(
 			'runBranch' => array(

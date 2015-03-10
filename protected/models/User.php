@@ -160,4 +160,15 @@ class User extends CActiveRecord
 	{
 		return $role === "admin";
 	}
+
+    /**
+     * Check admin
+     */
+    public function isAdmin()
+    {
+        if ($admin = self::model()->findByAttributes(array('role' => 'admin')))
+            return true;
+        else
+            return false;
+    }
 }
