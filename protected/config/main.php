@@ -5,7 +5,7 @@
 
 $branch = "frontend";
 if ($_SERVER['REQUEST_URI'] == "/manage" or mb_strpos($_SERVER['REQUEST_URI'], "/manage/", 0, "UTF-8") === 0)
-	$branch = "backend";
+    $branch = "backend";
 
 // Php constants and functions
 require_once(dirname(__FILE__) . '/../vendors/constants_and_functions.php');
@@ -63,6 +63,7 @@ return CMap::mergeArray(
 			'services',
 			'gallery',
 			'reviews',
+			'news',
 		),
 		'behaviors' => array(
 			'runBranch' => array(
