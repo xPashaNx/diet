@@ -61,6 +61,7 @@ return CMap::mergeArray(
 			'callback',
 			'banners',
 			'services',
+			'gallery',
 		),
 		'behaviors' => array(
 			'runBranch' => array(
