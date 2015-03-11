@@ -38,7 +38,7 @@ class DefaultController extends BackEndController
 			if ($photoCover = $model->getCover())
 				$model->cover_photo_id = $photoCover->id;
 			if ($model->save())
-				$this->redirect(array('index'));
+				$this->redirect(array('update?id=' . $model->id));
 		}
 
 		$this->render('create',array(

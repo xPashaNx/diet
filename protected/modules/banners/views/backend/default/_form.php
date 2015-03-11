@@ -34,6 +34,12 @@ $cs->registerScript('translit', "
 		<?php echo $form->error($model,'mode'); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'widget'); ?>
+        <?php echo $form->textField($model,'widget',array('size'=>60,'maxlength'=>255)); ?>
+        <?php echo $form->error($model,'widget'); ?>
+    </div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
 	</div>
