@@ -16,9 +16,6 @@ return array(
                     // STRIP_LAST_SLASH or ADD_LAST_SLASH
                     'lastSlashType' => STRIP_LAST_SLASH,
                 ),
-                array(
-                    'class' => 'application.modules.news.components.NewsUrlRule'
-                ),
             ),
         ),
         'errorHandler' => array(

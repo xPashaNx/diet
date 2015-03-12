@@ -1,6 +1,6 @@
 <?php
 
-class NewsUrlRule extends CBaseUrlRule
+class NewsUrlRules extends CBaseUrlRule
 {
 
     public function createUrl($manager, $route, $params, $ampersand)
@@ -22,6 +22,7 @@ class NewsUrlRule extends CBaseUrlRule
 
     public function parseUrl($manager, $request, $pathInfo, $rawPathInfo)
     {
+        var_dump(Yii::app()->hasModule('news')); die;
         if ($link = preg_split("/\//", $pathInfo)) {
 
             if (count($link) == 1 && end($link) == 'news') return 'news/default';
