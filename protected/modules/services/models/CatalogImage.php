@@ -44,12 +44,13 @@ class CatalogImage extends CActiveRecord
 			array('id_service, image', 'required'),
 			array('id_service', 'length', 'max' => 11),
 			array('image, alt_text', 'length', 'max' => 256),
-            array(
+            array('image', 'validateImage'),
+            /*array(
                 'image',
                 'file',
                 'types' => 'gif, jpg, jpeg, png',
                 'allowEmpty' => true,
-            ),
+            ),*/
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, id_service, image, alt_text', 'safe'),
@@ -103,6 +104,18 @@ class CatalogImage extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /**
+     * Custom validator
+     *
+     * @param string $attribute
+     */
+    public function validateImage($attribute)
+    {
+        if ($attribute == 'image')
+            if (!strpos($this->$attribute, 'jpeg') and !strpos($this->$attribute, 'jpg') and !strpos($this->$attribute, 'png') and !strpos($this->$attribute, 'gif'))
+                $this->addError($attribute, 'Неправильный тип файла');
+    }
 
     /**
      * Before save
