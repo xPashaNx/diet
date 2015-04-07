@@ -75,7 +75,7 @@ body { height: 100%; margin: 0; padding: 0; color: #000000; font-weight: normal;
 
 .fond{ background: url(../images/pattern.jpg); width: 100%; height: 100%; position: fixed; z-index: 0; }
 
-h2{ margin: 0; font-family: 'Barkentina'; color: #eef8c4; font-size: 30px; text-align: center; }
+h2{ margin: 0; font-family: 'Barkentina', Georgia normal; color: #eef8c4; font-size: 30px; text-align: center; }
 
 /* HEADER SCROLL*/
 .header-scroll{ height: 109px; color: #fff; z-index: 200; position: fixed; top: -109px; left: 0; right: 0;
@@ -151,8 +151,8 @@ footer .bottom-foot .right-col .tw{ background: url(../images/social-networks-ic
 .content .header-content{ height: 205px; background-color: #f9fced; }
 .content .header-content .left{ float: left; }
 .content .header-content img{ margin-left: 100px; margin-top: 27px; }
-.content .header-content .left .block{ display: inline-block; color: #377279; font-family: 'Barkentina'; margin-left: 32px; vertical-align: 32px; }
-.content .header-content .left .block .block-title{ margin: 0; color: #304b50; text-align: left; font-family: 'Barkentina'; font-weight: bold; font-size: 45px; letter-spacing: 1.1px; }
+.content .header-content .left .block{ display: inline-block; color: #377279; font-family: 'Barkentina', Georgia normal; margin-left: 32px; vertical-align: 32px; }
+.content .header-content .left .block .block-title{ margin: 0; color: #304b50; text-align: left; font-family: 'Barkentina', Georgia normal; font-weight: bold; font-size: 45px; letter-spacing: 1.1px; }
 .content .header-content .left .block .block-content p{ font-size: 22px; margin: 0; margin-top: 16px; }
 .content .header-content .phone {float: right; margin-top: 55px; margin-right: 105px;}
 .content .header-content .phone .block{ font-family: 'Verdana'; font-size: 22px; color: #304b50; }
@@ -167,11 +167,11 @@ footer .bottom-foot .right-col .tw{ background: url(../images/social-networks-ic
 .content nav ul{ margin: 0; }
 .content nav ul li { float: left; margin-top: 11px; color: #f9fced; margin-left: 48px; padding-left: 18px; list-style-type: disc; }
 .content nav ul li:first-child{ margin-left: 80px; list-style: none; }
-.content nav ul li a{ text-decoration: none; font-family: 'Barkentina'; font-size: 18px; color: #f9fced; }
+.content nav ul li a{ text-decoration: none; font-family: 'Barkentina', Georgia normal; font-size: 18px; color: #f9fced; }
 /*NAV END */
 
 .content .about-company{ height: 246px; background-color: #50737a; text-align: center; padding-top: 38px; }
-.content .about-company .block .block-title{ margin: 0; margin-bottom: 21px; font-family: 'Barkentina'; color: #eef8c4; font-size: 30px; text-align: center; }
+.content .about-company .block .block-title{ margin: 0; margin-bottom: 21px; font-family: 'Barkentina', Georgia normal; color: #eef8c4; font-size: 30px; text-align: center; }
 .content .about-company p{ font-family: 'Verdana'; color: #fff; font-size: 16px; text-align: initial; margin-left: 100px; margin-right: 100px; text-indent: 2.2em; line-height: 22px; }
 .content .about-company p{ margin-bottom: 22px; }
 
@@ -184,10 +184,10 @@ footer .bottom-foot .right-col .tw{ background: url(../images/social-networks-ic
 .content .middle-line .advertising{ background: url(../images/servises-icon.png) -283px 0 no-repeat; margin-left: 17px; }
 .content .middle-line .envelopment{ background: url(../images/servises-icon.png) -424px 0 no-repeat; margin-left: 17px; }
 .content .middle-line .roper-right{ width: 168px; height: 39px; background: url(../images/ropes.png) -168px 0 no-repeat; float: right; margin-top: 56px; }
-.content .middle-line p{ text-align: center; color: #fff; font-family: 'Barkentina'; font-size: 20px; margin-top: 170px; }
+.content .middle-line p{ text-align: center; color: #fff; font-family: 'Barkentina', Georgia normal; font-size: 20px; margin-top: 170px; }
 
 .content .advantages-line{ position: relative; background: url(../images/wive-bottom-line.png) 0 bottom no-repeat; background-color: #50737a; height: 442px; padding: 30px 104px 18px 120px; }
-.content .advantages-line h2{ margin-bottom: 20px; margin: 0; font-family: 'Barkentina'; color: #eef8c4; font-size: 30px; text-align: center }
+.content .advantages-line h2{ margin-bottom: 20px; margin: 0; font-family: 'Barkentina', Georgia normal; color: #eef8c4; font-size: 30px; text-align: center }
 .content .advantages-line .block p{ height: 22px; font-family: 'Verdana'; font-size: 16px; color: #fff; margin-bottom: 40px; background: url(../images/lifebuoy.png) no-repeat; padding-left: 60px; }
 .content .advantages-line img{ position: absolute; bottom: 19px; right: 102px; }
 
