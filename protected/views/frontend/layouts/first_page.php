@@ -19,8 +19,10 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
     </div>
 
     <div class="header-content">
-        <img src="images/fish.png" alt="" class="fish">
-        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
+        <div class="left">
+            <img src="images/fish.png" alt="" class="fish">
+            <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
+        </div>
         <div class="phone">
             <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'telefony-v-shapke')); ?>
         </div>

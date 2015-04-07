@@ -46,7 +46,6 @@
         <div class="middle-header">
             <div class="logo inner">
                 <a href="#"><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p></a>
-
                 <div class="grid"></div>
             </div>
         </div>
