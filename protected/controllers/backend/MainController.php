@@ -50,10 +50,14 @@ class MainController extends BackEndController
 	 */
 	public function actionLogin()
 	{
+		if (!Yii::app()->user->isGuest)
+			$this->redirect('index');	
+		
 		$model = new LoginForm;
 		if (isset($_POST['LoginForm']))
 		{
 			$model->attributes = $_POST['LoginForm'];
+			$returnUrl = Yii::app()->user->returnUrl;
 			if ($model->validate() and $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}

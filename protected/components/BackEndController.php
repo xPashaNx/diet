@@ -37,12 +37,9 @@ class BackEndController extends BaseController
 
     protected function beforeAction($action)
     {
-        if (Yii::app()->user->isGuest)
-            Yii::app()->user->loginRequired();
-
         $route = $this->id . '/'. $action->id;
         if (!$this->allowIp(Yii::app()->request->userHostAddress) and $route !== 'main/error')
-            throw new CHttpException(403, "У вас недостаточно прав для просмотра данной страницы.");
+            throw new CHttpException(403, "У вас недостаточно прав для просмотра данной страницы. Ваш IP-адрес: " . Yii::app()->request->userHostAddress);
 
         return parent::beforeAction($action);
     }
