@@ -6,6 +6,7 @@
 .grid-view
 {
 	padding: 0 0;
+	position: relative;
 }
 
 .grid-view table.items
@@ -115,3 +116,5 @@
 	width: 100%;
 	border: 1px solid #ccc;
 }
+
+.grid-view .grid-view-page-size { text-align: right; padding: 3px 0; }

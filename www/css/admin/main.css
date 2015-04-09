@@ -114,7 +114,7 @@ div.breadcrumbs
 }
 
 
-a.add_element {display: block; color: #860701; font-size: 16px; padding: 0 0 4px 0;}
+a.add_element {display: inline-block; color: #860701; font-size: 16px; padding: 0 0 4px 0;}
 a.add_element_btn {text-decoration: none; margin: 0 20px 0 0;}
 
 #category-grid.grid-view table thead tr th {font-size: 15px;}
@@ -381,11 +381,4 @@ table.dataGrid th.label{width: 40%; color: #444444;text-align: right;}
 
 img.watermark_img{background: #444444;}
 
-
-
-
-
-
-
-
-
+.list-view .list-view-page-size { text-align: right; padding: 3px 0; }
