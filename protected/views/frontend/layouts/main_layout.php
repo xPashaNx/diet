@@ -1,3 +1,16 @@
+<?php
+Yii::app()->clientScript->registerScript('show_header_scroll', "
+    $(window).scroll(function() {
+	    if ($(this).scrollTop() > 340){
+	        $('.header-scroll').animate({'top': '0px'},0);
+	    }
+	    else{
+	        $('.header-scroll').stop(true).animate({'top': '-119px'},0);
+	    }
+	});
+", CClientScript::POS_READY);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +30,7 @@
 
     <div class="header-scroll inner">
         <div class="header-line">
-            <a href="" class="back"></a>
+            <a href=".." class="back"></a>
 
             <div class="grid"></div>
             <a href="" class="logo">сайт-визитка</a>
@@ -35,7 +48,7 @@
         <div class="top-header">
             <div class="inner">
                 <div class="left-col">
-                    <a href="#">вернуться на главную</a>
+                    <a href="..">вернуться на главную</a>
                 </div>
                 <div class="right-col">
                     <a href="#" class="corp">корпоративный сайт</a>
@@ -45,15 +58,49 @@
         </div>
         <div class="middle-header">
             <div class="logo inner">
-                <a href="#"><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p></a>
+                <a href=".."><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p>
+                </a>
+
                 <div class="grid"></div>
             </div>
         </div>
     </header>
 
+
     <div class="content inner">
+        <div class="template-header">
+            <div class="btn-login-line">
+                <span>Протестировать панель администратора</span><a href="/manage">войти</a>
+            </div>
+
+            <div class="header-content">
+                <div class="left">
+                    <img src="images/fish.svg" alt="" class="fish">
+                    <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
+                </div>
+                <div class="phone">
+                    <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'telefony-v-shapke')); ?>
+                </div>
+            </div>
+            <div class="wave-line"></div>
+        </div>
+
+        <nav>
+            <?php $this->widget('application.widgets.OutMenu', array('name' => 'main')); ?>
+        </nav>
+
         <?php echo $content; ?>
+
+        <div class="template-footer">
+            <div class="bottom-line">
+                <div class="left-col">© ООО «<span>Fishpangram</span>», 2015</div>
+                <div class="right-col">
+                    <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'sotsseti-v-podvale-shablona')); ?>
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <footer>
         <div class="top-foot ">
