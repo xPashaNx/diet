@@ -58,7 +58,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
         </div>
         <div class="middle-header">
             <div class="logo inner">
-                <a href=".."><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p>
+                <a href=".."><span></span><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p>
                 </a>
 
                 <div class="grid"></div>
@@ -123,10 +123,10 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
                 <a href="http://plus1dev.ru/" class="left-col">© ООО «Плюс один», 2015</a>
 
                 <div class="right-col">
-                    <a href="#" class="vk"></a>
-                    <a href="#" class="fb"></a>
-                    <a href="#" class="in"></a>
-                    <a href="#" class="tw"></a>
+                    <a href="https://vk.com/plusodin_web" class="vk"></a>
+                    <a href="https://www.facebook.com/plusodin" class="fb"></a>
+<!--                    <a href="#" class="in"></a>-->
+                    <a href="https://twitter.com/plusodinn" class="tw"></a>
                 </div>
             </div>
         </div>
