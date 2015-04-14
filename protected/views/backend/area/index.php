@@ -1,6 +1,6 @@
 <?php
 Yii::app()->clientScript->registerScript('area_delete', "
-    $('#area-list a.delete_area').on('click', function() {
+    $(document).on('click', '#area-list a.delete_area', function() {
         if (!confirm('Вы уверены в удалении области вывода?'))
             return false;
         var th = this;
@@ -25,7 +25,7 @@ $this->breadcrumbs = array(
 ?>
 <h1>Управление информационными блоками</h1>
 <?php echo CHtml::link('+ Добавить область вывода', array('area/create'), array('class' => 'add_element')); ?>
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('ext.plusone.ExtListView', array(
     'id' => 'area-list',
 	'dataProvider' => $dataProvider,
 	'itemView' => '_view',

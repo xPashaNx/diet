@@ -8,12 +8,11 @@ class UserController extends BackEndController
 			$id = Yii::app()->user->id;
 			
 		$model = $this->loadModel($id);
-		$model->setScenario('changepassword');
 		$oldPassword = $model->password;
 		if (isset($_POST['User']))
 		{
 			$model->attributes = $_POST['User'];
-			if ($model->save())
+			if ($model->validate(array('newPassword', 'confirmNewPassword')) and $model->save(false))
 				Yii::app()->user->setFlash('success', "Пароль успешно изменен!");
 		}
 		
@@ -28,15 +27,32 @@ class UserController extends BackEndController
 			$id = Yii::app()->user->id;
 			
 		$model = $this->loadModel($id);
-		$model->setScenario('changeemail');
 		if (isset($_POST['User']))
 		{
 			$model->attributes = $_POST['User'];
-			if ($model->save())
+			if ($model->validate(array('email')) and $model->save(false))
 				Yii::app()->user->setFlash('success', "Email успешно изменен!");
 		}
 		
 		$this->render('changeemail', array(
+			'model' => $model
+		));
+	}
+	
+	public function actionChangeLogin($id = null)
+	{
+		if ($id === null)
+			$id = Yii::app()->user->id;
+			
+		$model = $this->loadModel($id);
+		if (isset($_POST['User']))
+		{
+			$model->attributes = $_POST['User'];
+			if ($model->validate(array('username')) and $model->save(false))
+				Yii::app()->user->setFlash('success', "Логин успешно изменен!");
+		}
+		
+		$this->render('changelogin', array(
 			'model' => $model
 		));
 	}

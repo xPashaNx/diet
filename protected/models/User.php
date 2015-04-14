@@ -48,16 +48,15 @@ class User extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('username, email, password, role', 'required', 'except' => 'changepassword, changeemail'),
+			array('username, email, password, role', 'required'),
 			array('status', 'numerical', 'integerOnly' => true),
 			array('username, email, password, salt, role', 'length', 'max' => 255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, username, email, password, salt, role, status', 'safe', 'on' => 'search'),
+			array('username, password, newPassword, confirmNewPassword', 'length', 'min' => 8),
 			array('newPassword', 'compare', 'compareAttribute' => 'confirmNewPassword'),
 			array('confirmNewPassword', 'safe'),
 			array('newPassword', 'setNewPassword'),
 			array('email', 'email', 'message' => 'Неверный адрес электронной почты.', 'on' => 'changeemail'),
+			array('username, password, newPassword, confirmNewPassword', 'match', 'pattern' => '/[a-zA-Z0-9.-_]+$/s', 'message' => '{attribute} может содержать только латинские буквы, цифры, точки, тире и нижнее подчеркивание.'),
 		);
 	}
 
@@ -77,9 +76,9 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
+			'username' => 'Логин',
 			'email' => 'Email-адрес',
-			'password' => 'Password',
+			'password' => 'Пароль',
 			'salt' => 'Salt',
 			'role' => 'Role',
 			'status' => 'Status',

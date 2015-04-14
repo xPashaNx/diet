@@ -1,12 +1,11 @@
 <?php
-Yii::import('zii.widgets.grid.CGridView');
-Yii::import('zii.widgets.grid.CButtonColumn');
+Yii::import('zii.widgets.CListView');
 
 /**
- * Class ExtGridView
- * Extended grid view
+ * Class ExtListView
+ * Extended list view class
  */
-class ExtGridView extends CGridView
+class ExtListView extends CListView
 {
 	/**
 	 * @var boolean
@@ -24,11 +23,6 @@ class ExtGridView extends CGridView
 	public $template = "{sizes}\n{summary}\n{items}\n{pager}\n{sizes}";
 	
 	/**
-	 * @var string Default grid css
-	 */
-	public $cssFile = '/css/admin/gridstyles.css';
-	
-	/**
 	 * @var array Default page size ist
 	 */
 	public $pageSizeList = array(
@@ -44,7 +38,7 @@ class ExtGridView extends CGridView
 	{
 		if ($this->enablePageSizing)
 		{
-			echo CHtml::openTag('div', array('class' => 'grid-view-page-size'));
+			echo CHtml::openTag('div', array('class' => 'list-view-page-size'));
 			echo 'Элементов на странице:';
 			echo CHtml::dropDownList($this->id . '-page-size', $this->pageSize, $this->pageSizeList);
 			echo CHtml::closeTag('div');
@@ -62,7 +56,7 @@ class ExtGridView extends CGridView
 		{
 			Yii::app()->getClientScript()->registerScript(__CLASS__ . '#' . $this->id . '-page-size', "
 				$(document).on('change', '#{$this->id}-page-size', function(){
-					$.fn.yiiGridView.update('{$this->id}',{data: { '{$this->id}-page-size': $(this).val()}});
+					$.fn.yiiListView.update('{$this->id}',{data: { '{$this->id}-page-size': $(this).val()}});
 					return false;
 				});
 			");
@@ -101,39 +95,3 @@ class ExtGridView extends CGridView
 		}
 	}
 }
-
-/**
- * Class ExtButtonColumn
- * Extended button column
- */
-class ExtButtonColumn extends CButtonColumn
-{
-	/**
-	 * @var string Default buttons template
-	 */
-	public $template = '{update}{delete}';
-
-	/**
-	 * Initialization
-	 */
-	public function init()
-	{
-		$this->buttons = CMap::mergeArray(
-			$this->buttons,
-			array(
-				'view' => array(
-					'imageUrl' => '/images/admin/view_grid.png',
-				),
-				'update' => array(
-					'imageUrl' => '/images/admin/edit.png',
-				),
-				'delete' => array(
-					'imageUrl' => '/images/admin/del.png',
-				),
-			)
-		);
-
-		parent::init();
-	}
-}
-?>
