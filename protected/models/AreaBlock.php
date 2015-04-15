@@ -11,7 +11,6 @@
  * @property integer $visible
  * @property string $content
  * @property string $view
- * @property string $css_class
  */
 class AreaBlock extends CActiveRecord
 {
@@ -41,7 +40,7 @@ class AreaBlock extends CActiveRecord
         // will receive user inputs.
         return array(
             array('area_id, visible', 'numerical', 'integerOnly'=>true),
-            array('name, title, view, css_class', 'length', 'max'=>255),
+            array('name, title, view', 'length', 'max'=>255),
             array('name, title', 'required'),
             array('name', 'unique', 'message' => 'Блок с именем {value} уже существует!'),
             array('name', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
@@ -86,7 +85,6 @@ class AreaBlock extends CActiveRecord
             'visible' => 'Отображать',
             'content' => 'Содержание',
             'view' => 'Вид (view) для отображения виджета блока',
-            'css_class' => 'CSS-класс блока',
         );
     }
 
@@ -103,7 +101,6 @@ class AreaBlock extends CActiveRecord
         $criteria->compare('area_id', $this->area_id);
         $criteria->compare('visible', $this->visible);
         $criteria->compare('content', $this->content,true);
-        $criteria->compare('css_class', $this->css_class,true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
