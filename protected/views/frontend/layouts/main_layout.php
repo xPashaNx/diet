@@ -1,7 +1,7 @@
 <?php
 Yii::app()->clientScript->registerScript('show_header_scroll', "
     $(window).scroll(function() {
-	    if ($(this).scrollTop() > 340){
+	    if ($(this).scrollTop() > 318){
 	        $('.header-scroll').animate({'top': '0px'},0);
 	    }
 	    else{
@@ -123,10 +123,10 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
                 <a href="http://plus1dev.ru/" class="left-col">© ООО «Плюс один», 2015</a>
 
                 <div class="right-col">
-                    <a href="https://vk.com/plusodin_web" class="vk"></a>
-                    <a href="https://www.facebook.com/plusodin" class="fb"></a>
+                    <a href="https://vk.com/plusodin_web" class="vk" target="_blank"></a>
+                    <a href="https://www.facebook.com/plusodin" class="fb" target="_blank"></a>
 <!--                    <a href="#" class="in"></a>-->
-                    <a href="https://twitter.com/plusodinn" class="tw"></a>
+                    <a href="https://twitter.com/plusodinn" class="tw" target="_blank"></a>
                 </div>
             </div>
         </div>

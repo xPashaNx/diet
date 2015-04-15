@@ -103,7 +103,7 @@ h2{ margin: 0; font-family: 'Barkentina', Georgia normal; color: #eef8c4; font-s
 
 /* HEADER */
 header{ min-width: 1025px; position: relative; }
-header .top-header{ height: 109px; padding-top: 37px; text-transform: uppercase; font-size: 18px; font-weight: bold; font-family: 'BebasNeue'; background-color: #fff; }
+header .top-header{ height: 76px; padding-top: 24px; text-transform: uppercase; font-size: 18px; font-weight: bold; font-family: 'BebasNeue'; background-color: #fff; }
 
 header .top-header .left-col a{ display: block; float: left; margin-left: 41px; background: url(../images/icons-header.svg) -17px -15px no-repeat; text-align: center; padding: 13px 0 14px 58px; color: #ec0205; text-decoration: none; height: 22px; }
 
@@ -151,9 +151,14 @@ footer .bottom-foot .right-col .tw{ background: url(../images/social-networks-ic
                     45px 0 45px -45px rgba(80, 115, 122, 0.45), 0 0 4px rgba(80, 115, 122, .3);
 }
 
-.template-header .btn-login-line{ position: relative; background-color: #f9fced; height: 41px; text-align: right; }
-.template-header .btn-login-line span{ font-family: 'BebasNeue'; font-weight: 600; font-size: 22px; margin-top: 6px; letter-spacing: 0.5px; display: inline-block; }
-.template-header .btn-login-line a{ background: url(../images/login.png) no-repeat; text-decoration: none; width: 125px; text-align: center; font-family: 'BebasNeue'; text-transform: uppercase; font-size: 22px; color: #fff; padding-top: 6px; padding-bottom: 7px; margin-right: 43px; display: inline-block; }
+/*.template-header .btn-login-line{ position: relative; background-color: #f9fced; height: 41px; text-align: right; }*/
+/*.template-header .btn-login-line span{ font-family: 'BebasNeue'; font-weight: 600; font-size: 22px; margin-top: 6px; letter-spacing: 0.5px; display: inline-block; }*/
+/*.template-header .btn-login-line a{ background: url(../images/login.png) no-repeat; text-decoration: none; width: 125px; text-align: center; font-family: 'BebasNeue'; text-transform: uppercase; font-size: 22px; color: #fff; padding-top: 6px; padding-bottom: 7px; margin-right: 43px; display: inline-block; }*/
+
+.template-header{ background-color: #f9fced; }
+.template-header .btn-login-line{ height: 41px; text-align: right; color: #000; background: url(../images/login-line.png) right -1px no-repeat; background-color: #f9fced; margin-right: 43px;}
+.template-header .btn-login-line span{ font-family: 'BebasNeue'; font-weight: 600; font-size: 22px; padding-top: 6px; letter-spacing: 0.5px; display: inline-block; }
+.template-header .btn-login-line a{ text-decoration: none; width: 125px; text-align: center; font-family: 'BebasNeue'; text-transform: uppercase; font-size: 22px; color: #fff; padding-top: 6px; padding-bottom: 7px;  display: inline-block; }
 
 .template-header .header-content{ position: relative; height: 205px; background-color: #f9fced; }
 .template-header .header-content .left{ float: left; }
