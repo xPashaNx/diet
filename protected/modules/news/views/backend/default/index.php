@@ -17,16 +17,16 @@ if (Yii::app()->user->hasFlash('addNewsImages')):
 endif;
 
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$('#news-grid').yiiGridView('update', {
-data: $(this).serialize()
-});
-return false;
-});
+    $('.search-button').click(function(){
+    $('.search-form').toggle();
+    return false;
+    });
+    $('.search-form form').submit(function(){
+    $('#news-grid').yiiGridView('update', {
+    data: $(this).serialize()
+    });
+    return false;
+    });
 ");
 ?>
 
@@ -65,7 +65,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => 'CHtml::link($data->title, Yii::app()->createUrl("news/default/update", array("id" => $data->id)))',
             'type' => 'raw'
         ),
-        'date',
+        array(
+            'name' => 'date',
+            'value' => 'date("d.m.Y", strtotime($data->date))',
+            'type' => 'raw'
+        ),
         array(
             'class' => 'CButtonColumn',
             'viewButtonUrl' => 'Yii::app()->createUrl("../news/default/view/", array("id" => $data->id))',

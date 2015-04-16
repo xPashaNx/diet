@@ -16,28 +16,34 @@ $this->breadcrumbs = array(
 <?php
 Yii::app()->clientScript
     ->registerScriptFile('/js/admin/jquery.synctranslit.js', CClientScript::POS_HEAD)
-    ->registerScript('translit', "
-        $('#news-title').syncTranslit({destination: 'news-link'});
-    ", CClientScript::POS_READY);
-
+    ->registerScript('translit', " $('#news-title').syncTranslit({destination: 'news-link'});", CClientScript::POS_READY);
 Yii::app()->clientScript
     ->registerScript('photos', "
-      $('.addPhoto').live('click', function() {
-          block = $(this).parent('p').parent('div');
-            $('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">&ndash;</span></p>').appendTo(block);
-        });
-      $('.delPhoto').live('click', function() {
-          block = $(this).parent('p');
-            $(block).remove();
-        });
-    ", CClientScript::POS_LOAD);
+
+      $(document).on('click', '.addPhoto', function() {
+        console.log('addPhoto');
+        block = $(this).parent('p').parent('div');
+        $('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">del</span></p>').appendTo(block);
+      });
+
+      $(document).on('click', '.delPhoto', function() {
+        console.log('delPhoto');
+        block = $(this).parent('p');
+        $(block).remove();
+      });
+
+", CClientScript::POS_LOAD);
 
 Yii::app()->clientScript
     ->registerScript('photo_delete', "
-        $('#photo-list a.delete').live('click',function() {
-            if(!confirm('Вы уверены в удалении фотографии?')) return false;
+        $(document).on('click','#photo-list a.deletePhoto', function() {
+             console.log('addPhoto');
+            if(!confirm('Вы уверены в удалении фотографии?')){
+                return false;
+            }
             var th=this;
             var afterDelete=function(){};
+
             $.fn.yiiListView.update('photo-list', {
                 type:'POST',
                 url:$(this).attr('href'),
@@ -155,7 +161,6 @@ Yii::app()->clientScript
         )); ?>
         <div class="clear"></div>
         <p class="label">Добавить фото:</p>
-
         <p class="more_img"><?php echo $form->fileField($imageModel, 'filename[]'); ?><span class="addPhoto">+</span>
         </p>
     </div>

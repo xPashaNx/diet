@@ -166,19 +166,18 @@ class DefaultController extends BackEndController
 
     public function actionDeleteImage($id)
     {
-        if (Yii::app()->request->isPostRequest) {
+        if (Yii::app()->request->isPostRequest)
+        {
             $model = $this->loadImageModel($id);
-            //удаляем картинку из папки
             @unlink(News::FOLDER_UPLOAD . '/' . $model->filename);
-
-            //удаляем картинку из БД
             $model->delete();
-
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if (!isset($_GET['ajax']))
+            {
                 $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('update', 'id' => $model->news_id));
-        } else {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            }
         }
+        else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
     }
 }

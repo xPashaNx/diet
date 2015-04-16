@@ -109,15 +109,19 @@ class News extends CActiveRecord
         $criteria->compare('public', $this->public);
         $criteria->compare('cover_id', $this->cover_id);
 
-        $criteria->order='date DESC';
-
-
         if ($dateCriteria) {
             $criteria->mergeWith($dateCriteria);
         }
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'sort'=>array(
+                'attributes'=>array(
+                    'id' ,
+                    'title',
+                    'date'
+                )
+            ),
         ));
     }
 
