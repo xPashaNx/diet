@@ -83,7 +83,7 @@ class Menu extends CActiveRecord
     {
         $criteria = new CDbCriteria;
         $criteria->compare('id', $this->id, true);
-        $criteria->compare('title', $this->title, true);
+        $criteria->compare('t.title', $this->title, true);
         $criteria->compare('name', $this->name, true);
         $criteria->with = 'items';
 
