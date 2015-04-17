@@ -46,6 +46,10 @@ Yii::app()->clientScript->registerScript("send-message", "
             <td><?php echo $form->textField($model, 'email'); ?></td>
         </tr>
         <tr>
+            <td><?php echo $form->labelEx($model, 'phone'); ?></td>
+            <td><?php echo $form->textField($model, 'phone'); ?></td>
+        </tr>
+        <tr>
             <td class="top"><?php echo $form->labelEx($model, 'text'); ?></td>
             <td><?php echo $form->textArea($model, 'text', array('class' => 'txt', 'rows' => 6, 'cols' => 50)); ?></td>
         </tr>

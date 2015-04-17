@@ -15,6 +15,11 @@ class CallbackForm extends CFormModel
 	 */
 	public $email;
 
+    /**
+     * @var string
+     */
+    public $phone;
+
 	/**
 	 * @var string
 	 */
@@ -34,6 +39,8 @@ class CallbackForm extends CFormModel
 			array('name, text, email', 'required'),
             array('email', 'email', 'message'=>'Ваш e-mail не является правильным E-Mail адресом'),
             array('text', 'length', 'max'=>700, 'message'=>'Недопустимое количество символов'),
+            array('phone', 'length'),
+            array('phone', 'match', 'pattern' => '/^([+]?[0-9\s-\(\)]{3,25})*$/i', 'message'=>'Поле заполнено некорректно'),
             array('text', 'checkTagsValidate', 'message' => 'Cообщение содержит недопустимые символы'),
 			array(
                 'verifyCode',
@@ -55,7 +62,7 @@ class CallbackForm extends CFormModel
 			'name' => 'Введите имя',
 			'email' => 'Введите e-mail',
 			'text' => 'Введите сообщение',
-			//'file' => 'Прикрепить файл',
+			'phone' => 'Контактный телефон',
 			'verifyCode' => 'Введите проверочный код',
 		);
 	}
