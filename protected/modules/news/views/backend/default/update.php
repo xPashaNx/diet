@@ -23,7 +23,7 @@ Yii::app()->clientScript
       $(document).on('click', '.addPhoto', function() {
         console.log('addPhoto');
         block = $(this).parent('p').parent('div');
-        $('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">del</span></p>').appendTo(block);
+        $('<p class=\"more_img\"><input type=\"file\" name=\"NewsImages[filename][]\"><span class=\"addPhoto\">+</span><span class=\"delPhoto\">-</span></p>').appendTo(block);
       });
 
       $(document).on('click', '.delPhoto', function() {
@@ -37,7 +37,6 @@ Yii::app()->clientScript
 Yii::app()->clientScript
     ->registerScript('photo_delete', "
         $(document).on('click','#photo-list a.deletePhoto', function() {
-             console.log('addPhoto');
             if(!confirm('Вы уверены в удалении фотографии?')){
                 return false;
             }
@@ -142,7 +141,8 @@ Yii::app()->clientScript
 
     <div class="row">
         <?php echo $form->labelEx($model, 'public'); ?>
-        <?php echo $form->dropDownList($model, 'public', array(1 => 'Да', 0 => 'Нет')) ?>
+        <?php echo CHtml::activeCheckBox($model,'public'); ?>
+        <?php //echo $form->dropDownList($model, 'public', array(1 => 'Да', 0 => 'Нет')) ?>
         <?php echo $form->error($model, 'public'); ?>
     </div>
 
