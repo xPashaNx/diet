@@ -37,7 +37,7 @@ class CallbackMail extends YiiMail
             }
             else
             {
-                $admin = User::model()->findByPk(1);
+                $admin = CallbackConfig::model()->findByPk(1);
                 $emailFrom = $admin->email;
             }
 

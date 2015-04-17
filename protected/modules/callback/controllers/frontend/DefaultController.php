@@ -32,21 +32,28 @@ class DefaultController extends FrontEndController
         $model = new CallbackForm;
         if (isset($_POST['CallbackForm']))
         {
+            $config = CallbackConfig::model()->findByPk(1);
             $model->attributes = $_POST['CallbackForm'];
             if ($model->validate())
             {
-                $admin = User::model()->findByPk(1);
-                $body = $this->renderPartial('callback_template', array_merge(array('model' => $model)), true);
-                if ($this->module->sendMessage($admin->email, 'Сообщение с сайта '.Yii::app()->config->sitename, $body))
-                    Yii::app()->user->setFlash('callback_message', 'Ваше сообщение успешно отправлено администратору сайта.');
+                if(CallbackConfig::model()->checkTimeout())
+                {
+                    $body = $this->renderPartial('callback_template', array_merge(array('model' => $model)), true);
+                    if ($this->module->sendMessage($config->email, 'Сообщение с сайта ' . Yii::app()->config->sitename, $body))
+                    {
+                        Yii::app()->user->setFlash('callback_message', 'Сообщение отправлено.');
+                        Yii::app()->session['timeoutCallback'] = date("Y-m-d H:i:s");
+                    }
+                    else
+                        Yii::app()->user->setFlash('callback_message', 'В данный момент отправка сообщений невозможна.');
+                }
                 else
-                    Yii::app()->user->setFlash('callback_message', 'В данный момент отправка сообщений невозможна.');
-
-                $this->refresh();
+                    Yii::app()->user->setFlash('callback_message', 'Разрешено оправлять одно сообщение в ' . $config->timeout . ' минут.');
             }
+            $this->renderPartial('_form', array('model'=>$model));
         }
-
-        $this->render('index', array('model' => $model));
+        else
+            $this->render('index', array('model' => $model));
     }
 
 
@@ -65,10 +72,10 @@ class DefaultController extends FrontEndController
             $model->attributes = $_POST['PhonebackForm'];
             if ($model->validate())
             {
-                $admin = User::model()->findByPk(1);
+                $admin = CallbackConfig::model()->findByPk(1);
                 $body = $this->renderPartial('phoneback_template', array_merge(array('model' => $model)), true);
                 if ($this->module->sendMessage($admin->email, 'Просьба перезвонить '.Yii::app()->config->sitename, $body))
-                    Yii::app()->user->setFlash('callback_message', 'Ваше сообщение успешно отправлено администратору сайта.');
+                    Yii::app()->user->setFlash('callback_message', 'Сообщение отправлено.');
                 else
                     Yii::app()->user->setFlash('callback_message', 'В данный момент отправка сообщений невозможна.');
 
@@ -78,4 +85,5 @@ class DefaultController extends FrontEndController
 
         $this->render('phoneback', array('model' => $model));
     }
+
 }
