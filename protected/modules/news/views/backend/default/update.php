@@ -62,7 +62,6 @@ Yii::app()->clientScript
 // Подключаем фанси-бокс
 Yii::app()->clientScript
     ->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD)
-    ->registerCssFile('/css/jquery.fancybox-1.3.4.css')
     ->registerScript('images', "
   $('a[rel=example_group]').fancybox({
 		overlayShow: true,
@@ -80,10 +79,6 @@ Yii::app()->clientScript
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'news-form',
-        // Please note: When you enable ajax validation, make sure the corresponding
-        // controller action is handling ajax validation correctly.
-        // There is a call to performAjaxValidation() commented in generated controller code.
-        // See class documentation of CActiveForm for details on this.
         'htmlOptions' => array('enctype' => 'multipart/form-data'),
         'enableAjaxValidation' => false,
     ));
@@ -142,7 +137,6 @@ Yii::app()->clientScript
     <div class="row">
         <?php echo $form->labelEx($model, 'public'); ?>
         <?php echo CHtml::activeCheckBox($model,'public'); ?>
-        <?php //echo $form->dropDownList($model, 'public', array(1 => 'Да', 0 => 'Нет')) ?>
         <?php echo $form->error($model, 'public'); ?>
     </div>
 

@@ -18,21 +18,22 @@ endif;
 
 Yii::app()->clientScript->registerScript('search', "
     $('.search-button').click(function(){
-    $('.search-form').toggle();
-    return false;
+        $('.search-form').toggle();
+        return false;
     });
+
     $('.search-form form').submit(function(){
-    $('#news-grid').yiiGridView('update', {
-    data: $(this).serialize()
-    });
-    return false;
+        $('#news-grid').yiiGridView('update', {
+            data: $(this).serialize()
+        });
+        return false;
     });
 ");
 ?>
 
-<h1><?= $titleListNews ?></h1>
+<h1><?php echo $titleListNews ?></h1>
 
-<?= CHtml::link('+Добавить новость', Yii::app()->createUrl('news/default/create'), array('class' => 'add_element')) ?>
+<?php echo CHtml::link('+Добавить новость', Yii::app()->createUrl('news/default/create'), array('class' => 'add_element')) ?>
 
 <br/>
 <p>
@@ -58,17 +59,16 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'columns' => array(
         array(
             'name' => 'id',
-            'filter' => false,
         ),
         array(
             'name' => 'title',
             'value' => 'CHtml::link($data->title, Yii::app()->createUrl("news/default/update", array("id" => $data->id)))',
-            'type' => 'raw'
+            'type' => 'raw',
         ),
         array(
             'name' => 'date',
             'value' => 'date("d.m.Y", strtotime($data->date))',
-            'type' => 'raw'
+            'type' => 'raw',
         ),
         array(
             'class' => 'CButtonColumn',

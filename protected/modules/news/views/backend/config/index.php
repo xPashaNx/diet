@@ -3,7 +3,7 @@
 /* @var $model NewsConfig */
 /* @var $form CActiveForm */
 
-$this->breadcrumbs = array('Конфигурации');
+$this->breadcrumbs = array('Конфигурация');
 ?>
 
 <?php if (Yii::app()->user->hasFlash('newsConfig')): ?>
@@ -12,7 +12,7 @@ $this->breadcrumbs = array('Конфигурации');
 </div>
 <?php endif; ?>
 
-<h1>Конфигурации</h1>
+<h1>Конфигурация</h1>
 
 <div class="form">
 
