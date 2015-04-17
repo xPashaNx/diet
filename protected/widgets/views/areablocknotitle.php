@@ -1,3 +1,3 @@
-<div class="block <?php echo $block->css_class; ?>">
+<div class="block">
     <?php echo $block->content; ?>
 </div>

@@ -13,6 +13,9 @@
  * @property string $port
  * @property string $encryption
  * @property string $sender
+ * @property string $email
+ * @property integer $timeout
+ * @property integer $verify_code
  */
 class CallbackConfig extends CActiveRecord
 {
@@ -30,9 +33,11 @@ class CallbackConfig extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('enabled', 'numerical', 'integerOnly' => true),
-			array('type, host, username, password, port, encryption, sender', 'length', 'max' => 255),
-			array('enabled, type, host, username, password, port, encryption, sender', 'safe'),
+            array('email', 'required'),
+            array('email', 'email'),
+			array('enabled, timeout', 'numerical', 'integerOnly' => true),
+			array('type, host, username, password, port, encryption, sender, email', 'length', 'max' => 255),
+			array('enabled, type, host, username, password, port, encryption, sender, email, timeout', 'safe'),
 			array('type', 'checkType'),
 		);
 	}
@@ -60,6 +65,9 @@ class CallbackConfig extends CActiveRecord
 			'port' => 'Порт',
 			'encryption' => 'Шифрование',
 			'sender' => 'Имя отправителя',
+            'email' => 'Адрес для отправки сообщений из формы обратной связи',
+			'verify_code' => 'Использовать проверочный код',
+			'timeout' => 'Таймаут (минут)',
 		);
 	}
 

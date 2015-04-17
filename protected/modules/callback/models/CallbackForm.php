@@ -33,6 +33,8 @@ class CallbackForm extends CFormModel
 		return array(
 			array('name, text, email', 'required'),
             array('email', 'email'),
+            array('text', 'length', 'max'=>700),
+            array('text', 'filter', 'filter'=>'strip_tags'),
 			/*array(
                 'verifyCode',
                 'captcha',
