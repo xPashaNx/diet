@@ -67,7 +67,7 @@ class Banners extends CActiveRecord
 			array('name, title, link', 'length', 'max'=>255),
             array('name, title', 'required'),
             array('name', 'unique', 'message' => 'Баннер с именем {value} уже существует!'),
-            array('name', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
+            array('name', 'match', 'pattern' => '/^[A-Za-z0-9\-_]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
 			array('code', 'safe'),
 			array('image', 'file', 'types' => 'gif, jpg, jpeg, png', 'allowEmpty' => true),
 			// The following rule is used by search().

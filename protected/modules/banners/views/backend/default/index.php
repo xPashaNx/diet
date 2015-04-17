@@ -1,5 +1,5 @@
 
-<?
+<?php
     $cs=Yii::app()->clientScript;
     $cs->registerScript('bannerarea_delete', "
 

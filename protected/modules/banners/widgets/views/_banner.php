@@ -6,4 +6,4 @@
 			echo CHtml::image('/'.$data->folder.'/'.$data->image, $data->title);
 	?>
 </li>
-<?$data->incViews();?>
+<?php $data->incViews();?>

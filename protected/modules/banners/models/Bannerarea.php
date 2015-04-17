@@ -67,7 +67,8 @@ class Bannerarea extends CActiveRecord
 			array('name, title, widget', 'length', 'max'=>255),
             array('name, title', 'required'),
             array('name', 'unique', 'message' => 'Рекламное место с именем {value} уже существует!'),
-            array('name', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
+            array('name', 'match',  'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
+            array('widget', 'match', 'pattern' => '/^[A-Za-z0-9]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры!'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, title, mode, queue, widget', 'safe', 'on'=>'search'),
