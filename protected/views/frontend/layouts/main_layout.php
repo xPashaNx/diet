@@ -1,11 +1,11 @@
 <?php
 Yii::app()->clientScript->registerScript('show_header_scroll', "
     $(window).scroll(function() {
-	    if ($(this).scrollTop() > 318){
-	        $('.header-scroll').animate({'top': '0px'},0);
+	    if ($(this).scrollTop() > 207){
+	        $('.header-scroll').animate({'top': '0px'},2);
 	    }
 	    else{
-	        $('.header-scroll').stop(true).animate({'top': '-119px'},0);
+	        $('.header-scroll').stop(true).animate({'top': '-119px'},2);
 	    }
 	});
 ", CClientScript::POS_READY);

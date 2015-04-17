@@ -85,15 +85,17 @@ h2{ margin: 0; font-family: 'Barkentina', Georgia normal; color: #eef8c4; font-s
 
 /* HEADER SCROLL*/
 .header-scroll{ height: 109px; color: #fff; z-index: 200; position: fixed; top: -109px; left: 0; right: 0;
+    /*
     transition: all 0.4s ease;
     -webkit-transition: all 0.4s ease;
     -moz-box-shadow: all 0.4s ease;
+    */
 }
 .header-scroll .header-line{ height: 68px; background: #5ca2cf; }
 .header-scroll .header-line .back{ background: url(../images/logo-header-scroll-icons.svg) 0 0 no-repeat; background-size: 40px; height: 40px; width: 40px; float: left; margin-right: 18px; margin-top: 15px; margin-left: 42px; text-decoration: none; color: #fff; }
 .header-scroll .header-line .logo{ float: left; margin-right: 18px; font-family: 'BebasNeue-Light'; font-size: 45px; color: #fff; text-transform: uppercase; margin-top: 7px; text-decoration: none; color: #fff; }
-.header-scroll .header-line .corp{ background: url(../images/logo-header-scroll-icons.svg) 0 -44px no-repeat; background-size: 40px; height: 32px; float: left; margin-right: 18px; padding-left: 58px; margin-top: 15px; font-size: 18px; font-weight: bold; font-family: 'BebasNeue'; padding-top: 10px; text-decoration: none; color: #fff; }
-.header-scroll .header-line .shop{ background: url(../images/logo-header-scroll-icons.svg) 0 -87px no-repeat; background-size: 40px; height: 32px; float: left; padding-left: 58px; margin-top: 15px; font-size: 18px; font-weight: bold; font-family: 'BebasNeue'; padding-top: 10px; text-decoration: none; color: #fff; }
+.header-scroll .header-line .corp{ background: url(../images/logo-header-scroll-icons.svg) 0 -87px no-repeat; background-size: 40px; height: 32px; float: left; margin-left: 39px; margin-right: 29px; padding-left: 58px; margin-top: 15px; font-size: 18px; font-weight: bold; font-family: 'BebasNeue'; padding-top: 10px; text-decoration: none; color: #fff; }
+.header-scroll .header-line .shop{ background: url(../images/logo-header-scroll-icons.svg) 0 -130px no-repeat; background-size: 40px; height: 32px; float: left; padding-left: 58px; margin-top: 15px; font-size: 18px; font-weight: bold; font-family: 'BebasNeue'; padding-top: 10px; text-decoration: none; color: #fff; }
 .header-scroll .header-line .grid{ width: 98px; height: 35px; background: url(../images/grid.png); float: left; margin-right: 18px; margin-top: 15px; }
 
 .header-scroll .btn-login-line{ height: 41px; text-align: right; color: #000; background: url(../images/login-line.png) right -1px no-repeat; margin-right: 43px;}
@@ -108,8 +110,8 @@ header .top-header{ height: 76px; padding-top: 24px; text-transform: uppercase; 
 header .top-header .left-col a{ display: block; float: left; margin-left: 41px; background: url(../images/icons-header.svg) -17px -15px no-repeat; text-align: center; padding: 13px 0 14px 58px; color: #ec0205; text-decoration: none; height: 22px; }
 
 header .top-header .right-col{ float: right; }
-header .top-header .right-col .corp{ display: block; float: left; margin-right: 30px; color: #735573; text-decoration: none; background: url(../images/icons-header.svg) -16px -117px no-repeat; padding: 13px 0 14px 58px; height: 22px; }
-header .top-header .right-col .shop{ display: block; height: 47px; float: left; margin-right: 42px; color: #f04945; text-decoration: none; background: url(../images/icons-header.svg) -16px -170px no-repeat; padding: 13px 0 14px 58px; height: 22px; }
+header .top-header .right-col .corp{ display: block; float: left; margin-right: 30px; color: #735573; text-decoration: none; background: url(../images/icons-header.svg) -16px -118px no-repeat; padding: 13px 0 14px 58px; height: 22px; }
+header .top-header .right-col .shop{ display: block; height: 47px; float: left; margin-right: 42px; color: #f04945; text-decoration: none; background: url(../images/icons-header.svg) -16px -168px no-repeat; padding: 13px 0 14px 58px; height: 22px; }
 
 header .middle-header{ height: 144px; background-color: #5ca2cf; padding-top: 41px; position: relative; }
 /*
