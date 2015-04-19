@@ -22,6 +22,8 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
     <meta name="author" content="<?php echo CHtml::encode(Yii::app()->config->author); ?>"/>
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css"/>
+	<script src="/js/lightbox.min.js"></script>
+	<link href="/css/lightbox.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
