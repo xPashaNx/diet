@@ -171,7 +171,8 @@ class CatalogCategory extends CActiveRecord
 					->load($this->folder . '/' . $this->image)
                     ->resize($catalogСonfig->c_image_small_w, $catalogСonfig->c_image_small_h)
 					->save($this->folder . '/small/' . $this->image, false, 100);
-                if ($old_image)
+
+				if ($old_image)
                 {
                     @unlink($this->folder . '/' .$old_image);
                     @unlink($this->folder . '/small/' .$old_image);
@@ -194,12 +195,13 @@ class CatalogCategory extends CActiveRecord
 	public static function getListed()
 	{
 		$subitems = array();
+		$subitems[0] = '...';
 		$space = '';
 
 		foreach (CatalogCategory::model()->findAll() as $model)
         {
 			$space .= ' ';
-			$subitems[$model->id] = $space.$model->short_title;
+			$subitems[$model->id] = $space . $model->short_title;
 		}
 
 		return $subitems;

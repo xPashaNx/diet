@@ -23,9 +23,49 @@ $this->widget('application.extensions.admingrid.MyGridView', array(
             'class'=>'application.extensions.SSortable.SSortableCatalogCategoryColumn',
         ),
 	),
-)); 
+));
 
 ?>
+</div>
+<div class="block">
+	<h2>Список услуг</h2>
+	<?php echo CHtml::link('+ Добавить услугу', array('service/create'), array('class'=>'add_element'));?>
+	<?php
+		$this->widget('application.extensions.admingrid.MyGridView', array(
+			'id' => 'services-grid',
+			'dataProvider' => $services->getEmptyServices(),
+			'filter' => $services,
+			'emptyText' => 'Нет услуг в данной категории',
+			'columns' => array(
+				array(
+					'name' => 'id',
+					'filter' => false,
+				),
+				array(
+					'name' => 'short_title',
+					'type' => 'raw',
+					'value' => 'CHtml::link(CHtml::encode($data->short_title), array("service/view", "id" => $data->id))'
+				),
+				array(
+					'class' => 'MyButtonColumn',
+					'template' => '{update}{delete}',
+					'buttons' => array(
+						'update' => array(
+							'imageUrl' => Yii::app()->request->baseUrl.'/images/admin/edit.png',
+							'url' => 'Yii::app()->createUrl("services/service/update", array("id" => $data->id))',
+						),
+						'delete' => array(
+							'imageUrl' => Yii::app()->request->baseUrl.'/images/admin/del.png',
+							'url' => 'Yii::app()->createUrl("services/service/delete", array("id" => $data->id))',
+						),
+					),
+				),
+				array(
+					'class'=>'application.extensions.SSortable.SSortableCatalogServiceColumn',
+				),
+			),
+		));
+	?>
 </div>
 
 <?else:?>

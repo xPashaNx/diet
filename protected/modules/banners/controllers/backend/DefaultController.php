@@ -12,10 +12,6 @@ class DefaultController extends BackEndController
 	public function actionCreate()
 	{
 		$model = new Bannerarea;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if (isset($_POST['Bannerarea']))
 		{
 			$model->attributes = $_POST['Bannerarea'];
@@ -61,10 +57,8 @@ class DefaultController extends BackEndController
 	{
 		if (Yii::app()->request->isPostRequest)
 		{
-			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if (!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}

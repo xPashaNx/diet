@@ -20,13 +20,13 @@ $cs->registerScript('translit', "
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'short_title'); ?>
-		<?php echo $form->textField($model,'short_title',array('size'=>60,'maxlength'=>256, 'id'=>'productTitle')); ?>
+		<?php echo $form->textField($model,'short_title',array('size'=>60,'maxlength'=>256)); ?>
 		<?php echo $form->error($model,'short_title'); ?>
 	</div>
 
     <div class="row">
         <?php echo $form->labelEx($model,'long_title'); ?>
-        <?php echo $form->textField($model,'long_title',array('size'=>60,'maxlength'=>256, 'id'=>'productTitle')); ?>
+        <?php echo $form->textField($model,'long_title',array('size'=>60,'maxlength'=>256)); ?>
         <?php echo $form->error($model,'long_title'); ?>
     </div>
 
@@ -51,21 +51,23 @@ $cs->registerScript('translit', "
 	<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>
         <?php
-            if ($model->image){
-                echo CHtml::image('/upload/catalog/category/small/'.$model->image);
-                echo "<br/> Заменить изображение: ";
+           if ($model->image){
+               echo CHtml::image($model->folder . '/small/' . $model->image);
+               echo "<br/> Заменить изображение: ";
             }
         ?>
 		<?php echo $form->fileField($model,'image'); ?>
 		<?php echo $form->error($model,'image'); ?>
 	</div>
 
-    <?php $this->widget('application.extensions.ckeditor.CKEditor', array(
-                       'model' => $model,
-                       'attribute' => 'text',
-                       'language' => 'ru',
-                       'editorTemplate' => 'full',
-    )); ?>
+    <div class="row">
+        <?php $this->widget('application.extensions.ckeditor.CKEditor', array(
+                           'model' => $model,
+                           'attribute' => 'text',
+                           'language' => 'ru',
+                           'editorTemplate' => 'full',
+        )); ?>
+    </div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Добавить' : 'Сохранить'); ?>

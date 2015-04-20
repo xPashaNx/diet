@@ -25,9 +25,6 @@ class ImageController extends BackEndController
 	{
 		$model = new CatalogImage;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if (isset($_POST['CatalogImage']))
 		{
 			$model->attributes = $_POST['CatalogImage'];

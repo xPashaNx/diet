@@ -40,17 +40,21 @@ class ServiceController extends BackEndController
      *
      * @param integer $id_category
      */
-	public function actionCreate($id_category)
+	public function actionCreate($id_category = null)
 	{
 		$model = new CatalogService;
-		$model->id_category = $id_category;
-		$this->breadcrumbs = CatalogCategory::getParents($model->id_category, true);
-		$this->breadcrumbs[] = 'Добавление товара';
-
 		$serviceImages = new CatalogImage;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		if ($id_category === null)
+		{
+			$this->breadcrumbs['Управление услугами'] = array('/services');
+			$this->breadcrumbs[] = 'Добавление услуги';
+		}
+		else
+		{
+			$model->id_category = $id_category;
+			$this->breadcrumbs = CatalogCategory::getParents($model->id_category, true);
+			$this->breadcrumbs[] = 'Добавление услуги';
+		}
 
 		if (isset($_POST['CatalogService']))
 		{

@@ -37,16 +37,12 @@ class DefaultController extends BackEndController
 		$this->breadcrumbs['Управление услугами'] = array('/services');
 		$this->breadcrumbs[] = 'Добавление категории';
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if (isset($_POST['CatalogCategory']))
 		{
 			$model->attributes = $_POST['CatalogCategory'];
 			if ($model->save())
 				$this->redirect(array('index'));
 		}
-
 		$this->render('create',array(
 			'model' => $model,
 		));

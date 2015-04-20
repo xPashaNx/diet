@@ -169,9 +169,7 @@ class Banners extends CActiveRecord
                $old_image = $old_model->image;
             }
 			else
-			{
                 $old_image = '';
-            }
 
 			if ($image = CUploadedFile::getInstance($this, 'image'))
 			{
@@ -180,14 +178,10 @@ class Banners extends CActiveRecord
 				$image->saveAs($this->folder . '/' . $name);
 
                 if ($old_image)
-				{
                     @unlink($this->folder . '/' .$old_image);
-                }
 			}
-			else 
-			{
+			else
 				$this->image = $old_image;
-			}
 
 			return true;
 		}

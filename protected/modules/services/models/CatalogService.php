@@ -129,9 +129,6 @@ class CatalogService extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
@@ -156,6 +153,22 @@ class CatalogService extends CActiveRecord
 			),
 		));
 	}
+
+    public function getEmptyServices()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('id_category', 0,true);
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => 50,
+            ),
+            'sort' => array(
+                'defaultOrder' => 'sort_order ASC',
+            ),
+        ));
+    }
 
     /**
      * Before save
