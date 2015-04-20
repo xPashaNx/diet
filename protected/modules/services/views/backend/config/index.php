@@ -64,7 +64,7 @@ $this->breadcrumbs = array(
 		<?php echo $form->textField($model,'c_image_small_h'); ?>
         <?php echo $form->error($model, 'c_image_small_h'); ?>
 	</div>
-    <h3>Размеры изображений товаров</h3>
+    <h3>Размеры изображений услуг</h3>
 	<div class="row">
 		<?php echo $form->labelEx($model,'s_image_middle_w'); ?>
 		<?php echo $form->textField($model,'s_image_middle_w'); ?>
@@ -90,7 +90,7 @@ $this->breadcrumbs = array(
 		<?php echo $form->radioButtonList($model,'resize_mode', $model->arResizeModes); ?>
         <?php echo $form->error($model, 'resize_mode'); ?>
 	</div>
-    <h3>Водяной знак на изображениях товаров</h3>
+    <h3>Водяной знак на изображениях услуг</h3>
     <div class="row">
 		<?php echo $form->labelEx($model,'watermark_image'); ?>
         <?php

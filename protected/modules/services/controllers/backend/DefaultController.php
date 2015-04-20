@@ -125,12 +125,7 @@ class DefaultController extends BackEndController
 		$this->breadcrumbs = CatalogCategory::getParents($category->id);
 		$this->breadcrumbs[] = $category->short_title;
 
-		$categoryDataProvider = new CActiveDataProvider('CatalogCategory', array(
-			'sort' => array(
-				'defaultOrder' => 'sort_order ASC',
-			),
-			'pagination' => false,
-		));
+		$categoryDataProvider = new CatalogCategory();
 
         $services = new CatalogService('search');
         $services->unsetAttributes();

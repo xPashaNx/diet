@@ -225,7 +225,11 @@ class CatalogCategory extends CActiveRecord
                 $data[$parents->short_title] = array('/services/default/index', 'id' => $parents->id);
 			$data['Управление услугами'] = array('/services/default/index');
 		}
-
+		else
+		{
+			if ($service == true)
+				$data['Управление услугами'] = array('/services/default/index');
+		}
 		return array_reverse($data);
 	}
 
