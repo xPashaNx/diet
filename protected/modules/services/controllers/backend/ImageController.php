@@ -79,10 +79,8 @@ class ImageController extends BackEndController
             unlink ($folder . '/' . $model->image);
             unlink ($folder . '/small/' . $model->image);
             unlink ($folder . '/medium/' . $model->image);
-			// we only allow deletion via POST request
 			$model->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if (!isset($_POST['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('service/update', 'id' => $model->id_service));
 		}
