@@ -20,7 +20,7 @@ $cs->registerScript('translit', "
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'short_title'); ?>
-		<?php echo $form->textField($model,'short_title',array('size'=>60,'maxlength'=>256)); ?>
+		<?php echo $form->textField($model,'short_title',array('size'=>60,'maxlength'=>256, 'id'=>'productTitle')); ?>
 		<?php echo $form->error($model,'short_title'); ?>
 	</div>
 

@@ -52,6 +52,14 @@ $this->widget('ext.plusone.ExtGridView', array(
 				),
 				array(
 					'class' => 'ExtButtonColumn',
+					'buttons'=>array(
+						'update'=>array(
+							'url'=>'Yii::app()->createUrl("services/service/update/", array("id"=>$data->id))',
+						),
+						'delete'=>array(
+							'url'=>'Yii::app()->createUrl("services/service/delete/", array("id"=>$data->id))',
+						),
+					),
 				),
 				array(
 					'class'=>'application.extensions.SSortable.SSortableCatalogServiceColumn',
@@ -82,6 +90,14 @@ $this->widget('ext.plusone.ExtGridView', array(
 			),
 			array(
 				'class' => 'ExtButtonColumn',
+				'buttons'=>array(
+					'update'=>array(
+						'url'=>'Yii::app()->createUrl("services/service/update/", array("id"=>$data->id))',
+					),
+					'delete'=>array(
+						'url'=>'Yii::app()->createUrl("services/service/delete/", array("id"=>$data->id))',
+					),
+				),
 			),
 			array(
 				'class'=>'application.extensions.SSortable.SSortableCatalogServiceColumn',
