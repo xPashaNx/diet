@@ -15,19 +15,28 @@ class DefaultController extends BaseCatalogController
      */
 	public function actionIndex()
 	{
+
 		$this->breadcrumbs[] = $this->catalog_config->title;
 		$services_criteria = new CDbCriteria;
-        $services_criteria->compare('id_category', 0);
+		$services_criteria->compare('id_category', 0);
 
-        $categories = CatalogCategory::model()->findAll(array('order' => 'sort_order'));
+		$this->metaInfoGenerate($this->catalog_config->title, $this->catalog_config->keywords, $this->catalog_config->description);
 
-        $this->metaInfoGenerate($this->catalog_config->title, $this->catalog_config->keywords, $this->catalog_config->description);
+		if ($this->catalog_config->layout)
+			$this->layout = $this->catalog_config->layout;
 
-	    if ($this->catalog_config->layout)
-            $this->layout = $this->catalog_config->layout;
+		$dataProvider = new CActiveDataProvider('CatalogCategory',
+			array(
+				'criteria'=>array(
+					'order' => 'sort_order ASC',
+				),
+				'pagination'=>array(
+					'pageSize'=>CatalogConfig::model()->findByPk(1)->category_perpage,
+				),
+		));
 
 		$this->render('index',array(
-            'categories' => $categories,
+			'dataProvider' => $dataProvider,
 		));
 	}
 
@@ -48,9 +57,21 @@ class DefaultController extends BaseCatalogController
 
 	    if($this->catalog_config->layout)
             $this->layout = $this->catalog_config->layout;
-  
+
+		$dataProvider = new CActiveDataProvider('CatalogService',
+			array(
+				'criteria' => array(
+					'order' => 'sort_order ASC',
+					'condition'=>'id_category =' .  $category->id,
+				),
+				'pagination' => array(
+					'pageSize' => CatalogConfig::model()->findByPk(1)->service_perpage),
+			));
+
+
 		$this->render('view',array(
 			'category' => $category,
+			'dataProvider' => $dataProvider,
 		));
 	}
 
@@ -68,9 +89,9 @@ class DefaultController extends BaseCatalogController
 		$this->breadcrumbs = CatalogCategory::getBreadcrumbs($model->id_category, true);
 		$this->breadcrumbs[] = $model->short_title;
         $this->metaInfoGenerate($model->short_title, $model->keywords, $this->catalog_config->description);
-		
+
 		$this->render('service',array(
-			'model' => $model,
+			'category' => $model,
 		));
 	}
 

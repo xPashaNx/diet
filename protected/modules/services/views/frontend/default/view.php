@@ -1,18 +1,13 @@
 <h1><?php echo $category->short_title;?></h1>
-
+<h1><?php echo $this->title; ?></h1>
+<?php echo $this->catalog_config->text; ?>
 <?php if (isset($category->catalogServices)): ?>
-<div class="services">
     <?php
-        foreach($category->catalogServices as $service)
-        {
-            echo '<div class="service">';
-            if ($service->photo)
-                echo CHtml::link(CHtml::image('/upload/catalog/service/small/' . $service->photo, $service->short_title), '/services/'.$service->link);
-            echo CHtml::link($service->short_title, $service->fullLink);
-            echo '</div>';
-        }
+    $this->widget('zii.widgets.CListView', array(
+        'dataProvider' => $dataProvider,
+        'itemView'=>'_service',
+        //'viewData' => array('folder_upload' => $folder_upload,),
+    ));
     ?>
-</div>
 <?php endif; ?>
-
 <?php echo $category->text; ?>

@@ -43,8 +43,6 @@ class News extends CActiveRecord
             array('public, cover_id', 'numerical', 'integerOnly' => true),
             array('title, link, annotation', 'length', 'max' => 255),
             array('date', 'default', 'value' => date("Y-m-d H:i:s")),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
             array('id, title, link, date, annotation, description, meta_keywords, meta_description, public, cover_id', 'safe', 'on' => 'search'),
         );
     }
@@ -94,8 +92,6 @@ class News extends CActiveRecord
      */
     public function search($dateCriteria = NULL)
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
-
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
