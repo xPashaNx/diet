@@ -7,7 +7,8 @@ echo CHtml::link('+ Добавить категорию', array('default/create'
 
 $this->widget('ext.plusone.ExtGridView', array(
 	'id' => 'category-grid',
-	'dataProvider' => $categoryDataProvider->search(),
+	'dataProvider' => $categoryData->search(),
+	'emptyText' => 'Нет категории',
 	'columns' => array(
 		array(
 			'name' => 'id',
@@ -37,6 +38,7 @@ $this->widget('ext.plusone.ExtGridView', array(
 		$this->widget('ext.plusone.ExtGridView', array(
 			'id' => 'services-grid',
 			'dataProvider' => $services->getEmptyServices(),
+			'emptyText' => 'Нет услуг в данной категории',
 			'columns' => array(
 				array(
 					'name' => 'id',
@@ -66,7 +68,6 @@ $this->widget('ext.plusone.ExtGridView', array(
 	$this->widget('ext.plusone.ExtGridView', array(
 		'id' => 'services-grid',
 		'dataProvider' => $services->search(),
-		//'filter' => $services,
 		'emptyText' => 'Нет услуг в данной категории',
 		'columns' => array(
 			array(

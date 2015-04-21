@@ -122,10 +122,11 @@ class DefaultController extends BackEndController
             $category->id = 0;
             $category->short_title = 'Управление услугами';
         }
+
 		$this->breadcrumbs = CatalogCategory::getParents($category->id);
 		$this->breadcrumbs[] = $category->short_title;
 
-		$categoryDataProvider = new CatalogCategory();
+		$categoryData = new CatalogCategory();
 
         $services = new CatalogService('search');
         $services->unsetAttributes();
@@ -136,7 +137,7 @@ class DefaultController extends BackEndController
 
 		$this->render('index',array(
             'services' => $services,
-            'categoryDataProvider' => $categoryDataProvider,
+            'categoryData' => $categoryData,
 			'category' => $category,
 		));
 	}

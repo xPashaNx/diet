@@ -64,8 +64,6 @@ class CatalogCategory extends CActiveRecord
                 'allowEmpty' => true,
             ),
             array('id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
 			array('id, short_title, long_title, link, keywords, description, image, text, sort_order', 'safe', 'on'=>'search'),
 		);
 	}

@@ -36,8 +36,8 @@ class SSortableBehavior extends CActiveRecordBehavior {
 	public function move($direction)
 	{
 		$owner=$this->getOwner();
-		
-		if($direction=='up'){
+		if($direction=='up')
+		{
 			if($owner->_is_first()) 
 				throw new CHttpException(400,/*$owner->title . */' Уже первый');
 			
@@ -45,7 +45,8 @@ class SSortableBehavior extends CActiveRecordBehavior {
 			$criteria->condition="{$this->sortField}<{$owner->{$this->sortField}}";
 			$criteria->order = "{$this->sortField} desc";
 		}
-		elseif($direction=='down'){
+		elseif($direction=='down')
+		{
 			if($owner->_is_last()) 
 				throw new CHttpException(400,/*$owner->title . */' Уже последний');
 			
@@ -72,8 +73,8 @@ class SSortableBehavior extends CActiveRecordBehavior {
 		$first->{$this->sortField} = $second->{$this->sortField};
 		$second->{$this->sortField} = $firstValue;
 		
-		$first->save();
-		$second->save();
+		$first->save(false);
+		$second->save(false);
     }
 	
 	
