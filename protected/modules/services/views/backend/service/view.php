@@ -39,19 +39,21 @@ $cs->registerScript('showhide', "
 <div class="osn_photo">
     <h2>Основное фото</h2>
     <?php
-        if($model->photo){
+        if($model->photo)
+        {
             echo CHtml::link(CHtml::image('/upload/catalog/service/medium/' . $model->photo, $model->short_title) , array('/upload/catalog/service/' . $model->photo), array('class' => 'showPhoto'));
-        } else{echo CHtml::image('/css/catalog/admin/nophoto.jpg', $model->short_title);}
+        }
+        else
+            echo CHtml::image('/css/catalog/admin/nophoto.jpg', $model->short_title);
     ?>
 </div>
 <div class="dop_photo">
     <h2>Дополнительные фото</h2>
-    <?php if (isset($model->catalogImages)):
-        foreach ($model->catalogImages as $image) :?>
-        <?php echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $image->alt_text), '/upload/catalog/service/moreimages/' . $image->image, array('rel' => 'example_group')); ?>
-        <?php
-            endforeach;
-        endif; ?>
+    <?php
+        if (isset($model->catalogImages))
+            foreach ($model->catalogImages as $image)
+                echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $image->alt_text), '/upload/catalog/service/moreimages/' . $image->image, array('rel' => 'example_group'));
+        ?>
 </div>
 <div class="clear"></div>
 <table class="viewinfo">

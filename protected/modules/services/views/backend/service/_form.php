@@ -160,27 +160,40 @@ $cs->registerScript('translit', "
 
 	<div class="row">
 		<p class="label">Дополнительные фото</p>
-		<?php
-		if ($model->catalogImages)
-			foreach ($model->catalogImages as $image) {
-				echo '<div class="image_block" data-sort="'.$image->sort_order.'">';
-				echo '<div class="image"><a href="#" class="thumb"><span>';
-				echo CHtml::image('/upload/catalog/service/moreimages/small/'.$image->image);
-				echo '</span></a>';
-				echo "</div>";
-				echo CHtml::link('', array(
-                    'image/delete',
-                    'id' => $image->id), array(
-                        'confirm' => 'Вы уверены в удалении изображения?', 'class' => 'delete'));
-                echo '<div class="editable" id='.$image->id.'>'.$image->alt_text.'</div>';
-                echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-prev'));
-                echo '&nbsp';
-                echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-next'));
-				echo "</div>";
-			}
-		echo '<div class="clear"></div>';
-		?>
-		<p class="more_img"><?php echo $form->fileField($serviceImages,'image[]'); ?><span class="addPhoto">+</span></p>
+		<?php if ($model->catalogImages): ?>
+			<?php foreach ($model->catalogImages as $image) :?>
+				<div class="image_block" data-sort="'.$image->sort_order.'">
+					<div class="image">
+						<a href="#" class="thumb">
+							<span>
+								<?php echo CHtml::image('/upload/catalog/service/moreimages/small/'.$image->image); ?>
+							</span>
+						</a>
+					</div>
+				<?php
+					echo CHtml::link(
+						CHtml::image("/images/admin/del.png", "Удалить"),
+						array(
+							'image/delete',
+							'id' => $image->id),
+						array(
+							'confirm' => 'Вы уверены в удалении изображения?',
+							'class' => 'delete'
+						)
+					);
+				?>
+                <div class='editable' id='<?php echo $image->id; ?>'><?php echo $image->alt_text; ?> </div>
+                <?php echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-prev'));?>
+                <?php echo '&nbsp'; ?>
+					<?php echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-next'));?>
+				</div>
+			<?php endforeach;?>
+		<?php endif; ?>
+		<div class="clear"></div>
+		<p class="more_img">
+			<?php echo $form->fileField($serviceImages,'image[]'); ?>
+			<span class="addPhoto">+</span>
+		</p>
 	</div>
 
 	<div class="row">
@@ -210,4 +223,4 @@ $cs->registerScript('translit', "
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>
