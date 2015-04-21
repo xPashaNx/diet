@@ -162,7 +162,8 @@ class CatalogConfig extends CActiveRecord
         $old_image = $catalog_config->watermark_image;
 		if(parent::beforeSave())
         {
-			if ($image = CUploadedFile::getInstance($this, 'watermark_image')){
+			if ($image = CUploadedFile::getInstance($this, 'watermark_image'))
+			{
 				$name = md5(time().$image).'.'.$image->getExtensionName();
 				$this->watermark_image = $name;
 				$image->saveAs($this->serviceImagesFolder . '/watermark/' . $name);

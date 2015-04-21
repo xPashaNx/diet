@@ -6,7 +6,6 @@
     $this->widget('zii.widgets.CListView', array(
         'dataProvider' => $dataProvider,
         'itemView'=>'_service',
-        //'viewData' => array('folder_upload' => $folder_upload,),
     ));
     ?>
 <?php endif; ?>

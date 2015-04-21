@@ -26,7 +26,7 @@ $cs->registerScript('slider', "
 	<div class="slider-content">
 	<? foreach ($banners as $banner):?>
 		<div class="item">
-			<img src="<?=$banner->folder?>/<?=$banner->image?>" alt="" />
+			<img src="<?php echo '/' . $banner->folder . '/' . $banner->image?>" alt="" />
 		</div>
 	<? endforeach;?>
 	</div>

@@ -167,13 +167,13 @@ class CatalogCategory extends CActiveRecord
 			if ($image = CUploadedFile::getInstance($this, 'image'))
             {
 				$name = md5(time().$image).'.'.$image->getExtensionName();
+
 				$this->image = $name;
 				$image->saveAs($this->folder . '/' . $name);
 				Yii::app()->ih
 					->load($this->folder . '/' . $this->image)
                     ->resize($catalogСonfig->c_image_small_w, $catalogСonfig->c_image_small_h)
 					->save($this->folder . '/small/' . $this->image, false, 100);
-
 
 				if ($old_image)
                 {

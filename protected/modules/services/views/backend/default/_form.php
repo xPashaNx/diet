@@ -51,8 +51,9 @@ $cs->registerScript('translit', "
 	<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>
         <?php
-           if ($model->image){
-               echo CHtml::image($model->folder . '/small/' . $model->image);
+           if ($model->image)
+           {
+               echo CHtml::image(Yii::app()->createUrl($model->folder . '/small/' . $model->image));
                echo "<br/> Заменить изображение: ";
             }
         ?>

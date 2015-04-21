@@ -95,7 +95,7 @@ $this->breadcrumbs = array(
 		<?php echo $form->labelEx($model,'watermark_image'); ?>
         <?php
             if ($model->watermark_image)
-            echo CHtml::image('/upload/catalog/product/watermark/'.$model->watermark_image, 'watermark', array('class'=>'watermark_img'));
+            echo CHtml::image('/upload/catalog/service/watermark/'.$model->watermark_image, 'watermark', array('class'=>'watermark_img'));
         ?>
 		<?php echo $form->fileField($model,'watermark_image'); ?>
 		<?php echo $form->error($model,'watermark_image'); ?>
