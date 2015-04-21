@@ -174,6 +174,7 @@ class CatalogCategory extends CActiveRecord
                     ->resize($catalogСonfig->c_image_small_w, $catalogСonfig->c_image_small_h)
 					->save($this->folder . '/small/' . $this->image, false, 100);
 
+
 				if ($old_image)
                 {
                     @unlink($this->folder . '/' .$old_image);
