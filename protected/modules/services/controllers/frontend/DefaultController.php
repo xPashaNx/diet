@@ -15,7 +15,6 @@ class DefaultController extends BaseCatalogController
      */
 	public function actionIndex()
 	{
-
 		$this->breadcrumbs[] = $this->catalog_config->title;
 		$services_criteria = new CDbCriteria;
 		$services_criteria->compare('id_category', 0);
@@ -25,7 +24,18 @@ class DefaultController extends BaseCatalogController
 		if ($this->catalog_config->layout)
 			$this->layout = $this->catalog_config->layout;
 
-		$dataProvider = new CActiveDataProvider('CatalogCategory',
+		$serviceDataProvider = new CActiveDataProvider('CatalogService',
+			array(
+				'criteria'=>array(
+					'order' => 'sort_order ASC',
+					'condition'=>'id_category = 0',
+				),
+				'pagination'=>array(
+					'pageSize' => CatalogConfig::model()->findByPk(1)->service_perpage,
+				),
+			));
+
+		$categoryDataProvider = new CActiveDataProvider('CatalogCategory',
 			array(
 				'criteria'=>array(
 					'order' => 'sort_order ASC',
@@ -36,7 +46,8 @@ class DefaultController extends BaseCatalogController
 		));
 
 		$this->render('index',array(
-			'dataProvider' => $dataProvider,
+			'categoryDataProvider' => $categoryDataProvider,
+			'serviceDataProvider' => $serviceDataProvider,
 		));
 	}
 
@@ -65,7 +76,8 @@ class DefaultController extends BaseCatalogController
 					'condition'=>'id_category =' .  $category->id,
 				),
 				'pagination' => array(
-					'pageSize' => CatalogConfig::model()->findByPk(1)->service_perpage),
+					'pageSize' => CatalogConfig::model()->findByPk(1)->service_perpage,
+				),
 			));
 
 
