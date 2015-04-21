@@ -86,9 +86,6 @@ class ServiceController extends BackEndController
 		$this->breadcrumbs[] = $model->short_title;
 		$this->breadcrumbs[] = 'Редактирование';
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if (isset($_POST['CatalogService']))
 		{
 			$model->attributes = $_POST['CatalogService'];

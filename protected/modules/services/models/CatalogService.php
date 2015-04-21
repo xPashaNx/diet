@@ -94,8 +94,6 @@ class CatalogService extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 			'catalogImages' => array(self::HAS_MANY, 'CatalogImage', 'id_service', 'order'=>'sort_order'),
 			'idCategory' => array(self::BELONGS_TO, 'CatalogCategory', 'id_category'),

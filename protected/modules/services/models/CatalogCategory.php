@@ -135,9 +135,13 @@ class CatalogCategory extends CActiveRecord
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('image',$this->image,true);
 		$criteria->compare('text',$this->text,true);
+		$criteria->compare('sort_order',$this->sort_order);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
+			'pagination' => array(
+				'pageSize' => 50,
+			),
 			'sort' => array(
 				'defaultOrder' => 'sort_order ASC',
 			),

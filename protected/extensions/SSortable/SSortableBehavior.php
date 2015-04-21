@@ -5,8 +5,8 @@ class SSortableBehavior extends CActiveRecordBehavior {
 	public $sortField = 'sort_order';
 	public $categoryField;
 
-	public function beforeSave($event) {
-		
+	public function beforeSave($event)
+	{
 		$owner = $this->getOwner();
 		if(!$owner->getIsNewRecord()) return;
 		//Если запись новая, устанавливается минимальное значение порядка. Остальные записи сдвигаются на 1
@@ -33,7 +33,8 @@ class SSortableBehavior extends CActiveRecordBehavior {
 	}
 	
 	//Перемещение записи вверх или вниз в списке
-	public function move($direction){
+	public function move($direction)
+	{
 		$owner=$this->getOwner();
 		
 		if($direction=='up'){
