@@ -22,16 +22,15 @@ class DefaultController extends BaseReviewsController
         $reviewsConfig = ReviewsConfig::model()->find();
 
         $criteria = new CDbCriteria;
-        $criteria->limit = $reviewsConfig->reviews_perpage;
-        $criteria->order = 'date_create DESC';
 
+        $criteria->order = 'date_create DESC';
         if ($reviewsConfig->premoder and Yii::app()->user->isGuest)
         {
             $criteria->condition = 'public = :public';
             $criteria->params = array(':public' => true);
         }
 
-        $reviews = Reviews::model()->findAll($criteria);
+        //$reviews = Reviews::model()->findAll($criteria);
 
         $model = new Reviews('search');
         $model->unsetAttributes();
@@ -40,8 +39,8 @@ class DefaultController extends BaseReviewsController
             $model->attributes = $_GET['Reviews'];
 
         $reviews =  new CActiveDataProvider('Reviews', array(
-            'criteria' => array('condition' => 'public=1', 'order' => 'date_create DESC'),
-            'pagination' => array('pageSize' => ReviewsConfig::model()->findByPk(1)->reviews_perpage),
+            'criteria' => $criteria,
+            'pagination' => array('pageSize' => $reviewsConfig->reviews_perpage),
         ));
 
         $this->render('index',array(
