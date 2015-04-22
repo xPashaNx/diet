@@ -15,6 +15,11 @@ class CallbackForm extends CFormModel
 	 */
 	public $email;
 
+    /**
+     * @var string
+     */
+    public $phone;
+
 	/**
 	 * @var string
 	 */
@@ -32,14 +37,17 @@ class CallbackForm extends CFormModel
 	{
 		return array(
 			array('name, text, email', 'required'),
-            array('email', 'email'),
-			/*array(
+            array('email', 'email', 'message'=>'Ваш e-mail не является правильным E-Mail адресом'),
+            array('text', 'length', 'max'=>700, 'message'=>'Недопустимое количество символов'),
+            array('phone', 'length'),
+            array('phone', 'match', 'pattern' => '/^([+]?[0-9\s-\(\)]{3,25})*$/i', 'message'=>'Поле заполнено некорректно'),
+            array('text', 'checkTagsValidate', 'message' => 'Cообщение содержит недопустимые символы'),
+			array(
                 'verifyCode',
                 'captcha',
-                'message' => 'Неверный защитный код',
-                // авторизованным пользователям код можно не вводить
-                'allowEmpty' => !Yii::app()->user->isGuest || !extension_loaded('gd')
-            ),*/
+                'message' => 'Неверный проверочный код',
+                'allowEmpty' => !CallbackConfig::model()->checkCaptchaEnabled() || !extension_loaded('gd')
+            ),
 		);
 	}
 
@@ -51,11 +59,18 @@ class CallbackForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'name' => 'Ваше имя',
-			'email' => 'Ваш e-mail',
-			'text' => 'Текст сообщения',
-			'file' => 'Прикрепить файл',
-			'verifyCode' => 'Введите код',
+			'name' => 'Введите имя',
+			'email' => 'Введите e-mail',
+			'text' => 'Введите сообщение',
+			'phone' => 'Контактный телефон',
+			'verifyCode' => 'Введите проверочный код',
 		);
 	}
+
+    public function checkTagsValidate($attribute,$params)
+    {
+        if(preg_match("/script|http|<|>|<|>|SELECT|UNION|UPDATE|exe|exec|INSERT|tmp/i", $this->text))
+            $this->addError('text','Cообщение содержит недопустимые символы');
+    }
+
 }

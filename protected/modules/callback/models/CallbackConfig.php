@@ -13,6 +13,9 @@
  * @property string $port
  * @property string $encryption
  * @property string $sender
+ * @property string $email
+ * @property integer $timeout
+ * @property integer $verify_code
  */
 class CallbackConfig extends CActiveRecord
 {
@@ -30,9 +33,12 @@ class CallbackConfig extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('enabled', 'numerical', 'integerOnly' => true),
-			array('type, host, username, password, port, encryption, sender', 'length', 'max' => 255),
-			array('enabled, type, host, username, password, port, encryption, sender', 'safe'),
+            array('email', 'required'),
+            array('email', 'length', 'max'=>255),
+            array('email', 'email'),
+			array('enabled, timeout', 'numerical', 'integerOnly' => true),
+			array('type, host, username, password, port, encryption, sender, email', 'length', 'max' => 255),
+			array('enabled, type, host, username, password, verify_code, port, encryption, sender, email, timeout', 'safe'),
 			array('type', 'checkType'),
 		);
 	}
@@ -60,6 +66,9 @@ class CallbackConfig extends CActiveRecord
 			'port' => 'Порт',
 			'encryption' => 'Шифрование',
 			'sender' => 'Имя отправителя',
+            'email' => 'Email',
+			'verify_code' => 'Использовать проверочный код',
+			'timeout' => 'Таймаут (минут)',
 		);
 	}
 
@@ -110,4 +119,25 @@ class CallbackConfig extends CActiveRecord
 			$emailValidator->validate($this);
 		}
 	}
+
+    public function checkCaptchaEnabled()
+    {
+        $model = CallbackConfig::model()->find(array('limit'=>1));
+        if(isset($model->verify_code) && $model->verify_code != "0")
+            return true;
+        return false;
+    }
+
+    public function checkTimeout()
+    {
+        $config = CallbackConfig::model()->findByPk(1);
+        if(isset(Yii::app()->session["timeoutCallback"]) and (int)$config->timeout > 0)
+        {
+            $date = new DateTime(Yii::app()->session["timeoutCallback"]);
+            $date->add(new DateInterval('PT'. $config->timeout .'M'));
+            if($date->format('Y-m-d H:i:s') >= date('Y-m-d H:i:s'))
+                return false;
+        }
+        return true;
+    }
 }

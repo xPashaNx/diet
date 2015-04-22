@@ -4,7 +4,7 @@
             <?php
                 echo CHtml::link(CHtml::image('/images/admin/edit.png', 'Редактирование'), Yii::app()->createUrl('area/update', array('id' => $data->id)), array('title' => 'Редактирование'));
                 if ($data->blocks)
-                    echo CHtml::image('/images/admin/del_disable.png', 'Удаление невозможно', array('title' => 'Удаление невозможно'));
+                    echo CHtml::image('/images/admin/del_disable.png', 'Удаление невозможно (область вывода содержит блоки)', array('title' => 'Удаление невозможно (область вывода содержит блоки)'));
                 else
                     echo CHtml::link(CHtml::image('/images/admin/del.png', 'Удаление'), Yii::app()->createUrl('area/delete', array('id' => $data->id)), array('class' => 'delete_area', 'title' => 'Удаление'));
             ?>

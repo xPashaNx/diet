@@ -45,7 +45,7 @@ class ExtGridView extends CGridView
 		if ($this->enablePageSizing)
 		{
 			echo CHtml::openTag('div', array('class' => 'grid-view-page-size'));
-			echo 'Элементов на странице:';
+			echo 'Отображать по:';
 			echo CHtml::dropDownList($this->id . '-page-size', $this->pageSize, $this->pageSizeList);
 			echo CHtml::closeTag('div');
 		}
