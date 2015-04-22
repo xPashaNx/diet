@@ -11,7 +11,7 @@ $cs->registerScript('jeditable',"
 	});
 
 	$(document).on('click', '.editable', function(){
-		$(this).css('border', '0');
+		$(this).css('border', '1px solid');
 	});
 
 	$(document).on('blur', '.editable', function(){
