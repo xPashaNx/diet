@@ -31,9 +31,6 @@ class m150422_123712_cms43 extends CDbMigration
 	}
 
 	public function down()
-	{
-		$sql = "DROP TABLE `menu_item`;";
-		$this->dbConnection->createCommand($sql)->execute();
-	}
+	{}
 
 }

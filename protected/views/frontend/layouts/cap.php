@@ -12,9 +12,7 @@
     </head>
     <body>
         <div class="wrapper">
-            <div class="content">
-                <?php echo $content; ?>
-            </div>
+            <?php echo $content;?>
         </div>
     </body>
 </html>

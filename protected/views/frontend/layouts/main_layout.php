@@ -26,9 +26,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
 	<link href="/css/lightbox.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div class="fond"></div>
 <div class="wrapper">
-
     <div class="header-scroll inner">
         <div class="header-line">
             <a href=".." class="back"></a>
@@ -44,40 +42,41 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
             <span>Протестировать панель администратора</span><a href="/manage">войти</a>
         </div>
     </div>
-
     <header>
         <div class="top-header">
-            <div class="inner">
+            <div class="wrapper-inner">
                 <div class="left-col">
-                    <a href="..">вернуться на главную</a>
+                    <a href="#" class="header-icon back-home">вернуться на главную</a>
                 </div>
                 <div class="right-col">
-                    <a href="#" class="corp">корпоративный сайт</a>
-                    <a href="#" class="shop">интернет-магазин</a>
+                    <a href="#" class="header-icon visitka">сайт-визитка</a>
+                    <a href="#" class="header-icon shop">интернет-магазин</a>
                 </div>
             </div>
         </div>
         <div class="middle-header">
-            <div class="logo inner">
-                <a href=".."><span></span><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p>
-                </a>
-
+            <div class="logo wrapper-inner">
+                <a href=".."><?php echo CHtml::encode(Yii::app()->config->sitename); ?><p>демонстрационная версия</p></a>
                 <div class="grid"></div>
             </div>
         </div>
     </header>
-
-
-    <div class="content inner">
-        <div class="template-header">
+    <div class="main wrapper-inner">
+        <div class="bottom-header-inner">
             <div class="btn-login-line">
                 <span>Протестировать панель администратора</span><a href="/manage">войти</a>
             </div>
+            <div class="bottom-header">
+                <a href="#">
+                    <div class="slogan">
+                        <h1>sharkcompany</h1>
+                        <p><?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?></p>
+                    </div>
+                </a>
 
-            <div class="header-content">
                 <div class="left">
                     <img src="images/fish.svg" alt="" class="fish">
-                    <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
+
                 </div>
                 <div class="phone">
                     <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'telefony-v-shapke')); ?>
