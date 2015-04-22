@@ -41,8 +41,8 @@ Yii::app()->clientScript->registerScript('jeditable', "
 	?>	
 	</div>
 	<?php
-		echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('default/sortPhoto', 'galleryId' => $data->gallery_id), array('class' => 'sort-prev'));
+		echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('default/sortPhoto', 'galleryId' => $data->gallery_id), array('class' => 'sort-prev'));
 		echo '&nbsp';
-		echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('default/sortPhoto', 'galleryId' => $data->gallery_id), array('class' => 'sort-next'));
+		echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('default/sortPhoto', 'galleryId' => $data->gallery_id), array('class' => 'sort-next'));
 	?>
 </div>
