@@ -214,14 +214,14 @@ jQuery.fn.editable = function(url, options) {
 
         jQuery(f).submit(function(e) {
 
-            if (t) { 
+            if (t) {
                 clearTimeout(t);
             }
 
             /* do no submit */
-            e.preventDefault(); 
+            e.preventDefault();
 
-            /* add edited content and id of edited element to POST */           
+            /* add edited content and id of edited element to POST */
             var p = {};
             p[i.name] = jQuery(i).val();
             p[settings.id] = self.id;
