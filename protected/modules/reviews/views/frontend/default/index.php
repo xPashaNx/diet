@@ -69,7 +69,7 @@ if (Yii::app()->user->role == 'admin')
             'columns' => array(
                 array(
                     'type'  => 'raw',
-                    'value' => 'CHtml::checkbox("", CHtml::encode($data->checked), array("class" => "check", "data-id" => $data->id))',
+                    'value' => 'CHtml::checkbox("", CHtml::encode(date("d.m.Y", strtotime($data->checked))), array("class" => "check", "data-id" => $data->id))',
                 ),
                 array(
                     'name' => 'name',
@@ -108,13 +108,14 @@ if (Yii::app()->user->role == 'admin')
 else
 {
     if ($reviews)
-        foreach ($reviews as $review)
-        {
-            echo 'Дата: '.$review->date_create.'<br>';
-            echo 'Имя пользователя: '.$review->name.'<br>';
-            echo 'Текст отзыва: '.$review->text.'<br><br>';
-        }
+    {
+        $this->widget('zii.widgets.CListView', array(
+            'dataProvider' => $reviews,
+            'itemView' => '_view',
+        ));
+    }
     else
         echo 'Нет отзывов!<br>';
+
     echo CHtml::link('Оставить отзыв', array('default/create'), array('class' => 'add-review'));
 }

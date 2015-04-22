@@ -39,6 +39,11 @@ class DefaultController extends BaseReviewsController
         if (isset($_GET['Reviews']))
             $model->attributes = $_GET['Reviews'];
 
+        $reviews =  new CActiveDataProvider('Reviews', array(
+            'criteria' => array('condition' => 'public=1', 'order' => 'date_create DESC'),
+            'pagination' => array('pageSize' => ReviewsConfig::model()->findByPk(1)->reviews_perpage),
+        ));
+
         $this->render('index',array(
             'reviews' => $reviews,
             'model' => $model,
