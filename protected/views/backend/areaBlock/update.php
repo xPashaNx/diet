@@ -1,6 +1,6 @@
 <?php
     $this->breadcrumbs = array(
-        'Управление блоками' => array('outarea/index'),
+        'Управление блоками' => array('area/index'),
         'Редактирование блока ' . $model->title,
     );
 

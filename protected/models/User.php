@@ -55,7 +55,7 @@ class User extends CActiveRecord
 			array('newPassword', 'compare', 'compareAttribute' => 'confirmNewPassword'),
 			array('confirmNewPassword', 'safe'),
 			array('newPassword', 'setNewPassword'),
-			array('email', 'email', 'message' => 'Неверный адрес электронной почты.', 'on' => 'changeemail'),
+			array('email', 'email', 'message' => 'Неверный адрес электронной почты.'),
 			array('username, password, newPassword, confirmNewPassword', 'match', 'pattern' => '/[a-zA-Z0-9.-_]+$/s', 'message' => '{attribute} может содержать только латинские буквы, цифры, точки, тире и нижнее подчеркивание.'),
 		);
 	}

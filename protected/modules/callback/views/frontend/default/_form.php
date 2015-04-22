@@ -1,8 +1,32 @@
+<?php
+Yii::app()->clientScript->registerScript("send-message", "
+        $(document).off('click', '.button');
+        $(document).on('click', '.button', function(){
+            $.ajax({
+                type: 'POST',
+                url: '/callback',
+                cache: false,
+                async: false,
+                data: $('#review-form').serialize(),
+				success:function(data) {
+				    $('.fotoport').html(data);
+				},
+				error: function(data){
+				}
+            });
+            //return false;
+        });
+    ", CClientScript::POS_READY);
+?>
 <div class="fotoport">
+    <?php if (Yii::app()->user->hasFlash('callback_message')): ?>
+        <div class="flash-success">
+            <?php echo Yii::app()->user->getFlash('callback_message'); ?>
+        </div>
+    <?php else: ?>
     <?php $form = $this->beginWidget('CActiveForm', array(
                           'id' => 'review-form',
                           'htmlOptions' => array('enctype' => 'multipart/form-data'),
-                       'action' => '/callback'
                      )); ?>
 
     <table id="form">
@@ -22,10 +46,14 @@
             <td><?php echo $form->textField($model, 'email'); ?></td>
         </tr>
         <tr>
+            <td><?php echo $form->labelEx($model, 'phone'); ?></td>
+            <td><?php echo $form->textField($model, 'phone'); ?></td>
+        </tr>
+        <tr>
             <td class="top"><?php echo $form->labelEx($model, 'text'); ?></td>
             <td><?php echo $form->textArea($model, 'text', array('class' => 'txt', 'rows' => 6, 'cols' => 50)); ?></td>
         </tr>
-        <?/*php if (extension_loaded('gd')): ?>
+        <?php if (extension_loaded('gd') and CallbackConfig::model()->checkCaptchaEnabled()): ?>
         <tr>
             <td></td>
             <td><? $this->widget('CCaptcha', array('captchaAction'=>'/callback/default/captcha', 'buttonLabel'=>'Обновить картинку'))?></td>
@@ -39,11 +67,12 @@
             </td>
 
         </tr>
-        <?php endif; */?>
+        <?php endif; ?>
         <tr>
             <td></td>
-            <td class="button"><?php echo CHtml::submitButton('Отправить сообщение', array('class' => 'send')); ?></td>
+            <td class="button"><?php echo CHtml::button('Отправить сообщение', array('id'=>'send-message', 'name' => 'Send message')); ?></td>
         </tr>
     </table>
     <?php $this->endWidget(); ?>
+    <?php endif; ?>
 </div>

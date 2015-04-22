@@ -50,7 +50,8 @@ class Page extends CActiveRecord
     public function rules()
     {
         return array(
-            array('title, parent_id, link', 'required'),
+            array('title, link', 'required'),
+            array('title, link', 'length', 'max' => 255),
             array('link','unique', 'message' => 'Страница со ссылкой {value} уже существует!'),
             array('link', 'match', 'pattern' => '/^[A-Za-z0-9\-]+$/u', 'message' => 'Поле {attribute} должно содержать только латинские буквы, цифры и знак "-"!'),
             array('parent_id', 'length', 'max' => 11),

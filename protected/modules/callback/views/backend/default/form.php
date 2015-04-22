@@ -88,6 +88,24 @@ $disabled = ($model->enabled ? '' : 'disabled');
 			<?php echo $form->error($model, 'sender'); ?>
 		</div>
 
+        <div class="row">
+            <?php echo $form->label($model, 'email'); ?>
+            <?php echo $form->textField($model, 'email'); ?>
+            <?php echo $form->error($model, 'email'); ?>
+        </div>
+
+        <div class="row">
+            <?php echo $form->label($model, 'verify_code'); ?>
+            <?php echo $form->checkBox($model, 'verify_code'); ?>
+            <?php echo $form->error($model, 'verify_code'); ?>
+        </div>
+
+        <div class="row">
+            <?php echo $form->label($model, 'timeout'); ?>
+            <?php echo $form->textField($model, 'timeout'); ?>
+            <?php echo $form->error($model, 'timeout'); ?>
+        </div>
+
 		<div class="row buttons">
 			<?php echo CHtml::submitButton('Сохранить'); ?>
 		</div>

@@ -45,12 +45,6 @@ Yii::app()->clientScript
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model, 'css_class'); ?>
-		<?php echo $form->textField($model, 'css_class', array('size' => 60, 'maxlength' => 255));?>
-		<?php echo $form->error($model, 'css_class'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model, 'content'); ?>
         <?php $this->widget('ext.ckeditor.CKEditor', array('model' => $model, 'attribute' => 'content', 'language' => 'ru', 'editorTemplate' => 'full')); ?>
 		<?php echo $form->error($model, 'content'); ?>

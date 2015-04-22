@@ -95,8 +95,8 @@ class MenuItem extends CActiveRecord
         $criteria = new CDbCriteria;
         $criteria->compare('menu_id', $this->menu_id);
         $criteria->compare('parent_id', $this->parent_id);
-        $criteria->compare('title', $this->title, true);
-        $criteria->compare('link', $this->link,true);
+        $criteria->compare('t.title', $this->title, true);
+        $criteria->compare('t.link', $this->link,true);
 		$criteria->order = 'sort_order';
 
         return new CActiveDataProvider($this, array(

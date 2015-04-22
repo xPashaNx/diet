@@ -1,24 +1,18 @@
 <?php $this->beginContent('//layouts/main_layout'); ?>
-<div class="inner">
-    <div class="advs">
+
+    <div class="about-company">
+        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'o-kompanii')); ?>
+    </div>
+    <div class="middle-line">
+        <h2>Ваши услуги</h2>
+        <div class="rope-left"></div>
+        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'vashi-uslugi-na-glavnoj')); ?>
+        <div class="rope-right"></div>
+    </div>
+    <div class="advantages-line">
+        <h2>Преимущества</h2>
         <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'preimuschestva-na-glavnoj')); ?>
-    </div>
-</div>
-<div class="test-access">
-    <div class="cbg"></div>
-    <div class="inner">
-        <div class="info">
-            <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'dostupy-na-glavnoj')); ?>
-            <div class="info-lnb"></div>
-            <div class="info-lnt"></div>
-        </div>
-        <a class="btn" href="/manage">Войти</a>
-    </div>
-</div>
-<div class="inner">
-    <div class="services">
-        <h1>Наши услуги</h1>
-        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'uslugi-na-glavnoj')); ?>
+        <img src="images/boat.png" alt="">
     </div>
 </div>
 <div class="inner">

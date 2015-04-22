@@ -48,7 +48,7 @@ class Config extends CActiveRecord
             'id' => 'ID',
             'sitename' => 'Название сайта',
             'author' => 'Автор сайта',
-            'adminonly' => 'Закрыть сайт для общего доступа',
+            'adminonly' => 'Скрыть сайт для общего доступа',
             'mainpage_id' => 'Главная страница',
         );
     }
