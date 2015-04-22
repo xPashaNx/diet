@@ -114,6 +114,8 @@ class ImageController extends BackEndController
     {
         if (isset($_POST['sortArr']))
         {
+			var_dump($_POST['sortArr']);
+
             $sortData = $_POST['sortArr'];
             $photos = CatalogImage::model()->findAllByAttributes(array('id_service' => $serviceId), array('order' => 'sort_order'));
             foreach ($photos as $key => $photo)

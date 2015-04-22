@@ -242,42 +242,40 @@ class CatalogService extends CActiveRecord
                     $serviceImages = new CatalogImage;
                     $serviceImagesName = md5(time().$file->name).'.'.$file->getExtensionName();
                     $serviceImages->image = $serviceImagesName;
-                    $serviceImages->id_service = $this->id;
-                    if ($serviceImages->save())
+
+                    $file->saveAs($this->folder . '/moreimages/' . $serviceImagesName);
+                    $this->images[] = $serviceImages;
+                    if ($catalogConfig->watermark_image && !$catalogConfig->no_watermark)
                     {
-                        $file->saveAs($this->folder . '/moreimages/' . $serviceImagesName);
-                        //$this->images[] = $serviceImages;
-                        if ($catalogConfig->watermark_image && !$catalogConfig->no_watermark)
-                        {
+                        Yii::app()->ih
+                            ->load($this->folder . '/moreimages/' . $serviceImagesName)
+                            ->watermark($this->folder . '/watermark/'.$catalogConfig->watermark_image , $catalogConfig->watermark_x, $catalogConfig->watermark_y)
+                            ->save();
+                    }
+
+                    switch($catalogConfig->resize_mode)
+                    {
+                        case 2:
                             Yii::app()->ih
                                 ->load($this->folder . '/moreimages/' . $serviceImagesName)
-                                ->watermark($this->folder . '/watermark/'.$catalogConfig->watermark_image , $catalogConfig->watermark_x, $catalogConfig->watermark_y)
-                                ->save();
-                        }
+                                ->resizeCanvas($catalogConfig->s_image_small_w, $catalogConfig->s_image_small_h)
+                                ->save($this->folder . '/moreimages/small/' . $serviceImagesName)
+                                ->reload()
+                                ->resizeCanvas($catalogConfig->s_image_middle_w, $catalogConfig->s_image_middle_h)
+                                ->save($this->folder . '/moreimages/medium/' .$serviceImagesName);
+                            break;
 
-                        switch($catalogConfig->resize_mode)
-                        {
-                            case 2:
-                                Yii::app()->ih
-                                    ->load($this->folder . '/moreimages/' . $serviceImagesName)
-                                    ->resizeCanvas($catalogConfig->s_image_small_w, $catalogConfig->s_image_small_h)
-                                    ->save($this->folder . '/moreimages/small/' . $serviceImagesName)
-                                    ->reload()
-                                    ->resizeCanvas($catalogConfig->s_image_middle_w, $catalogConfig->s_image_middle_h)
-                                    ->save($this->folder . '/moreimages/medium/' .$serviceImagesName);
-                                break;
-
-                            default:
-                                Yii::app()->ih
-                                    ->load($this->folder . '/moreimages/' . $serviceImagesName)
-                                    ->resize($catalogConfig->s_image_small_w, $catalogConfig->s_image_small_h)
-                                    ->save($this->folder . '/moreimages/small/' . $serviceImagesName)
-                                    ->reload()
-                                    ->resize($catalogConfig->s_image_middle_w, $catalogConfig->s_image_middle_h)
-                                    ->save($this->folder . '/moreimages/medium/' .$serviceImagesName);
-                                break;
-                        }
+                        default:
+                            Yii::app()->ih
+                                ->load($this->folder . '/moreimages/' . $serviceImagesName)
+                                ->resize($catalogConfig->s_image_small_w, $catalogConfig->s_image_small_h)
+                                ->save($this->folder . '/moreimages/small/' . $serviceImagesName)
+                                ->reload()
+                                ->resize($catalogConfig->s_image_middle_w, $catalogConfig->s_image_middle_h)
+                                ->save($this->folder . '/moreimages/medium/' .$serviceImagesName);
+                            break;
                     }
+
 				}
 			}
 
@@ -292,7 +290,7 @@ class CatalogService extends CActiveRecord
      *
 	 * @return boolean whether the record should be saved
 	 */
-    /*protected function afterSave()
+    protected function afterSave()
     {
         parent::afterSave();
 
@@ -302,7 +300,7 @@ class CatalogService extends CActiveRecord
 				$image->id_service = $this->id;
 				$image->save();
 			}
-    }*/
+    }
 
     /**
      * Remove the related model

@@ -68,7 +68,6 @@ $cs->registerScript('photo_sort', "
 	$(document).on('click', '.image_block a.sort-next', function(){
 		var currentSort = $(this).parents('.image_block').data('sort'),
 			sortArr = [];
-
 		$('.image_block').each(function(i) {
 			sortArr.push($(this).data('sort'));
 		});
@@ -79,6 +78,7 @@ $cs->registerScript('photo_sort', "
 				break;
 			}
 		}
+		console.log($(this));
 		$.ajax({
 			type: 'POST',
 			url: $(this).prop('href'),
@@ -162,7 +162,7 @@ $cs->registerScript('translit', "
 		<p class="label">Дополнительные фото</p>
 		<?php if ($model->catalogImages): ?>
 			<?php foreach ($model->catalogImages as $image) :?>
-				<div class="image_block" data-sort="'.$image->sort_order.'">
+				<div class="image_block" data-sort="<?php echo $image->sort_order; ?>">
 					<div class="image">
 						<a href="#" class="thumb">
 							<span>
@@ -183,9 +183,9 @@ $cs->registerScript('translit', "
 					);
 				?>
                 <div class='editable' id='<?php echo $image->id; ?>'><?php echo $image->alt_text; ?> </div>
-                <?php echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-prev'));?>
+                <?php echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-prev'));?>
                 <?php echo '&nbsp'; ?>
-					<?php echo CHtml::link(CHtml::image('/images/admin/sort_up.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-next'));?>
+					<?php echo CHtml::link(CHtml::image('/images/admin/sort_down.png'), array('image/sortPhoto', 'serviceId' => $image->id_service), array('class' => 'sort-next'));?>
 				</div>
 			<?php endforeach;?>
 		<?php endif; ?>
