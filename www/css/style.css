@@ -250,7 +250,7 @@ header .middle-header{
 	position: relative;
 }
 header .middle-header .logo:after{
-	background: url(/images/grid.png);
+	background: url("/images/grid.png");
 	position: absolute;
 	height: 74px;
 	width: 425px;
@@ -285,7 +285,6 @@ header .middle-header .logo p{
 /* HEADER END*/
 
 /* MAIN */
-
 .main .btn-login-line{
 	height: 41px;
 	text-align: right;
@@ -298,8 +297,6 @@ header .middle-header .logo p{
 	font-family: 'BebasNeue';
 	font-weight: normal;
 	font-size: 22px;
-	/* margin-top: 6px; */
-	/* margin-right: 3px; */
 	letter-spacing: 0.5px;
 	color: #fff;
 	display: inline-block;
@@ -313,7 +310,6 @@ header .middle-header .logo p{
 }
 
 .btn-login-line a{
-	/* display: block; */
 	background: url("/images/login.png") no-repeat;
 	text-decoration: none;
 	width: 125px;
@@ -398,6 +394,7 @@ header .middle-header .logo p{
 	margin: 0;
 }
 .main nav ul li {
+	color: #fff;
 	margin-left: 32px;
 	list-style-type: none;
 	display: inline;
@@ -409,7 +406,6 @@ header .middle-header .logo p{
 	text-decoration: none;
 	font-family: "League Gothic";
 	font-size: 36px;
-	color: #fff;
 	text-transform: uppercase;
 	min-height: 0px;
 }
@@ -419,8 +415,8 @@ header .middle-header .logo p{
 .main nav ul li a:active{
 	color: #f69116;
 }
-.main nav ul li.active{
-	color: #f69116 !important;
+.main nav ul li.active a{
+	color: #f69116;
 }
 /*NAV END */
 /* breadcrumbs BEGIN */
@@ -728,7 +724,8 @@ header .middle-header .logo p{
 	bottom: 10px;
 	background: url("/images/arrow-orange.jpg");
 }
-.main .bottom-line:before{
+
+.main .bottom-line:after{
 	background: url("/images/bg-news-middle-lines.png") no-repeat;
 	display: block;
 	position: absolute;
@@ -737,6 +734,7 @@ header .middle-header .logo p{
 	content: "";
 	width: 575px;
 	height: 528px;
+	z-index: -1;
 }
 .main .bottom-line{
 	margin-top: 15px;

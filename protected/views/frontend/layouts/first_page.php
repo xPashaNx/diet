@@ -1,5 +1,9 @@
 <?php $this->beginContent('//layouts/main_layout'); ?>
 
+    <div class="test_banners">
+        <?php $this->widget('application.modules.banners.widgets.BannersWidget', array()); ?>
+    </div>
+
     <div class="about-company">
         <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'o-kompanii')); ?>
     </div>

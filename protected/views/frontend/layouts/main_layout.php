@@ -76,23 +76,20 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
                 <?php $this->widget('application.widgets.OutMenu', array('name' => 'main')); ?>
             </nav>
         </div>
-
-        <?php echo $content; ?>
-
-        <div class="template-footer">
+        <div class = "content">
+            <?php echo $content; ?>
             <div class="bottom-line">
-                <div class="left-col">© ООО «<span>Fishpangram</span>», 2015</div>
+                <div class="left-col">© ООО «Fishpangram», 2015</div>
                 <div class="right-col">
                     <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'sotsseti-v-podvale-shablona')); ?>
                 </div>
             </div>
         </div>
+        <div class="empty"></div>
     </div>
-
-
     <footer>
         <div class="top-foot ">
-            <div class="inner">
+            <div class="wrapper-inner">
                 <p>
                     Весь контент на демонстрационной версии является выдуманным, а все совпадения с реальными
                     организациями - случайны.
@@ -102,19 +99,17 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
             </div>
         </div>
         <div class="btn-order-line">
-            <div class="inner">
+            <div class="wrapper-inner">
                 <a href="#">заказать</a>
             </div>
         </div>
         <div class="bottom-foot">
-            <div class="inner">
+            <div class="wrapper-inner">
                 <a href="http://plus1dev.ru/" class="left-col">© ООО «Плюс один», 2015</a>
-
                 <div class="right-col">
-                    <a href="https://vk.com/plusodin_web" class="vk" target="_blank"></a>
-                    <a href="https://www.facebook.com/plusodin" class="fb" target="_blank"></a>
-<!--                    <a href="#" class="in"></a>-->
-                    <a href="https://twitter.com/plusodinn" class="tw" target="_blank"></a>
+                    <a href="https://vk.com/plusodin_web" class="socialnet vk" target="_blank"></a>
+                    <a href="https://www.facebook.com/plusodin" class="socialnet fb" target="_blank"></a>
+                    <a href="https://twitter.com/plusodinn" class="socialnet tw" target="_blank"></a>
                 </div>
             </div>
         </div>

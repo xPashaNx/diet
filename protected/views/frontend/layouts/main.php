@@ -1,5 +1,5 @@
 <?php $this->beginContent('//layouts/main_layout'); ?>
-<div class="inner">
+<div class="content-line">
 	<div class="breadcrumbs">
 	<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 		'homeLink' => CHtml::link('Главная','/'),
