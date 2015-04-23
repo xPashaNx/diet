@@ -67,27 +67,15 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
                 <span>Протестировать панель администратора</span><a href="/manage">войти</a>
             </div>
             <div class="bottom-header">
-                <a href="#">
-                    <div class="slogan">
-                        <h1>sharkcompany</h1>
-                        <p><?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?></p>
-                    </div>
-                </a>
-
-                <div class="left">
-                    <img src="images/fish.svg" alt="" class="fish">
-
-                </div>
+                <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
                 <div class="phone">
                     <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'telefony-v-shapke')); ?>
                 </div>
             </div>
-            <div class="wave-line"></div>
+            <nav>
+                <?php $this->widget('application.widgets.OutMenu', array('name' => 'main')); ?>
+            </nav>
         </div>
-
-        <nav>
-            <?php $this->widget('application.widgets.OutMenu', array('name' => 'main')); ?>
-        </nav>
 
         <?php echo $content; ?>
 
