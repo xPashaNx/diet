@@ -1,7 +1,11 @@
 <?php $this->beginContent('//layouts/main_layout'); ?>
 
-    <div class="test_banners">
-        <?php $this->widget('application.modules.banners.widgets.BannersWidget', array()); ?>
+   <div class="banners">
+        <div class="banner">
+            <div class="">
+                <?php $this->widget('application.modules.banners.widgets.BannersWidget', array('areaname' => 'header'));?>
+            </div>
+	    </div>
     </div>
 
     <div class="about-company">
