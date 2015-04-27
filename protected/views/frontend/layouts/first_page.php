@@ -20,17 +20,13 @@
         <?php $this->widget('application.modules.reviews.widgets.ReviewsWidget'); ?>
     </div>
 
-    <div class="wrapper-bottom-news-lines">
-        <div class = "news-line">
-            <div class="photo-gallery">
-                <?php $this->widget('application.modules.gallery.widgets.GalleryWidget');?>
-            </div>
-            <div class="news">
-                <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
-            </div>
+    <div class = "news-line">
+        <div class="photo-gallery">
+            <?php $this->widget('application.modules.gallery.widgets.GalleryWidget');?>
         </div>
-        <div class = "bottom-line">
-
+        <div class="news">
+            <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
         </div>
     </div>
+
 <?php $this->endContent(); ?>

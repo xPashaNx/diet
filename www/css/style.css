@@ -13,7 +13,7 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'MyriadPro';
+    font-family: 'Myriad Pro';
     src: url('fonts/MyriadPro-Regular.eot');
     src: local('☺'), url('fonts/MyriadPro-Regular.woff') format('woff'), url('fonts/MyriadPro-Regular.ttf') format('truetype'), url('fonts/MyriadPro-Regular.otf') format('opentype');
     font-weight: normal;
@@ -73,7 +73,7 @@ p{
 a{
 	color: #fae27d;
 	text-decoration: underline;
-	font: 16px "MyriadPro";
+	font: 16px "Myriad Pro";
 }
 span{
 	font-family: 'League Gothic';
@@ -429,7 +429,7 @@ header .middle-header .logo p{
 	margin: 0;
 	height: 17px;
 	float: left;
-	font-family: "MyriadPro";
+	font-family: "Myriad Pro";
 }
 .main .breadcrumbs ul li{
 	float: left;
@@ -453,7 +453,7 @@ header .middle-header .logo p{
 }
 .main .breadcrumbs ul li a{
 	text-decoration: underline;
-	font-family: "MyriadPro";
+	font-family: "Myriad Pro";
 	font-size: 15px;
 	color: #e6d076;
 	text-transform: none;
@@ -626,9 +626,6 @@ header .middle-header .logo p{
 	margin: 15px 0 0 130px;
 }
 
-.main .wrapper-bottom-news-lines{
-	/*background: url("../images/bg-news-middle-lines.png") right bottom no-repeat #29253b;*/
-}
 .main .news-line {
 	position: relative;
 	background: url("../images/bg-photogallery.png") left top no-repeat;
@@ -645,11 +642,8 @@ header .middle-header .logo p{
 	float: left;
 }
 .main .news-line .photo-gallery a{
-	width: 260px;
-	height: 260px;
 	margin: 25px 0 0 0;
 	float: left;
-	background: url("../images/photo-gallery.jpg");
 	position:relative;
 }
 .main .news-line .photo-gallery a:hover::after{
@@ -663,7 +657,7 @@ header .middle-header .logo p{
 	color: #fff;
 	text-align: left;
 	font-size: 16px;
-	font-family: "MyriadPro";
+	font-family: "Myriad Pro";
 	padding: 5px 10px;
 	height: 47px;
 }
@@ -694,7 +688,7 @@ header .middle-header .logo p{
 	text-transform: lowercase;
 }
 .main .news-line .news .news-item p{
-	font-family: 'MyriadPro';
+	font-family: 'Myriad Pro';
 	font-size: 16px;
 	color: #fff;
 	float: left;
@@ -731,7 +725,7 @@ header .middle-header .logo p{
 }
 
 .main .bottom-line .left-col{
-	font-family: "MyriadPro";
+	font-family: "Myriad Pro";
 	text-transform: uppercase;
 	font-size: 15px;
 	color: #fff;
@@ -852,7 +846,7 @@ header .middle-header .logo p{
 }
 
 .form-feedback form a{
-	font-family: "MyriadPro";
+	font-family: "Myriad Pro";
 	font-size: 14px;
 	text-decoration: underline;
 	color: #fff;
@@ -954,7 +948,7 @@ footer .bottom-foot{
 }
 footer .bottom-foot .left-col{
 	float: left;
-	font-family: 'MyriadPro';
+	font-family: 'Myriad Pro';
 	font-size: 16px;
 	color: #fff;
 	text-decoration: none;
@@ -1019,7 +1013,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 	text-transform: lowercase;
 }
 .main .content-line .content-inner .news-item p{
-	font-family: 'MyriadPro';
+	font-family: 'Myriad Pro';
 	font-size: 16px;
 	color: #fff;
 	float: left;

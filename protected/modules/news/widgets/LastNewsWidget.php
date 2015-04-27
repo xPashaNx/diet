@@ -13,13 +13,10 @@ class LastNewsWidget extends CWidget {
         $criteria->limit = $limit;
         $criteria->order = 'date DESC';
 
-        $dataProvider = new CActiveDataProvider('News', array(
-            'criteria' => $criteria,
-            'pagination' => false,
-        ));
+        $news = News::model()->findAll($criteria);
 
         $this->render('lastnews', array(
-            'dataProvider' => $dataProvider,
+            'news' => $news,
         ));
 
         return parent::run();
