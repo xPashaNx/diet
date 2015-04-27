@@ -2,38 +2,35 @@
 
    <div class="banners">
         <div class="banner">
-            <div class="">
-                <?php $this->widget('application.modules.banners.widgets.BannersWidget', array('areaname' => 'header'));?>
-            </div>
+            <?php $this->widget('application.modules.banners.widgets.BannersWidget', array('areaname' => 'header'));?>
 	    </div>
-    </div>
+   </div>
 
-    <div class="about-company">
-        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'o-kompanii')); ?>
-    </div>
-    <div class="middle-line">
-        <h2>Ваши услуги</h2>
-        <div class="rope-left"></div>
-        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'vashi-uslugi-na-glavnoj')); ?>
-        <div class="rope-right"></div>
-    </div>
-    <div class="advantages-line">
-        <h2>Преимущества</h2>
-        <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'preimuschestva-na-glavnoj')); ?>
-        <img src="images/boat.png" alt="">
-    </div>
-</div>
-<div class="inner">
-    <?php echo $content; ?>
-    <div class="clear"></div>
-	<?$this->widget('application.modules.gallery.widgets.GalleryWidget');?>
-    <br/><hr/>
-    <div>
-        <h3>Вывод виджита "LastNewsWidget":</h3>
-        <div>
-            <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
+    <div class="service-line">
+        <div class="line-inner">
+            <h1>Услуги компании</h1>
+            <div class="service-inner">
+                <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'vashi-uslugi-na-glavnoj')); ?>
+            </div>
         </div>
     </div>
-    <br/><hr/>
-</div>
+
+    <div class="feedback-line">
+        <h1>отзывы</h1>
+        <?php $this->widget('application.modules.reviews.widgets.ReviewsWidget'); ?>
+    </div>
+
+    <div class="wrapper-bottom-news-lines">
+        <div class = "news-line">
+            <div class="photo-gallery">
+                <?php $this->widget('application.modules.gallery.widgets.GalleryWidget');?>
+            </div>
+            <div class="news">
+                <?php $this->widget('application.modules.news.widgets.LastNewsWidget'); ?>
+            </div>
+        </div>
+        <div class = "bottom-line">
+
+        </div>
+    </div>
 <?php $this->endContent(); ?>

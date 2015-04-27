@@ -1,7 +1,4 @@
 <?php
-
-//Yii::import('zii.widgets.CWidget');
-//Yii::import('zii.web.widgets.CWidget');
 Yii::import('application.modules.news.models.News');
 Yii::import('application.modules.news.models.NewsConfig');
 

@@ -10,6 +10,13 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
 	});
 ", CClientScript::POS_READY);
 ?>
+<?php
+Yii::app()->clientScript
+    ->registerScriptFile('/js/jquery.jcarousel.min.js', CClientScript::POS_HEAD)
+    ->registerScriptFile('/js/jcarousel.responsive.js', CClientScript::POS_HEAD)
+    ->registerScriptFile('/js/responsiveslides.min.js', CClientScript::POS_HEAD)
+    ->registerScriptFile('/js/responsiveslides.js', CClientScript::POS_HEAD)
+?>
 
 <!DOCTYPE html>
 <html>
@@ -24,6 +31,8 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css"/>
 	<script src="/js/lightbox.min.js"></script>
 	<link href="/css/lightbox.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/responsiveslides.css" rel="stylesheet" type="text/css">
+    <link href="/css/jcarousel.responsive.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="wrapper">

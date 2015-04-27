@@ -31,6 +31,5 @@ class GalleryWidget extends CWidget {
         
 		return parent::run();
 	}
-
 }
 ?>

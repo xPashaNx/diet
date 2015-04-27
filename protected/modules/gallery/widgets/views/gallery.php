@@ -1,7 +1,7 @@
 <div class="gallery">
 	<div class="image">
-	<?if ($gallery and $gallery->cover):?>
-		<a href="/gallery/default/view/id/<?=$gallery->id?>"><img src="/upload/gallery/medium/<?=$gallery->cover->file?>"  alt="" /></a>
+	<?php if ($gallery and $gallery->cover):?>
+		<a href="/gallery/default/view/id/<?php echo $gallery->id; ?>"><img src="/upload/gallery/medium/<?php echo $gallery->cover->file; ?>"  alt="" /></a>
 	<?else:?>
 		Нет фото!
 	<?endif?>
