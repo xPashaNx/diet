@@ -667,6 +667,10 @@ header .middle-header .logo p{
 	margin: 40px 0 0 100px;
 	float: left;
 }
+.main .news-line .photo-gallery img{
+	height: 260px;
+	width: 260px;
+}
 .main .news-line .photo-gallery a{
 	margin: 25px 0 0 0;
 	float: left;
