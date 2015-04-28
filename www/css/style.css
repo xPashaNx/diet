@@ -124,7 +124,6 @@ ul{
 .line-inner{position: relative; width: 820px; min-width: 820px; margin: 0 auto;}
 .clear{clear: both;}
 
-
 /* HEADER SCROLL*/
 
 .header-scroll{
@@ -136,7 +135,6 @@ ul{
 	top: -95px;
 	left: 0;
 	right: 0;
-
 }
 .header-scroll .back{
 	background: url("/images/icons-header-scroll3.svg") 0px 0px no-repeat;
@@ -195,9 +193,7 @@ ul{
 	margin-right: 18px;
 	margin-top: 10px;
 }
-
 /* HEADER SCROLL END*/
-
 /* HEADER */
 header{
 	min-width: 1025px;
@@ -272,7 +268,6 @@ header .middle-header .logo a{
 	padding-left: 94px;
 	display: block;
 	margin-left: 41px;
-
 }
 
 header .middle-header .logo p{
@@ -281,7 +276,6 @@ header .middle-header .logo p{
 	margin-top: -13px;
 	font-family: "BebasNeue-Light";
 }
-
 /* HEADER END*/
 
 /* MAIN */
@@ -359,7 +353,6 @@ header .middle-header .logo p{
 	text-transform: uppercase;
 	margin-top: 4px;
 }
-
 .main .bottom-header .slogan a{
 	text-decoration: none;
 	text-transform: none;
@@ -386,7 +379,6 @@ header .middle-header .logo p{
 	font-size: 12px;
 	vertical-align: 5px;
 }
-
 /*NAV */
 .main nav{
 	height: 35px;
@@ -421,7 +413,6 @@ header .middle-header .logo p{
 }
 /*NAV END */
 /* breadcrumbs BEGIN */
-
 .main .breadcrumbs{
 	padding-top: 30px;
 }
@@ -435,7 +426,6 @@ header .middle-header .logo p{
 	float: left;
 	color: #fff;
 	margin: 0 30px 0 0px;
-
 	list-style: url("../images/delimitr-cream.jpg");
 	padding-left: 15px;
 	vertical-align: bottom;
@@ -460,17 +450,14 @@ header .middle-header .logo p{
 	min-height: 0px;
 }
 .main .breadcrumbs ul li a:hover{
-	/*border-bottom: solid 2px #f69116;*/
 	color: #f69116;
 }
 /* breadcrumbs END */
-
 /* MAIN */
 .main .service-line{
 	height: 350px;
 	background: url("../images/bg-service.png") right bottom no-repeat #29253b;
 }
-
 .main .service-line h1{
 	padding: 37px 0 25px 0;
 	margin: 0;
@@ -504,7 +491,6 @@ header .middle-header .logo p{
 .main .service p{
 	margin-left: 80px;
 }
-
 .service-inner .block:nth-child(1) .service:before { content: "1"; }
 .service-inner .block:nth-child(2) .service:before { content: "2"; }
 .service-inner .block:nth-child(3) .service:before { content: "3"; }
@@ -523,11 +509,9 @@ header .middle-header .logo p{
 	padding: 40px 0 0 0;
 	margin: 0 0 15px 100px;
 }
-
 .main .feedback-inner h1{
 	display: inline-block;
 }
-
 .main .feedback-title:after{
 	content: '';
 	display: inline-block;
@@ -567,11 +551,9 @@ header .middle-header .logo p{
 	bottom: 10px;
 	background: url("/images/arrow-orange.jpg");
 }
-
 .main .feedback-line .feedback-item.review1{
 	background-image: url("/images/slider-shark1.png");
 }
-
 .main .feedback-line .feedback-item.review2{
 	background-image: url("/images/slider-shark2.png");
 }
@@ -583,11 +565,9 @@ header .middle-header .logo p{
 	width: 260px;
 	background: no-repeat 160px 13px #353149;
 }
-
 .main .feedback-line .feedback-item{
 	position: relative;
 }
-
 .main .feedback-item h2{
 	color: #fff;
 	padding: 20px 0 0 20px;
@@ -613,7 +593,6 @@ header .middle-header .logo p{
 	padding: 0 0 0 0;
 	margin: 35px 0 0 20px;
 }
-
 .main .feedback-line .feedback-item .feedback-date{
 	padding: 0;
 	margin: 0;
@@ -627,7 +606,6 @@ header .middle-header .logo p{
 	height: 20px;
 	width: 60px;
 }
-
 .main .feedback-item span{
 	margin-left: 20px;
 }
@@ -643,7 +621,6 @@ header .middle-header .logo p{
 	width: 81px;
 	height: 100px;
 }
-
 .main .feedback-inner .feedback-item-date{
 	color: #f69116;
 	font-family: "League Gothic";
@@ -651,7 +628,6 @@ header .middle-header .logo p{
 	text-transform: uppercase;
 	margin: 15px 0 0 130px;
 }
-
 .main .news-line {
 	position: relative;
 	background: url("../images/bg-photogallery.png") left top no-repeat;
@@ -725,7 +701,6 @@ header .middle-header .logo p{
 	padding: 5px 30px 0 20px;
 	line-height: 1.3em;
 }
-
 .main .news-item a{
 	width: 20px;
 	height: 20px;
@@ -734,9 +709,9 @@ header .middle-header .logo p{
 	bottom: 10px;
 	background: url("../images/arrow-orange.jpg");
 }
-
+/*
 .main .bottom-line:after{
-	background: url("../images/bg-news-middle-lines.png") no-repeat;
+
 	display: block;
 	position: absolute;
 	right: 0;
@@ -745,15 +720,15 @@ header .middle-header .logo p{
 	width: 575px;
 	height: 528px;
 	z-index: -1;
-}
+}*/
 .main .bottom-line{
+	background: url("../images/bg-news-middle-lines.png") no-repeat;
 	margin-top: 15px;
 	height: 124px;
 	background: rgba(9, 7, 17, 0.3);
 	position: relative;
 	z-index: 0;
 }
-
 .main .bottom-line .left-col{
 	font-family: "Myriad Pro";
 	text-transform: uppercase;
@@ -823,7 +798,6 @@ header .middle-header .logo p{
 	font-family: Verdana;
 	font-size: 12px;
 }
-
 .content-inner .form-contacts #submit{
 	width: 144px;
 	height: 38px;
@@ -833,7 +807,6 @@ header .middle-header .logo p{
 	font-family: "League Gothic";
 	font-size: 25px;
 }
-
 .content-inner .form-contacts form textarea {
 	display: block;
 	margin: 0 auto 24px auto;
@@ -874,7 +847,6 @@ header .middle-header .logo p{
 	font-family: Verdana;
 	font-size: 12px;
 }
-
 .form-feedback form a{
 	font-family: "Myriad Pro";
 	font-size: 14px;
@@ -917,7 +889,6 @@ header .middle-header .logo p{
 	width: 340px;
 	margin: 0 auto;
 }
-
 .form-feedback form textarea {
 	display: block;
 	margin: 0 auto 24px auto;
@@ -928,9 +899,7 @@ header .middle-header .logo p{
 	border-radius: 3px;
 }
 /*Form feedback END*/
-
 /* MAIN END */
-
 /* FOOTER */
 footer{
 	min-width: 1025px;
@@ -970,7 +939,6 @@ footer .btn-order-line a{
 	text-align: center;
 	padding-top: 10px;
 }
-
 footer .bottom-foot{
 	background-color: #937391;
 	height: 65px;
@@ -1049,44 +1017,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 	float: left;
 	padding: 10px 40px 40px 20px;
 }
-.main .content-line .pagination {
-	/*height: 100px;*/
-}
-.main .content-line .pagination ul{
-
-}
-.main .content-line .pagination ul li{
-	list-style-type: none;
-	color: #000;
-	font-family: "League Gothic";
-	font-size: 20px;
-	float: left;
-	padding: 0px;
-	width: 30px;
-	height: 30px;
-	background-color: #fae27d;
-	text-align: center;
-	vertical-align: middle;
-	line-height: 30px;
-	margin: 0 10px 0 0;
-}
-
-.main .content-line .pagination ul li:hover{
-	border: 2px solid #d4d3d8;
-	background-color: #8f8e99;
-	width: 26px;
-	height: 26px;
-	line-height: 26px;
-}
-.main .content-line .pagination ul li a{
-	text-decoration: none;
-	list-style-type: none;
-	color: #000;
-	font-family: "League Gothic";
-	font-size: 20px;
-}
-
-
 /*page news END */
 
 /* page service BEGIN*/
@@ -1126,6 +1056,34 @@ footer .bottom-foot .right-col .socialnet.tw{
 }
 /*page photo-gallery END*/
 
+/*page contacts BEGIN*/
+.main .contacts-inner{
+
+}
+/*page contacts END*/
+/*page form-thanks BEGIN*/
+.form-thanks h1{
+	color: #f69116;
+	margin: 0;
+	padding: 60px 0 0 73px;
+}
+.form-thanks h2{
+	text-transform: none;
+	font-size: 30px;
+	line-height: 42px;
+	padding: 0 0 0 73px;
+
+}
+.form-thanks form{
+	width: 530px;
+	height: 256px;
+	background: #0a0713;
+	z-index: 1;
+	position: relative;
+	margin: 0 auto;
+}
+/*page form-thanks END*/
+
 
 
 
@@ -1137,6 +1095,33 @@ footer .bottom-foot .right-col .socialnet.tw{
 .content .banners .banner {max-width: 100%; width: 100%; margin-left: 100px; height: 100%;  background: no-repeat top center; -webkit-background-size: auto 100%; -moz-background-size: auto 100%; background-size: auto 100%; position: relative; }
 .content .banners .banner img { position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
+
+/**/
+.list-view .yiiPager{
+	float: left;
+	text-align: left;
+}
+
+.list-view .yiiPager li{
+	color: #000;
+}
+
+.list-view .yiiPager .previous{
+	margin-left: 0;
+}
+
+.list-view .yiiPager li a{
+	padding: 4px 11px;
+	border: none;
+	background-color: #fae27d;
+	color: #000;
+	font-family: "League Gothic";
+	font-size: 20px;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+/**/
 .slider {float:left; position:relative; height: 328px; width: 820px; margin: 0 auto; /*background: url("../images/slider-top-tmp.jpg") 100px 38px no-repeat #29253b;*/}
 .slider-content { position:absolute; width: 820px; height:100%; }
 .sliderArrows a { display: block; text-indent: -9999px; outline: none; z-index: 50; background-image: url("../images/slider/prev_next.png"); width: 42px; height: 42px; position: absolute; top: 50%; margin-top: -15px; }

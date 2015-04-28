@@ -4,39 +4,11 @@
 /* @var $folder_upload News */
 ?>
 
-<div class="news">
-    <?php if ($data->cover_id == 0 && $data->newsImages): ?>
-        <b>
-            <?php echo CHtml::link(
-                CHtml::image('/' . $folder_upload . $data->newsImages[0]->filename, '', array(
-                    'style' => 'width:50%; height:50%; float: left; margin-right: 20px;')),
-                Yii::app()->createUrl('news/default/view', array('id' => $data->id)));?>
-        </b>
-    <?php endif ?>
-
-    <?php foreach ($data->newsImages as $image) : ?>
-        <?php if ($image->id == $data->cover_id) : ?>
-            <b>
-                <?php echo CHtml::link(
-                    CHtml::image('/' . $folder_upload . $image->filename, '', array(
-                        'style' => 'width:50%; height:50%; float: left; margin-right: 20px;')),
-                    Yii::app()->createUrl('news/default/view', array('id' => $data->id)));?>
-            </b>
-        <?php endif; ?>
-    <?php endforeach; ?>
-
-    <b><?php echo CHtml::link($data->title, Yii::app()->createUrl('news/default/view', array('id' => $data->id))); ?></b>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('annotation')); ?>:</b>
-    <?php echo CHtml::encode($data->annotation); ?>
-    <br/>
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
-    <?php echo CHtml::encode($data->date); ?>
-    <br/>
-
-    <div style="clear: both; margin-bottom: 10px;"></div>
-    <hr/>
+<div class="news-item">
+    <span><?php echo date("d.m.Y", strtotime($data->date)); ?></span>
+    <h2><?php echo $data->title; ?></h2>
+    <p><?php echo $data->annotation; ?></p>
+    <a href = "news/default/view/id/<?php echo $data->id; ?>"></a>
+    <div class="clear"></div>
 </div>
 

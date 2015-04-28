@@ -73,9 +73,6 @@ class CatalogConfig extends CActiveRecord
                 'types' => 'png',
                 'allowEmpty' => true,
 			),
-            // todo сделать для category_perpage и service_perpage сообщение на нормальном русском языке
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
             array('id, title, keywords, description, layout, category_perpage, service_perpage, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode, watermark_image, watermark_x, watermark_y, no_watermark, text', 'safe'),
 			array('id, title, keywords, description, layout, category_perpage, service_perpage, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode, watermark_image, watermark_x, watermark_y, no_watermark, text', 'safe', 'on' => 'search'),
 		);

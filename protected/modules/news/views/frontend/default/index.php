@@ -17,4 +17,12 @@ $this->breadcrumbs=array(
     'viewData' => array(
         'folder_upload' => $folder_upload,
     ),
+    'summaryText'=>"",
+    'template'=>"{items}\n{pager}",
+    'pager' => array(
+        'prevPageLabel'=>'<',
+        'nextPageLabel'=>'>',
+        'maxButtonCount'=>'10',
+        'header'=>'',
+    ),
 )); ?>
