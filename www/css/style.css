@@ -567,6 +567,17 @@ header .middle-header .logo p{
 	bottom: 10px;
 	background: url("/images/arrow-orange.jpg");
 }
+
+.main .feedback-line .feedback-item.review1{
+	background-image: url("/images/slider-shark1.png");
+}
+
+.main .feedback-line .feedback-item.review2{
+	background-image: url("/images/slider-shark2.png");
+}
+.main .feedback-line .feedback-item.review0{
+	background-image: url("/images/slider-shark3.png");
+}
 .main .feedback-line .feedback-item{
 	height: 270px;
 	width: 260px;
@@ -602,6 +613,21 @@ header .middle-header .logo p{
 	padding: 0 0 0 0;
 	margin: 35px 0 0 20px;
 }
+
+.main .feedback-line .feedback-item .feedback-date{
+	padding: 0;
+	margin: 0;
+	font-family: "League Gothic";
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #f69116;
+	position: absolute;
+	left: 20px;
+	bottom: 18px;
+	height: 20px;
+	width: 60px;
+}
+
 .main .feedback-item span{
 	margin-left: 20px;
 }
