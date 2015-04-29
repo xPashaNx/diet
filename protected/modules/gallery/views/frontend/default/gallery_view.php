@@ -6,7 +6,6 @@ $this->breadcrumbs = array(
 $cs=Yii::app()->clientScript;
 
 $cs->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD);
-//$cs->registerScriptFile('/js/jquery.mousewheel-3.0.4.pack.js', CClientScript::POS_HEAD);
 $cs->registerCssFile('/css/jquery.fancybox-1.3.4.css');
 $cs->registerScript('images', "
 	$(document).ready(function() {
@@ -26,12 +25,14 @@ $cs->registerScript('images', "
 
 ?>
 
-<div class="galleries_inner">	
-	<h1><?=$model->title;?></h1>
-		<?php $this->widget('zii.widgets.CListView', array(
-            'id' => 'gallery-list',
-            'dataProvider' => $dataProvider,
-            'itemView' => '_photoview',
-            'template' => '{items}',
-		)); ?>
+<div class="photo-gallery-inner">
+	<div class="photo-gallery-items-line">
+		<h1><?php echo $model->title;?></h1>
+			<?php $this->widget('zii.widgets.CListView', array(
+				'id' => 'gallery-list',
+				'dataProvider' => $dataProvider,
+				'itemView' => '_photoview',
+				'template' => '{items}',
+			)); ?>
+	</div>
 </div>
