@@ -1104,6 +1104,8 @@ footer .bottom-foot .right-col .socialnet.tw{
 
 .list-view .yiiPager li{
 	color: #000;
+	margin-left: 0;
+	margin-right: 18px;
 }
 
 .list-view .yiiPager .previous{
