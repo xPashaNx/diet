@@ -1,5 +1,5 @@
 <div class="services">
-    <div class="service">
+    <div class="service" ">
         <?php
             if ($data->photo)
             {

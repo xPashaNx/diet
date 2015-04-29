@@ -501,6 +501,9 @@ header .middle-header .logo p{
 .service-inner .block:nth-child(8) .service:before { content: "8"; }
 .service-inner .block:nth-child(9) .service:before { content: "9"; }
 
+.main .service:before { content: attr(data-title); }
+
+
 .main .feedback-line{
 	height: 420px;
 	background-color: #0a0713;
@@ -784,7 +787,7 @@ header .middle-header .logo p{
 .content-inner .form-contacts form h1{
 	text-transform: none;
 	text-align: center;
-	margin:0px;
+	margin: 0px;
 	padding: 25px 0 30px 0;
 }
 .content-inner .form-contacts form input {
@@ -1026,8 +1029,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 	padding-bottom: 45px;
 	min-height: 63px;
 	line-height: normal;
-}
-.main .content-inner .service p{
 }
 
 /* page service END*/
