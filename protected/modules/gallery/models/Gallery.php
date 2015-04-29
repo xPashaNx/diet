@@ -177,7 +177,8 @@ class Gallery extends CActiveRecord
 
                     Yii::app()->ih
                         ->load($this->folder . '/' . $photoName)
-						->resize($galleryConfig->prev_x,$galleryConfig->prev_y)
+						->adaptiveThumb($galleryConfig->prev_x,$galleryConfig->prev_y)
+						//->resize($galleryConfig->prev_x,$galleryConfig->prev_y)
                         //->adaptiveThumb(160, 105)//144 94
                         ->save($this->folder . '/small/' . $photoName, false, 100)
 						->reload()

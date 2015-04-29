@@ -502,7 +502,7 @@ header .middle-header .logo p{
 .service-inner .block:nth-child(8) .service:before { content: "8"; }
 .service-inner .block:nth-child(9) .service:before { content: "9"; }
 
-.main .service:before { content: attr(data-title); }
+.main .service:before {content: attr(data-title);}
 
 
 .main .feedback-line{
@@ -1041,12 +1041,12 @@ footer .bottom-foot .right-col .socialnet.tw{
 .photo-gallery-item{
 	display: inline-block;
 	float: left;
-	width: 260px;
-	height: 260px;
+	/*width: 260px;
+	height: 260px;*/
 	margin: 0 20px 0 0;
 }
 .photo-gallery-items-line{
-	height: 260px;
+	/*height: 260px;*/
 	margin: 0 0 20px 0;
 }
 .photo-gallery-item:first-child{
