@@ -17,7 +17,6 @@ $cs = Yii::app()->clientScript;
 
 // Подключаем фанси-бокс
 $cs->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD);
-//$cs->registerScriptFile('/js/jquery.mousewheel-3.0.4.pack.js', CClientScript::POS_HEAD);
 $cs->registerCssFile('/css/jquery.fancybox-1.3.4.css');
 $cs->registerScript('images', "
   $('a[rel=example_group]').fancybox({
@@ -31,8 +30,9 @@ $cs->registerScript('images', "
 
 <div class="view_item_news">
     <div class="head_news">
-        <h1><?= $model->title; ?></h1>
+        <h1><?php echo $titleListNews ?></h1>
     </div>
+
     <div class="img_news">
         <?php if ($model->cover_id == 0 && $model->newsImages): ?>
             <b>

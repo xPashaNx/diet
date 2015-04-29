@@ -1,5 +1,5 @@
-<div class="h1bg">
-    <div class="h1pic">
+
+<div class="h1bg">    <div class="h1pic">
         <h1>Отправка сообщения администрации сайта</h1>
     </div>
 </div>

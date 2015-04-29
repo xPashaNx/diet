@@ -1,10 +1,4 @@
-<div class="categories">
-    <div class="category">
-    <?php
-        if ($data->image)
-            echo CHtml::link(CHtml::image('/upload/catalog/category/small/' . $data->image, $data->short_title), '/services/'.$data->link);
-
-        echo CHtml::link($data->short_title, '/services/'.$data->link);
-    ?>
-    </div>
+<div class="service">
+    <h2><?php echo $data["short_title"];?></h2>
+    <p> <?php echo $data["text"];?> </p>
 </div>

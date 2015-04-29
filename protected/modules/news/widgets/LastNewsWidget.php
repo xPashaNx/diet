@@ -1,7 +1,4 @@
 <?php
-
-//Yii::import('zii.widgets.CWidget');
-//Yii::import('zii.web.widgets.CWidget');
 Yii::import('application.modules.news.models.News');
 Yii::import('application.modules.news.models.NewsConfig');
 
@@ -16,13 +13,10 @@ class LastNewsWidget extends CWidget {
         $criteria->limit = $limit;
         $criteria->order = 'date DESC';
 
-        $dataProvider = new CActiveDataProvider('News', array(
-            'criteria' => $criteria,
-            'pagination' => false,
-        ));
+        $news = News::model()->findAll($criteria);
 
         $this->render('lastnews', array(
-            'dataProvider' => $dataProvider,
+            'news' => $news,
         ));
 
         return parent::run();

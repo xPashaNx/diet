@@ -24,30 +24,40 @@ class DefaultController extends BaseCatalogController
 		if ($this->catalog_config->layout)
 			$this->layout = $this->catalog_config->layout;
 
-		$serviceDataProvider = new CActiveDataProvider('CatalogService',
-			array(
-				'criteria'=>array(
-					'order' => 'sort_order ASC',
-					'condition'=>'id_category = 0',
-				),
-				'pagination'=>array(
-					'pageSize' => CatalogConfig::model()->findByPk(1)->service_perpage,
-				),
-			));
+		$sql = "SELECT
+					id,
+					short_title,
+					text,
+					link
+				FROM
+					`catalog_category`
+				UNION
+				SELECT
+					id,
+					short_title,
+					text,
+					link
+				FROM
+					`catalog_service`
+				WHERE
+					id_category = 0;";
 
-		$categoryDataProvider = new CActiveDataProvider('CatalogCategory',
-			array(
-				'criteria'=>array(
-					'order' => 'sort_order ASC',
+		$rawData=Yii::app()->db->createCommand($sql)->queryAll();
+
+		$dataProvider = new CArrayDataProvider($rawData, array(
+			'id'=>'user',
+			'sort'=>array(
+				'attributes'=>array(
+					'id', 'short_title', 'text', 'link',
 				),
-				'pagination'=>array(
-					'pageSize'=>CatalogConfig::model()->findByPk(1)->category_perpage,
-				),
+			),
+			'pagination'=>array(
+				'pageSize' => CatalogConfig::model()->findByPk(1)->category_perpage,
+			),
 		));
 
 		$this->render('index',array(
-			'categoryDataProvider' => $categoryDataProvider,
-			'serviceDataProvider' => $serviceDataProvider,
+			'dataProvider' => $dataProvider,
 		));
 	}
 
