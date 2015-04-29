@@ -633,10 +633,6 @@ header .middle-header .logo p{
 	background: url("../images/bg-photogallery.png") left top no-repeat;
 	height: 427px;
 }
-.main .news-item h2{
-	margin: 0 0 0 20px;
-	padding: 15px 0 0 0;
-}
 .main .news-line .photo-gallery{
 	width: 260px;
 	height: 325px;
@@ -678,6 +674,10 @@ header .middle-header .logo p{
 	margin: 0 0 20px 0;
 	position: relative;
 	z-index: 1;
+}
+.main .news-item h2{
+	margin: 0 0 0 20px;
+	padding: 15px 0 0 0;
 }
 .main .news-line .news-item:first-of-type{
 	margin-top: 50px;
@@ -997,7 +997,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 .main .content-line .news-item{
 	width: 820px;
 	/*height: 120px;*/
-	background: rgba(59, 57, 68, 0.7);
+	/*background: rgba(59, 57, 68, 0.7);*/
 	margin-bottom: 20px;
 	position: relative;
 }
