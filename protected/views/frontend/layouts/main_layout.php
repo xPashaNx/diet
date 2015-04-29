@@ -36,17 +36,16 @@ Yii::app()->clientScript
 </head>
 <body>
 <div class="wrapper">
-    <div class="header-scroll inner">
-        <div class="header-line">
-            <a href=".." class="back"></a>
+    <div class="header-scroll wrapper-inner">
 
-            <div class="grid"></div>
-            <a href="" class="logo">сайт-визитка</a>
+        <a href=".." class="back"></a>
+        <div class="grid"></div>
+        <a href="" class="logo">сайт-визитка</a>
 
-            <div class="grid"></div>
-            <a href="" class="corp">корпоративный сайт</a>
-            <a href="" class="shop">интернет-магазин</a>
-        </div>
+        <div class="grid"></div>
+        <a href="" class="corp">корпоративный сайт</a>
+        <a href="" class="shop">интернет-магазин</a>
+
         <div class="btn-login-line">
             <span>Протестировать панель администратора</span><a href="/manage">войти</a>
         </div>
