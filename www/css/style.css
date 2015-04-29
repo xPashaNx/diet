@@ -1110,6 +1110,10 @@ footer .bottom-foot .right-col .socialnet.tw{
 	margin-left: 0;
 }
 
+.list-view .yiiPager .hidden{
+	display: none;
+}
+
 .list-view .yiiPager li a{
 	padding: 4px 11px;
 	border: none;

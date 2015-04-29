@@ -1,9 +1,3 @@
-<?php
-/* @var $this NewsController */
-/* @var $data News */
-/* @var $folder_upload News */
-?>
-
 <div class="news-item">
     <span><?php echo date("d.m.Y", strtotime($data->date)); ?></span>
     <h2><?php echo $data->title; ?></h2>

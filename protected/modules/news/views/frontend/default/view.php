@@ -30,8 +30,9 @@ $cs->registerScript('images', "
 
 <div class="view_item_news">
     <div class="head_news">
-        <h1><?php echo $model->title; ?></h1>
+        <h1><?php echo $titleListNews ?></h1>
     </div>
+
     <div class="img_news">
         <?php if ($model->cover_id == 0 && $model->newsImages): ?>
             <b>

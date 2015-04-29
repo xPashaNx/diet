@@ -13,9 +13,9 @@ class DefaultController extends FrontEndController
 			'sort' => array(
 				'defaultOrder' => 'sort_order',
 			),
-			'pagination' => false/*array(
-				'pageSize' => 16,
-			)*/,
+			'pagination' => array(
+				'pageSize' => $galleryConfig->limit,
+			),
 		));
 		$this->render('index', array(
 			'dataProvider' => $dataProvider,
