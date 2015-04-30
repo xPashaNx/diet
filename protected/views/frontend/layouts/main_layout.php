@@ -41,7 +41,6 @@ Yii::app()->clientScript
         <a href=".." class="back"></a>
         <div class="grid"></div>
         <a href="" class="logo">сайт-визитка</a>
-
         <div class="grid"></div>
         <a href="" class="corp">корпоративный сайт</a>
         <a href="" class="shop">интернет-магазин</a>

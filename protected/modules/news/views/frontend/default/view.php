@@ -27,15 +27,13 @@ $cs->registerScript('images', "
 	});
 ", CClientScript::POS_READY);
 ?>
+ <h1><?php echo $titleListNews ?></h1>
 
-
-    <h1><?php echo $titleListNews ?></h1>
-
-    <div class="news-item">
-        <span><?php echo date("d.m.Y", strtotime($model->date)); ?></span>
-        <h2><?php echo $model->title; ?></h2>
-        <p><?php echo $model->description; ?></p>
-    </div>
+<div class="news-item">
+    <span><?php echo date("d.m.Y", strtotime($model->date)); ?></span>
+    <h2><?php echo $model->title; ?></h2>
+    <p><?php echo $model->description; ?></p>
+</div>
 
 
 <div class="img_news">

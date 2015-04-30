@@ -504,7 +504,6 @@ header .middle-header .logo p{
 
 .main .service:before {content: attr(data-title);}
 
-
 .main .feedback-line{
 	height: 420px;
 	background-color: #0a0713;
@@ -637,6 +636,11 @@ header .middle-header .logo p{
 	background: url("../images/bg-photogallery.png") left top no-repeat;
 	height: 427px;
 }
+
+.main .news-item h2{
+	margin: 0 0 0 20px;
+	padding: 15px 0 0 0;
+}
 .main .news-line .photo-gallery{
 	width: 260px;
 	height: 325px;
@@ -713,18 +717,6 @@ header .middle-header .logo p{
 	bottom: 10px;
 	background: url("../images/arrow-orange.jpg");
 }
-/*
-.main .bottom-line:after{
-
-	display: block;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	content: "";
-	width: 575px;
-	height: 528px;
-	z-index: -1;
-}*/
 .main .bottom-line{
 	background: url("../images/bg-news-middle-lines.png") no-repeat;
 	margin-top: 15px;
@@ -1000,8 +992,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 }
 .main .content-line .news-item{
 	width: 820px;
-	/*height: 120px;*/
-	/*background: rgba(59, 57, 68, 0.7);*/
+	background: rgba(59, 57, 68, 0.7);
 	margin-bottom: 20px;
 	position: relative;
 }
@@ -1031,7 +1022,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 	min-height: 63px;
 	line-height: normal;
 }
-
 /* page service END*/
 
 /*page photo-gallery BEGIN*/
@@ -1041,8 +1031,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 .photo-gallery-item{
 	display: inline-block;
 	float: left;
-	/*width: 260px;
-	height: 260px;*/
 	margin: 0 20px 0 0;
 }
 
@@ -1084,8 +1072,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 	padding: 5px 10px;
 	height: 47px;
 }
-
-
 /*page photo-gallery END*/
 
 /*page contacts BEGIN*/

@@ -6,7 +6,7 @@
     $this->widget('zii.widgets.CListView', array(
         'dataProvider' => $dataProvider,
         'itemView'=>'_service',
-    ));
+    ));die('stop');
     ?>
 <?php endif; ?>
 <?php echo $category->text; ?>
