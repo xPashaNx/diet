@@ -1,7 +1,7 @@
 <?php
 Yii::app()->clientScript->registerScript('show_header_scroll', "
     $(window).scroll(function() {
-	    if ($(this).scrollTop() > 207){
+	    if ($(this).scrollTop() > 293){
 	        $('.header-scroll').animate({'top': '0px'},2);
 	    }
 	    else{
@@ -30,7 +30,6 @@ Yii::app()->clientScript
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css"/>
 	<script src="/js/lightbox.min.js"></script>
-    
 	<link href="/css/lightbox.css" rel="stylesheet" type="text/css"/>
     <link href="/css/responsiveslides.css" rel="stylesheet" type="text/css">
     <link href="/css/jcarousel.responsive.css" rel="stylesheet" type="text/css">
