@@ -413,36 +413,18 @@ header .middle-header .logo p{
 	color: #f69116;
 }
 /*NAV END */
+
 /* breadcrumbs BEGIN */
 .main .breadcrumbs{
 	padding-top: 30px;
 }
-.main .breadcrumbs ul{
-	margin: 0;
-	height: 17px;
-	float: left;
-	font-family: "Myriad Pro";
+.breadcrumbs .separator{
+	margin: 0 10px;
 }
-.main .breadcrumbs ul li{
-	float: left;
-	color: #fff;
-	margin: 0 30px 0 0px;
-	list-style: url("../images/delimitr-cream.jpg");
-	padding-left: 15px;
-	vertical-align: bottom;
-	line-height: 17px;
-	color: #e6d076;
+.main .breadcrumbs a:hover{
+	color: #f69116;
 }
-.main .breadcrumbs ul li:first-child{
-	margin: 0 30px 0 0px;
-	padding-left: 0px;
-	list-style: none;
-}
-.main .breadcrumbs ul li:last-child{
-	margin: 0 0px 0 5px;
-	color: #9592a1;
-}
-.main .breadcrumbs ul li a{
+.main .breadcrumbs a{
 	text-decoration: underline;
 	font-family: "Myriad Pro";
 	font-size: 15px;
@@ -450,9 +432,12 @@ header .middle-header .logo p{
 	text-transform: none;
 	min-height: 0px;
 }
-.main .breadcrumbs ul li a:hover{
-	color: #f69116;
+.main .breadcrumbs span:last-child{
+	font-size: 16px;
+	color: #9592a1;
+	font-family: Myriad Pro;
 }
+
 /* breadcrumbs END */
 /* MAIN */
 .main .service-line{
