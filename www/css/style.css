@@ -67,8 +67,9 @@ h3{
 	margin: 26px 0 15px 0;
 }
 p{
-	margin-bottom: 15px;
 	display: block;
+	font: 16px "Myriad Pro";
+	margin-bottom: 15px;
 }
 a{
 	color: #fae27d;
