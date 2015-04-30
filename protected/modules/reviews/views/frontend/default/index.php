@@ -70,15 +70,14 @@ $cs->registerScript('New Reviews',"
       modal: true,
       resizable: false,
       buttons: {
-        Continue: function() {
+        Cancel: function() {
           $(this).dialog('close');
-          // Submit Rating
         },
-        'Change Rating': function() {
-          $(this).dialog('close');
-          // Update Rating
-        }
       }
+    });
+
+    $('#dialog').on('click', '.form-feedback form .close', function(){
+        $('#dialog').hide();
     });
 ", CClientScript::POS_READY);
 ?>
@@ -170,11 +169,21 @@ $cs->registerScript('New Reviews',"
 
 
 
-<div id="dialog" title="Important information" style = "display:none; z-index: 100;">
-    <p>You've assigned the current celebrity a rating of 0 …</p>
-    3
-    <p>Perhaps you are just judging them on the terrible last ? 4
-        movie …</p>
-
+<div class="form-feedback" id = "dialog">
+    <form action="/reviews/default/create" method= "POST">
+        <h1>Добавление отзыва</h1>
+        <a href = "/reviews" class ="close"></a>
+        <input type="text" name="Reviews[name]" placeholder = "Фамилия Имя Отчество*" id="Reviews['name']">
+        <input type="text" name="Reviews[email]" placeholder = "E-mail*" id="user-email">
+        <textarea placeholder = "Текст отзыва*" name="Reviews[text]"></textarea>
+        <div class = "captcha-inner">
+            <img src = "" alt = "">
+            <div class="captcha-code-inner">
+                <input type = "text" name = "captcha" placeholder = "Введите код проверки" id = "user-captcha">
+                <a href="#">Получить новый код</a>
+            </div>
+        </div>
+        <input type="submit" value="Отправить" id="submit">
+    </form>
 </div>
 

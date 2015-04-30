@@ -11,12 +11,10 @@ class DefaultController extends FrontEndController
     public function actions()
     {
         return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
             'captcha' => array(
                 'class' => 'CCaptchaAction',
                 'testLimit' => '1',
             ),
-
         );
     }
 

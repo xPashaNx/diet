@@ -801,13 +801,18 @@ header .middle-header .logo p{
 /*Form contact END*/
 
 /*Form feedback BEGIN*/
+
+.ui-dialog-titlebar{
+	display: none;
+}
+
 .form-feedback {
 	margin: 0 auto;
 	width: 530px;
 }
 .form-feedback form{
 	width: 530px;
-	height: 600px;
+	height: 530px;
 	background: #0a0713;
 	z-index: 1;
 	position: relative;
@@ -829,6 +834,23 @@ header .middle-header .logo p{
 	font-family: Verdana;
 	font-size: 12px;
 }
+
+.form-feedback form a.close{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	height: 30px;
+	width: 30px;
+	background: url("../images/bg-form-exit.png") #444444;
+	/*font-family: "Myriad Pro";*/
+	/*font-size: 14px;*/
+	/*text-decoration: underline;*/
+	/*color: #fff;*/
+	/*display: list-item;*/
+	/*list-style-type: none;*/
+	/*letter-spacing: 0.3px;*/
+}
+
 .form-feedback form a{
 	font-family: "Myriad Pro";
 	font-size: 14px;
@@ -838,6 +860,7 @@ header .middle-header .logo p{
 	list-style-type: none;
 	letter-spacing: 0.3px;
 }
+
 .form-feedback form img{
 	width: 120px;
 	height: 50px;
@@ -880,6 +903,8 @@ header .middle-header .logo p{
 	padding: 0 0 0 7px;
 	border-radius: 3px;
 }
+
+*/
 /*Form feedback END*/
 /* MAIN END */
 /* FOOTER */
@@ -1143,3 +1168,10 @@ footer .bottom-foot .right-col .socialnet.tw{
 .sliderBullets a { display: block; float: left; text-indent: -9999px; outline: none; margin-left: 5px; width: 10px; height: 11px; background: url(../images/slider/bullets.png) no-repeat; }
 .sliderBullets .active { background-position: 0 -11px; }
 .slider-content a { outline: none; }
+
+.form-feedback{
+	display: none;
+}
+.ui-dialog{
+	z-index: 1;
+}

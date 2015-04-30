@@ -54,31 +54,45 @@ class DefaultController extends BaseReviewsController
      */
     public function actionCreate()
     {
-        $this->breadcrumbs['Каталог услуг'] = array('/services');
-        $this->breadcrumbs[] = 'Добавление категории';
-
-        $model = new Reviews;
-        $reviewsConfig = ReviewsConfig::model()->find();
-
-        if ($reviewsConfig->show_captcha)
-            $model->setScenario('captcha');
-
-        if (isset($_POST['Reviews']))
+        if(Yii::app()->request->isAjaxRequest)
         {
-            $model->attributes = $_POST['Reviews'];
-            $model->date_create = date('Y-m-d H:i:s');
+            $model = new Reviews;
+            $reviewsConfig = ReviewsConfig::model()->find();
 
-            if ($model->save())
-                if ($reviewsConfig->premoder)
-                    Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен и будет опубликован после проверки модератором!");
+            if ($reviewsConfig->show_captcha)
+                $model->setScenario('captcha');
+
+            if (isset($_POST['Reviews']))
+            {
+                $model->attributes = $_POST['Reviews'];
+                $model->date_create = date('Y-m-d H:i:s');
+
+                if ($model->save())
+                {
+                    if ($reviewsConfig->premoder)
+                        Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен и будет опубликован после проверки модератором!");
+                    else
+                        Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен!");
+
+                    $this->redirect('index');
+                }
                 else
-                    Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен!");
+                    die('Error');
+
+            }
         }
 
+
+
+
+
+
+
+/*
         $this->render('create',array(
             'model' => $model,
             'reviewsConfig' => $reviewsConfig,
-        ));
+        ));*/
     }
 
     /**

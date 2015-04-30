@@ -10,17 +10,19 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
 	});
 ", CClientScript::POS_READY);
 ?>
-<?php
-Yii::app()->clientScript
-    ->registerScriptFile('/js/jquery.jcarousel.min.js', CClientScript::POS_HEAD)
-    ->registerScriptFile('/js/jcarousel.responsive.js', CClientScript::POS_HEAD)
-    ->registerScriptFile('/js/responsiveslides.min.js', CClientScript::POS_HEAD)
-    ->registerScriptFile('/js/responsiveslides.js', CClientScript::POS_HEAD)
-?>
 
 <!DOCTYPE html>
 <html>
 <head>
+    <?php
+        Yii::app()->clientScript
+            ->registerScriptFile('/js/jquery.jcarousel.min.js', CClientScript::POS_HEAD)
+            ->registerScriptFile('/js/jcarousel.responsive.js', CClientScript::POS_HEAD)
+            ->registerScriptFile('/js/responsiveslides.min.js', CClientScript::POS_HEAD)
+            ->registerScriptFile('/js/responsiveslides.js', CClientScript::POS_HEAD)
+            ->registerCoreScript('jquery')
+            ->registerCoreScript('jquery.ui')
+    ?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><?php if ($this->title) echo CHtml::encode($this->title), ' - ', CHtml::encode(Yii::app()->config->sitename); ?></title>
     <meta name="keywords" content="<?php echo CHtml::encode($this->keywords); ?>"/>
