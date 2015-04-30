@@ -1,6 +1,6 @@
 <?php
 
-Yii::app()->clientScript->registerScriptFile('/js/admin/jquery.jeditable.js', CClientScript::POS_HEAD);
+Yii::app()->clientScript->registerScriptFile('/js/jquery.jeditable.js', CClientScript::POS_HEAD);
 Yii::app()->clientScript->registerScript('jeditable', "
 	$(document).ready(function() {
 		$('.editable').editable('CreateAltText', {
