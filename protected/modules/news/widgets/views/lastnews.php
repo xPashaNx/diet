@@ -4,7 +4,7 @@
         <span><?php echo date("d.m.Y", strtotime($new->date)); ?></span>
         <h2><?php echo $new->title; ?></h2>
         <p><?php echo $new->annotation; ?></p>
-        <a href="#"></a>
+        <a href="/news"></a>
         <div class="clear"></div>
     </div>
 <?php endforeach;?>
