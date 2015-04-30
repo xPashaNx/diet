@@ -3,7 +3,7 @@
     <div class = "news-item">
         <span><?php echo date("d.m.Y", strtotime($new->date)); ?></span>
         <h2><?php echo $new->title; ?></h2>
-        <p><?php echo $new->description; ?></p>
+        <p><?php echo $new->annotation; ?></p>
         <a href="#"></a>
         <div class="clear"></div>
     </div>

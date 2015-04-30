@@ -30,6 +30,8 @@ Yii::app()->clientScript
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css"/>
 	<script src="/js/lightbox.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<link href="/css/lightbox.css" rel="stylesheet" type="text/css"/>
     <link href="/css/responsiveslides.css" rel="stylesheet" type="text/css">
     <link href="/css/jcarousel.responsive.css" rel="stylesheet" type="text/css">

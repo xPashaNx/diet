@@ -58,6 +58,29 @@ $cs->registerScript('check', "
     });
 
 ", CClientScript::POS_READY);
+
+$cs->registerScript('New Reviews',"
+    $(document).on('click', '.feedback-link-form', function(){
+        $('#dialog').dialog('open');
+    });
+
+    $('#dialog').dialog({
+      autoOpen: false,
+      height: 280,
+      modal: true,
+      resizable: false,
+      buttons: {
+        Continue: function() {
+          $(this).dialog('close');
+          // Submit Rating
+        },
+        'Change Rating': function() {
+          $(this).dialog('close');
+          // Update Rating
+        }
+      }
+    });
+", CClientScript::POS_READY);
 ?>
 <div class="feedback-inner">
     <?php if (Yii::app()->user->role == 'admin'): ?>
@@ -116,7 +139,12 @@ $cs->registerScript('check', "
         <?php if ($reviews): ?>
             <div class="feedback-title">
                 <h1><?php echo 'ОТЗЫВЫ' ?></h1>
-                <?php echo CHtml::link('ДОБАВИТЬ ОТЗЫВ', array('default/create'), array('class' => 'feedback-link-form')); ?>
+                <div class="feedback-link-form">
+                    ДОБАВИТЬ ОТЗЫВ
+                </div>
+                <?php
+                    //echo CHtml::link('ДОБАВИТЬ ОТЗЫВ', array('default/create'), array('class' => 'feedback-link-form'));
+                ?>
             </div>
             <div class="feedback-inner">
                 <?php
@@ -139,3 +167,14 @@ $cs->registerScript('check', "
         <?php endif; ?>
     <?php endif; ?>
 </div>
+
+
+
+<div id="dialog" title="Important information" style = "display:none; z-index: 100;">
+    <p>You've assigned the current celebrity a rating of 0 …</p>
+    3
+    <p>Perhaps you are just judging them on the terrible last ? 4
+        movie …</p>
+
+</div>
+
