@@ -24,12 +24,8 @@ class ReviewsConfig extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('premoder, reviews_perpage, show_captcha', 'numerical', 'integerOnly'=>true),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
 			array('id, premoder, reviews_perpage, show_captcha', 'safe', 'on'=>'search'),
 		);
 	}
@@ -39,8 +35,6 @@ class ReviewsConfig extends CActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 		);
 	}
@@ -72,8 +66,6 @@ class ReviewsConfig extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);

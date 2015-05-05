@@ -30,8 +30,6 @@ class DefaultController extends BaseReviewsController
             $criteria->params = array(':public' => true);
         }
 
-        //$reviews = Reviews::model()->findAll($criteria);
-
         $model = new Reviews('search');
         $model->unsetAttributes();
 
@@ -46,6 +44,7 @@ class DefaultController extends BaseReviewsController
         $this->render('index',array(
             'reviews' => $reviews,
             'model' => $model,
+            'captcha' => $reviewsConfig->show_captcha,
         ));
     }
 
@@ -66,33 +65,20 @@ class DefaultController extends BaseReviewsController
             {
                 $model->attributes = $_POST['Reviews'];
                 $model->date_create = date('Y-m-d H:i:s');
-
                 if ($model->save())
                 {
                     if ($reviewsConfig->premoder)
                         Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен и будет опубликован после проверки модератором!");
                     else
                         Yii::app()->user->setFlash('success',"Ваш отзыв успешно добавлен!");
-
-                    $this->redirect('index');
                 }
-                else
-                    die('Error');
-
             }
+            $this->renderPartial('_form',array(
+                'model' => $model,
+                'reviewsConfig' => $reviewsConfig,
+                'captcha' => $reviewsConfig->show_captcha,
+            ));
         }
-
-
-
-
-
-
-
-/*
-        $this->render('create',array(
-            'model' => $model,
-            'reviewsConfig' => $reviewsConfig,
-        ));*/
     }
 
     /**

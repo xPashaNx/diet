@@ -27,6 +27,14 @@
     font-style: normal;
 }
 
+@font-face {
+	font-family: 'BravoRG';
+	src: url('fonts/BravoRG.eot');
+	src: local('☺'), url('fonts/BravoRG.woff') format('woff'), url('fonts/BravoRG.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 html { height: 100%; margin: 0; padding: 0; background-color: #fff; }
 body {margin: 0; padding: 0; color: #fff; min-width: 940px; font: 16px "MyriadPro"; line-height: 1.5em; vertical-align: top;}
 
@@ -523,10 +531,14 @@ header .middle-header .logo p{
 	line-height: normal;
 	z-index: 1;
 }
+.main .feedback-link-form:hover{
+	cursor: pointer;
+}
 .main .feedback-link-form{
 	font-size:25px;
 	text-transform: uppercase;
 	font-family: "League Gothic";
+	color: #fae27d;
 	display: inline-block;
 }
 .main .feedback-inner .feedback-item:last-child {
@@ -802,19 +814,40 @@ header .middle-header .logo p{
 
 /*Form feedback BEGIN*/
 
+.ui-dialog{
+	z-index: 3;
+}
 .ui-dialog-titlebar{
 	display: none;
 }
 
-.form-feedback {
+.form-feedback{
+	background: #0a0713;
 	margin: 0 auto;
-	width: 530px;
 }
-.form-feedback form{
+
+.form-feedback .flash-success h1{
+	padding-left: 70px;
+	font-family: 'BravoRG';
+	font-size: 40px;
+	color: #f69116;
+	padding-top: 30px;
+}
+.form-feedback .flash-success .close{
+	margin-top: 35px;
+}
+.form-feedback .flash-success .message{
+	padding-left: 70px;
+	padding-top: 30px;
+	font-family: 'BravoRG';
+	font-size: 27px;
+	color: #fff;
+}
+
+.ui-dialog .form-feedback form{
 	width: 530px;
 	height: 530px;
 	background: #0a0713;
-	z-index: 1;
 	position: relative;
 }
 .form-feedback form h1{
@@ -835,20 +868,13 @@ header .middle-header .logo p{
 	font-size: 12px;
 }
 
-.form-feedback form a.close{
+.form-feedback a.close{
 	position: absolute;
 	right: 10px;
 	top: 10px;
 	height: 30px;
 	width: 30px;
 	background: url("../images/bg-form-exit.png") #444444;
-	/*font-family: "Myriad Pro";*/
-	/*font-size: 14px;*/
-	/*text-decoration: underline;*/
-	/*color: #fff;*/
-	/*display: list-item;*/
-	/*list-style-type: none;*/
-	/*letter-spacing: 0.3px;*/
 }
 
 .form-feedback form a{
@@ -904,7 +930,7 @@ header .middle-header .logo p{
 	border-radius: 3px;
 }
 
-*/
+
 /*Form feedback END*/
 /* MAIN END */
 /* FOOTER */
@@ -1084,36 +1110,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 }
 /*page photo-gallery END*/
 
-/*page contacts BEGIN*/
-.main .contacts-inner{
-
-}
-/*page contacts END*/
-/*page form-thanks BEGIN*/
-.form-thanks h1{
-	color: #f69116;
-	margin: 0;
-	padding: 60px 0 0 73px;
-}
-.form-thanks h2{
-	text-transform: none;
-	font-size: 30px;
-	line-height: 42px;
-	padding: 0 0 0 73px;
-
-}
-.form-thanks form{
-	width: 530px;
-	height: 256px;
-	background: #0a0713;
-	z-index: 1;
-	position: relative;
-	margin: 0 auto;
-}
-/*page form-thanks END*/
-
-
-
 
 /*Прикрутка*/
 .block{display: inline-block;}
@@ -1173,5 +1169,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 	display: none;
 }
 .ui-dialog{
-	z-index: 1;
+	position: absolute;
+	z-index: 3;
 }

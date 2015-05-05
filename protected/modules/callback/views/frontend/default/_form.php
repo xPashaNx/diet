@@ -9,13 +9,13 @@ Yii::app()->clientScript->registerScript("send-message", "
                 async: false,
                 data: $('#review-form').serialize(),
 				success:function(data) {
-				    var responce = $(data);
-				    $('.contact-form').html(responce.html());;
+				    var response = $(data);
+				    $('.contact-form').html(response.html());;
 				},
 				error: function(data){
 				}
             });
-            //return false;
+            return false;
         });
     ", CClientScript::POS_READY);
 ?>
@@ -49,13 +49,13 @@ Yii::app()->clientScript->registerScript("send-message", "
                     <div id="captcha-block">
                         <? $this->widget('CCaptcha', array('captchaAction'=>'/callback/default/captcha', 'buttonLabel'=>'Обновить картинку'))?>
                     </div>
-                    <?=CHtml::activeTextField($model, 'verifyCode', array('id' => 'captcha', 'placeholder'=>'Введите код'))?>
+                    <?php echo CHtml::activeTextField($model, 'verifyCode', array('id' => 'captcha', 'placeholder'=>'Введите код'))?>
                 </div>
             <?php endif; ?>
             <?php $errors=$model->getErrors(); ?>
             <div class="errorSummary"><?php if(count($errors)>0) echo("Не все поля заполнены корректно."); else echo(" "); ?></div>
             <div class="row">
-                <div class="button"><?php echo CHtml::button('Отправить', array('id'=>'send-message', 'name' => 'Send message')); ?></div>
+                <?php echo CHtml::button('Отправить', array('id'=>'submit', 'class' => 'button', 'name' => 'Send message')); ?>
             </div>
         </div>
         <?php $this->endWidget(); ?>
