@@ -544,7 +544,7 @@ header .middle-header .logo p{
 .main .feedback-inner .feedback-item:last-child {
 	margin: 0 0 15px 0;
 }
-.main .feedback-item a{
+.main .feedback-item a.review{
 	width: 20px;
 	height: 20px;
 	position: absolute;
@@ -552,6 +552,14 @@ header .middle-header .logo p{
 	bottom: 10px;
 	background: url("/images/arrow-orange.jpg");
 }
+
+.main .feedback-inner .feedback-item:first-child a{
+	padding-left: 10px;
+}
+.main .feedback-inner .feedback-item a{
+	padding-right: 20px;
+}
+
 .main .feedback-line .feedback-item.review1{
 	background-image: url("/images/slider-shark1.png");
 }
@@ -591,7 +599,7 @@ header .middle-header .logo p{
 .main .feedback-inner .feedback-item p{
 	width: 755px;
 	font-size: 15px;
-	padding: 0 0 0 0;
+	padding: 0 0 20px 0;
 	margin: 35px 0 0 20px;
 }
 .main .feedback-line .feedback-item .feedback-date{

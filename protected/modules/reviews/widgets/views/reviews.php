@@ -17,7 +17,7 @@ Yii::app()->clientScript->registerScript('jcarousel', "
                         <h2><?php echo $review->name; ?></h2>
                         <p><?php echo $review->text; ?></p>
                         <p class="feedback-date"><?php echo date("d.m.Y", strtotime($review->date_create)); ?></p>
-                        <a href="/reviews"></a>
+                        <a href="/reviews" class = "review"></a>
                     </div>
                 </li>
                 <?php $i++;?>
