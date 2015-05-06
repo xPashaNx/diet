@@ -39,7 +39,7 @@ class DefaultController extends FrontEndController
                     $body = $this->renderPartial('callback_template', array_merge(array('model' => $model)), true);
                     if ($this->module->sendMessage($config->email, 'Сообщение с сайта ' . Yii::app()->config->sitename, $body))
                     {
-                        Yii::app()->user->setFlash('callback_message', 'Сообщение отправлено.');
+                        Yii::app()->user->setFlash('callback_message', 'Ваше письмо успешно отправлено администратору сайта.');
                         Yii::app()->session['timeoutCallback'] = date("Y-m-d H:i:s");
                     }
                     else

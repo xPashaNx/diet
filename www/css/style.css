@@ -774,10 +774,16 @@ header .middle-header .logo p{
 	margin: 0 0 0 -3px;
 	display: inline-block;
 	vertical-align: top;
-	height: 450px
+	height: 550px;
+	width: 320px;
+}
+
+.content-inner .form-contacts .contact-form{
+	padding: 0 30px;
+	height: 550px;
 }
 .content-inner .form-contacts form{
-	width: 319px;
+	width: 320px;
 	height: 550px;
 	background: #0a0713;
 	z-index: 1;
@@ -790,17 +796,49 @@ header .middle-header .logo p{
 	padding: 25px 0 30px 0;
 }
 .content-inner .form-contacts form input {
-	margin: 0 auto 24px auto;
 	display: block;
-	border-radius: 3px;
-	width: 230px;
+	width: 260px;
 	height: 30px;
-	color: #727272;
+	margin-bottom:24px;
 	padding: 0 0 0 7px;
+	color: #727272;
+	border-radius: 3px;
+	font-size: 12px;
+	font-family: Verdana;
+}
+
+.content-inner .form-contacts form textarea {
+	display: block;
+	margin-bottom: 24px;
+	color: #727272;
+	width: 260px;
+	height: 110px;
+	padding: 0 0 0 7px;
+	border-radius: 3px;
+}
+
+.content-inner .form-contacts .captcha-inner{
+	padding: 0;
+}
+
+.content-inner .form-contacts .captcha-inner img{
+	width: 120px;
+	margin: 0;
+	padding-right: 9px;
+}
+
+.content-inner .form-contacts .captcha-code-inner a{
+	text-align: center;
 	font-family: Verdana;
 	font-size: 12px;
+	color: #fff;
+}
+.content-inner .form-contacts .captcha-code-inner input{
+	width: 120px;
+	margin: 0;
 }
 .content-inner .form-contacts #submit{
+	margin: 10px 55px;
 	width: 144px;
 	height: 38px;
 	background: url("../images/bg-form-submit.png") no-repeat;
@@ -809,15 +847,7 @@ header .middle-header .logo p{
 	font-family: "League Gothic";
 	font-size: 25px;
 }
-.content-inner .form-contacts form textarea {
-	display: block;
-	margin: 0 auto 24px auto;
-	color: #727272;
-	width: 230px;
-	height: 110px;
-	padding: 0 0 0 7px;
-	border-radius: 3px;
-}
+
 /*Form contact END*/
 
 /*Form feedback BEGIN*/
@@ -1180,13 +1210,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 	margin-bottom: 5px;
 }
 
-.content-inner .form-contacts form .error{
+.content-inner .form-contacts .error{
 	border: 1px solid red;
-	margin-bottom: 5px;
-}
-
-.errorMessage{
-	text-align: center;
-	color: #ff0000;
-	padding-bottom: 20px;
 }

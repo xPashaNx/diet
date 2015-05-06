@@ -5,11 +5,15 @@
  */
 class DefaultController extends BaseReviewsController
 {
+    /**
+     * @return array
+     */
     public function actions()
     {
         return array(
             'captcha' => array(
                 'class' => 'CCaptchaAction',
+                'testLimit' => '1',
             ),
         );
     }

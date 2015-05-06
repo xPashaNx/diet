@@ -32,10 +32,10 @@
                     </div>
                     <?php if($captcha): ?>
                         <div class="captcha-inner">
-                            <? $this->widget('CCaptcha', array('captchaAction'=>'/reviews/default/captcha', 'buttonLabel'=>''))?>
+                            <?php $this->widget('CCaptcha', array('captchaAction'=>'/reviews/default/captcha', 'buttonLabel'=>''))?>
                             <div class="captcha-code-inner">
                                 <?php echo CHtml::activeTextField($model, 'verifyCode', array('id' => 'user-captcha', 'placeholder'=>'Введите код'))?>
-                                <?php echo Chtml::link('Получить новый код', '/reviews/default/captcha/refresh/1', array ('id' => 'yw2_button')); ?>
+                                <?php echo Chtml::link('Получить новый код', '/reviews/default/captcha/refresh/1', array ('id' => 'yw0_button')); ?>
                             </div>
                         </div>
                     <?php endif; ?>
