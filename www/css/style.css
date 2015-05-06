@@ -778,7 +778,7 @@ header .middle-header .logo p{
 }
 .content-inner .form-contacts form{
 	width: 319px;
-	height: 450px;
+	height: 550px;
 	background: #000;
 	z-index: 1;
 	position: relative;
@@ -938,9 +938,9 @@ header .middle-header .logo p{
 	border-radius: 3px;
 }
 
-
 /*Form feedback END*/
 /* MAIN END */
+
 /* FOOTER */
 footer{
 	min-width: 1025px;
@@ -1031,9 +1031,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 
 .main .content-line .content-inner{
 	width: 820px;
-	/*height: 325px;*/
 	margin: 0px 0 0 100px;
-	/*float: left;*/
 }
 .main .content-line .news-item{
 	width: 820px;
@@ -1179,4 +1177,20 @@ footer .bottom-foot .right-col .socialnet.tw{
 .ui-dialog{
 	position: absolute;
 	z-index: 3;
+}
+
+.form-feedback .error{
+	border: 1px solid red;
+	margin-bottom: 5px;
+}
+
+.content-inner .form-contacts form .error{
+	border: 1px solid red;
+	margin-bottom: 5px;
+}
+
+.errorMessage{
+	text-align: center;
+	color: #ff0000;
+	padding-bottom: 20px;
 }

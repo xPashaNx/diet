@@ -9,8 +9,9 @@ Yii::app()->clientScript->registerScript("send-message", "
                 async: false,
                 data: $('#review-form').serialize(),
 				success:function(data) {
-				    var response = $(data);
-				    $('.contact-form').html(response.html());;
+//				    var response = $(data);
+//				    $('.contact-form').html(response.html());
+				    $('.contact-form').html(data);
 				},
 				error: function(data){
 				}
@@ -30,19 +31,23 @@ Yii::app()->clientScript->registerScript("send-message", "
             'htmlOptions' => array('enctype' => 'multipart/form-data'),
         )); ?>
 
-        <div class="form">
+        <div class="contact-form">
             <h1>Напишите нам</h1>
             <div class="row">
                 <?php echo $form->textField($model, 'name', array('placeholder'=>"Фамилия Имя Отчество *")); ?>
+                <?php echo $form->error($model, 'name'); ?>
             </div>
             <div class="row">
                 <?php echo $form->textField($model, 'email', array('placeholder'=>$model->getAttributeLabel('email') . ' *')); ?>
+                <?php echo $form->error($model, 'email'); ?>
             </div>
             <div class="row">
                 <?php echo $form->textField($model, 'phone', array('placeholder'=>$model->getAttributeLabel('phone'))); ?>
+                <?php echo $form->error($model, 'phone'); ?>
             </div>
             <div class="row">
                 <?php echo $form->textArea($model, 'text', array('class' => 'txt', 'rows' => 6, 'cols' => 30, 'placeholder'=>$model->getAttributeLabel('text'). ' *')); ?>
+                <?php echo $form->error($model, 'text'); ?>
             </div>
             <?php if (extension_loaded('gd') and CallbackConfig::model()->checkCaptchaEnabled()): ?>
                 <div class="row captcha">
@@ -52,8 +57,6 @@ Yii::app()->clientScript->registerScript("send-message", "
                     <?php echo CHtml::activeTextField($model, 'verifyCode', array('id' => 'captcha', 'placeholder'=>'Введите код'))?>
                 </div>
             <?php endif; ?>
-            <?php $errors=$model->getErrors(); ?>
-            <div class="errorSummary"><?php if(count($errors)>0) echo("Не все поля заполнены корректно."); else echo(" "); ?></div>
             <div class="row">
                 <?php echo CHtml::button('Отправить', array('id'=>'submit', 'class' => 'button', 'name' => 'Send message')); ?>
             </div>

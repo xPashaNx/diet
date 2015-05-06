@@ -1,4 +1,3 @@
-
     <?php if(Yii::app()->user->hasFlash('success')):?>
         <div class="flash-success">
             <?php echo CHtml::link('', '#', array ('class' => 'close')); ?>
@@ -11,7 +10,6 @@
                 'htmlOptions' => array('enctype' => 'multipart/form-data'),
                 'enableAjaxValidation' => false,
             )); ?>
-                    <?php echo $form->errorSummary($model); ?>
 
                     <?php echo CHtml::link('', '#', array ('class' => 'close')); ?>
 
