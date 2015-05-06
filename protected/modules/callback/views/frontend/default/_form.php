@@ -9,8 +9,6 @@ Yii::app()->clientScript->registerScript("send-message", "
                 async: false,
                 data: $('#review-form').serialize(),
 				success:function(data) {
-//				    var response = $(data);
-//				    $('.contact-form').html(response.html());
 				    $('.contact-form').html(data);
 				},
 				error: function(data){
