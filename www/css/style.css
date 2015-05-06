@@ -771,6 +771,7 @@ header .middle-header .logo p{
 }
 /*Form contact BEGIN*/
 .content-inner .form-contacts {
+	background: #0a0713;
 	margin: 0 0 0 -3px;
 	display: inline-block;
 	vertical-align: top;
@@ -846,6 +847,13 @@ header .middle-header .logo p{
 	color:#fff;
 	font-family: "League Gothic";
 	font-size: 25px;
+}
+
+.content-inner .form-contacts .flash-success{
+	padding-top: 200px;
+	text-align: center;
+	font-family: "BravoRG";
+	font-size: 27px;
 }
 
 /*Form contact END*/
