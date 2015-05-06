@@ -20,16 +20,13 @@ class DefaultController extends BaseReviewsController
     public function actionIndex()
     {
         $reviewsConfig = ReviewsConfig::model()->find();
-
         $criteria = new CDbCriteria;
-
         $criteria->order = 'date_create DESC';
         if ($reviewsConfig->premoder and Yii::app()->user->isGuest)
         {
             $criteria->condition = 'public = :public';
             $criteria->params = array(':public' => true);
         }
-
         $model = new Reviews('search');
         $model->unsetAttributes();
 
@@ -96,19 +93,6 @@ class DefaultController extends BaseReviewsController
     }
 
     /**
-     * Delete checked reviews
-     *
-     * @throws CHttpException
-     */
-    public function actionDeleteChecked()
-    {
-        $checkedReviews = Reviews::getCheckedReviews();
-        foreach ($checkedReviews as $checkedReview)
-            $checkedReview->delete();
-        $this->redirect(array('/reviews'));
-    }
-
-    /**
      * Public review
      *
      * @param integer $id
@@ -126,22 +110,35 @@ class DefaultController extends BaseReviewsController
     }
 
     /**
+     * Delete checked reviews
+     *
+     * @throws CHttpException
+     */
+//    public function actionDeleteChecked()
+//    {
+//        $checkedReviews = Reviews::getCheckedReviews();
+//        foreach ($checkedReviews as $checkedReview)
+//            $checkedReview->delete();
+//        $this->redirect(array('/reviews'));
+//    }
+
+    /**
      * Public checked review
      *
      * @param integer $flag
      *
      * @throws CHttpException
      */
-    public function actionPublicChecked($flag)
-    {
-        $checkedReviews = Reviews::getCheckedReviews();
-        foreach ($checkedReviews as $checkedReview)
-        {
-            $checkedReview->public = $flag;
-            $checkedReview->update();
-        }
-        $this->redirect(array('/reviews'));
-    }
+//    public function actionPublicChecked($flag)
+//    {
+//        $checkedReviews = Reviews::getCheckedReviews();
+//        foreach ($checkedReviews as $checkedReview)
+//        {
+//            $checkedReview->public = $flag;
+//            $checkedReview->update();
+//        }
+//        $this->redirect(array('/reviews'));
+//    }
 
     /**
      * Check
@@ -151,53 +148,53 @@ class DefaultController extends BaseReviewsController
      *
      * @throws CHttpException
      */
-    public function actionCheck($id, $flag)
-    {
-        if (isset($id))
-        {
-            $model = $this->loadModel($id);
-            if ($flag == 'true')
-                $model->checked = true;
-            else
-                $model->checked = false;
-            if ($model->update())
-                $this->redirect(array('/reviews'));
-        }
-    }
+//    public function actionCheck($id, $flag)
+//    {
+//        if (isset($id))
+//        {
+//            $model = $this->loadModel($id);
+//            if ($flag == 'true')
+//                $model->checked = true;
+//            else
+//                $model->checked = false;
+//            if ($model->update())
+//                $this->redirect(array('/reviews'));
+//        }
+//    }
 
     /**
      * Check all
      */
-    public function actionCheckAll()
-    {
-        if (isset($_POST['checkedIds']))
-        {
-            foreach ($_POST['checkedIds'] as $checkedId)
-            {
-                $model = $this->loadModel($checkedId);
-                $model->checked = true;
-                $model->update();
-            }
-        }
-        $this->redirect(array('/reviews'));
-    }
+//    public function actionCheckAll()
+//    {
+//        if (isset($_POST['checkedIds']))
+//        {
+//            foreach ($_POST['checkedIds'] as $checkedId)
+//            {
+//                $model = $this->loadModel($checkedId);
+//                $model->checked = true;
+//                $model->update();
+//            }
+//        }
+//        $this->redirect(array('/reviews'));
+//    }
 
     /**
      * Clear all
      */
-    public function actionClearAll()
-    {
-        if (isset($_POST['checkedIds']))
-        {
-            foreach ($_POST['checkedIds'] as $checkedId)
-            {
-                $model = $this->loadModel($checkedId);
-                $model->checked = false;
-                $model->update();
-            }
-        }
-        $this->redirect(array('/reviews'));
-    }
+//    public function actionClearAll()
+//    {
+//        if (isset($_POST['checkedIds']))
+//        {
+//            foreach ($_POST['checkedIds'] as $checkedId)
+//            {
+//                $model = $this->loadModel($checkedId);
+//                $model->checked = false;
+//                $model->update();
+//            }
+//        }
+//        $this->redirect(array('/reviews'));
+//    }
 
     /**
      * Load product model
