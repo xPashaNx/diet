@@ -87,11 +87,11 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
         </div>
         <div class = "content">
             <?php echo $content; ?>
-            <div class="bottom-line">
-                <div class="left-col">© ООО «Fishpangram», 2015</div>
-                <div class="right-col">
-                    <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'sotsseti-v-podvale-shablona')); ?>
-                </div>
+        </div>
+        <div class="bottom-line">
+            <div class="left-col">© ООО «Fishpangram», 2015</div>
+            <div class="right-col">
+                <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'sotsseti-v-podvale-shablona')); ?>
             </div>
         </div>
         <div class="empty"></div>

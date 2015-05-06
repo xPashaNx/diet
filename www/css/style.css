@@ -132,6 +132,11 @@ ul{
 .wrapper-inner { position: relative; width: 1025px; min-width: 1025px; margin: 0 auto;}
 .line-inner{position: relative; width: 820px; min-width: 820px; margin: 0 auto;}
 .clear{clear: both;}
+.content{
+	background: url("/images/bg-content.png") right bottom no-repeat #29253b;
+	padding: 0 0 65px 0;
+}
+
 
 /* HEADER SCROLL*/
 
@@ -553,11 +558,8 @@ header .middle-header .logo p{
 	background: url("/images/arrow-orange.jpg");
 }
 
-.main .feedback-inner .feedback-item:first-child a{
-	padding-left: 10px;
-}
 .main .feedback-inner .feedback-item a{
-	padding-right: 20px;
+	padding-left: 20px;
 }
 
 .main .feedback-line .feedback-item.review1{
@@ -658,7 +660,7 @@ header .middle-header .logo p{
 	width: 260px;
 }
 .main .news-line .photo-gallery a{
-	margin: 25px 0 0 0;
+	margin: 0;
 	float: left;
 	position:relative;
 }
@@ -724,10 +726,8 @@ header .middle-header .logo p{
 	background: url("../images/arrow-orange.jpg");
 }
 .main .bottom-line{
-	background: url("../images/bg-news-middle-lines.png") no-repeat;
-	margin-top: 15px;
+	background: url("/images/bg-bottom-line.png") no-repeat right bottom #1f1c2e;
 	height: 124px;
-	background: rgba(9, 7, 17, 0.3);
 	position: relative;
 	z-index: 0;
 }
@@ -835,7 +835,8 @@ header .middle-header .logo p{
 }
 
 .form-feedback .flash-success h1{
-	padding-left: 70px;
+	padding-left: 60px;
+	padding-right: 60px;
 	font-family: 'BravoRG';
 	font-size: 40px;
 	color: #f69116;
@@ -845,8 +846,7 @@ header .middle-header .logo p{
 	margin-top: 35px;
 }
 .form-feedback .flash-success .message{
-	padding-left: 70px;
-	padding-top: 30px;
+	padding: 30px 60px;
 	font-family: 'BravoRG';
 	font-size: 27px;
 	color: #fff;
@@ -1025,10 +1025,6 @@ footer .bottom-foot .right-col .socialnet.tw{
 /* FOOTER END */
 
 /*page news BEGIN */
-.main .content-line {
-	background-color: #29253b;
-}
-
 .main .content-line .content-inner{
 	width: 820px;
 	margin: 0px 0 0 100px;
