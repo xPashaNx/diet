@@ -24,7 +24,7 @@ $this->breadcrumbs = array(
     <?php foreach ($model->newsImages as $image) : ?>
         <?php //if ($image->id != $model->cover_id) : ?>
             <b>
-                <?php echo CHtml::link(CHtml::image('/upload/userfiles/images/' . $image->filename, '', array('style' => 'width:260px; height:260px; float: left; margin-right: 20px;')), '/upload/userfiles/images/' . $image->filename, array('data-lightbox'=>'roadtrip'));?>
+                <?php echo CHtml::link(CHtml::image('/upload/userfiles/images/' . $image->filename, '', array('style' => 'width:250px; height:250px; float: left; margin-right: 20px;')), '/upload/userfiles/images/' . $image->filename, array('data-lightbox'=>'roadtrip'));?>
             </b>
         <?php //endif; ?>
     <?php endforeach; ?>
