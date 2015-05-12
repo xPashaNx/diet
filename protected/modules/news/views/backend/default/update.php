@@ -58,18 +58,6 @@ Yii::app()->clientScript
         });
 
     ", CClientScript::POS_READY);
-
-// Подключаем фанси-бокс
-Yii::app()->clientScript
-    ->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD)
-    ->registerScript('images', "
-  $('a[rel=example_group]').fancybox({
-		overlayShow: true,
-		overlayOpacity: 0.5,
-		zoomSpeedIn: 300,
-		zoomSpeedOut:300
-	});
-", CClientScript::POS_READY);
 ?>
 
 

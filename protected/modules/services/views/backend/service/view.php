@@ -3,23 +3,6 @@
 $cs = Yii::app()->clientScript;
 $cs->registerCssFile('/css/catalog/admin/catalog_admin.css');
 
-$cs->registerScriptFile('/js/jquery.fancybox-1.3.4.js', CClientScript::POS_HEAD);
-//$cs->registerScriptFile('/js/jquery.mousewheel-3.0.4.pack.js', CClientScript::POS_HEAD);
-$cs->registerCssFile('/css/jquery.fancybox-1.3.4.css');
-$cs->registerScript('images', "
-  $('.showPhoto, a[rel=example_group]').fancybox({
-		overlayShow: true,
-		overlayOpacity: 0.5,
-		zoomSpeedIn: 300,
-		zoomSpeedOut:300
-	});
-
-    $('.showPhoto, a[rel=example_group]').each( function() {
-        var alt = $(this).find('img').prop('alt');
-        $(this).prop('title',alt);
-    });
-", CClientScript::POS_READY);
-
 $cs->registerScript('showhide', "
   $('a.showhide').click(function(){
       if ( $(this).next().css('display') == 'none' ) {
@@ -41,7 +24,7 @@ $cs->registerScript('showhide', "
     <?php
         if($model->photo)
         {
-            echo CHtml::link(CHtml::image('/upload/catalog/service/medium/' . $model->photo, $model->short_title) , array('/upload/catalog/service/' . $model->photo), array('class' => 'showPhoto'));
+            echo CHtml::link(CHtml::image('/upload/catalog/service/medium/' . $model->photo, $model->short_title) , array('/upload/catalog/service/' . $model->photo, array('class' => 'showPhoto', 'data-lightbox'=>'roadtrip'));
         }
         else
             echo CHtml::image('/css/catalog/admin/nophoto.jpg', $model->short_title);
@@ -52,7 +35,7 @@ $cs->registerScript('showhide', "
     <?php
         if (isset($model->catalogImages))
             foreach ($model->catalogImages as $image)
-                echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $image->alt_text), '/upload/catalog/service/moreimages/' . $image->image, array('rel' => 'example_group'));
+                echo CHtml::link(CHtml::image('/upload/catalog/service/moreimages/small/' . $image->image, $image->alt_text), '/upload/catalog/service/moreimages/' . $image->image, array('data-lightbox'=>'roadtrip'));
         ?>
 </div>
 <div class="clear"></div>

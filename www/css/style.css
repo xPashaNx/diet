@@ -1074,6 +1074,12 @@ footer .bottom-foot .right-col .socialnet.tw{
 	position: relative;
 }
 
+.main .content-line .news-item-view{
+	width: 820px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
 .main .content-line .content-inner .news-item span{
 	font-size: 25px;
 	float: left;
@@ -1082,11 +1088,22 @@ footer .bottom-foot .right-col .socialnet.tw{
 	padding-right: 20px;
 	text-transform: lowercase;
 }
-.main .content-line .content-inner .news-item p{
+.main .content-line .content-inner .news-item-view span {
+	font-size: 25px;
+	float: left;
+	padding-right: 20px;
+	text-transform: lowercase;
+}
+.main .content-line .content-inner .news-item p {
 	font-family: 'Myriad Pro';
 	font-size: 16px;
 	color: #fff;
 	padding: 10px 40px 40px 20px;
+}
+.main .content-line .content-inner .news-item-view p {
+	font-family: 'Myriad Pro';
+	font-size: 16px;
+	color: #fff;
 }
 /*page news END */
 
