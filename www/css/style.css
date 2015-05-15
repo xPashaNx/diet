@@ -596,7 +596,7 @@ header .middle-header .logo p{
 	width: 220px;
 	font-size: 15px;
 	padding: 20px 0 0 20px;
-	margin: 0;
+	margin-top: 50px;
 }
 .main .feedback-inner .feedback-item p{
 	width: 755px;
@@ -676,8 +676,8 @@ header .middle-header .logo p{
 	text-align: left;
 	font-size: 16px;
 	font-family: "Myriad Pro";
-	padding: 5px 10px;
-	height: 47px;
+	padding: 10px 10px;
+    height: 43px;
 }
 .main .news-line .news{
 	width: 540px;
@@ -696,7 +696,7 @@ header .middle-header .logo p{
 	padding: 15px 0 0 0;
 }
 .main .news-line .news-item:first-of-type{
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 }
 .main .news-line .news-item:last-child{
 	margin: 0;

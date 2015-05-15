@@ -89,7 +89,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
             <?php echo $content; ?>
         </div>
         <div class="bottom-line">
-            <div class="left-col">© ООО «Fishpangram», 2015</div>
+            <div class="left-col">© ООО «SHARKPANGRAM», 2015</div>
             <div class="right-col">
                 <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'sotsseti-v-podvale-shablona')); ?>
             </div>
