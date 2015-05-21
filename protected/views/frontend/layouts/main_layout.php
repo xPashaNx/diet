@@ -48,14 +48,17 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
         <a href="" class="shop">интернет-магазин</a>
 
         <div class="btn-login-line">
-            <span>Протестировать панель администратора</span><a href="/manage">войти</a>
+            <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>">
+                <span>Протестировать панель администратора</span>
+                <div class="login">войти</div>
+            </a>
         </div>
     </div>
     <header>
         <div class="top-header">
             <div class="wrapper-inner">
                 <div class="left-col">
-                    <a href="#" class="header-icon back-home">вернуться на главную</a>
+                    <a href="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>" class="header-icon back-home">вернуться на главную</a>
                 </div>
                 <div class="right-col">
                     <a href="#" class="header-icon visitka">сайт-визитка</a>
@@ -73,7 +76,10 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
     <div class="main wrapper-inner">
         <div class="bottom-header-inner">
             <div class="btn-login-line">
-                <span>Протестировать панель администратора</span><a href="/manage">войти</a>
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>">
+                    <span>Протестировать панель администратора</span>
+                    <div class="login">войти</div>
+                </a>
             </div>
             <div class="bottom-header">
                 <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>

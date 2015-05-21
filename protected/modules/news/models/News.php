@@ -38,6 +38,7 @@ class News extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
+            array('title, link', 'unique'),
             array('title, link, annotation, description, meta_keywords, meta_description, public, cover_id', 'required'),
             array('link', 'match', 'pattern' => '/^[a-zA-Z-]+$/', 'message' => 'В поле "Имя" можно вводить только латинские буквы и тире.'),
             array('public, cover_id', 'numerical', 'integerOnly' => true),

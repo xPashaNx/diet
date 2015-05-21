@@ -26,11 +26,17 @@
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
 	font-family: 'BravoRG';
 	src: url('fonts/BravoRG.eot');
-	src: local('☺'), url('fonts/BravoRG.woff') format('woff'), url('fonts/BravoRG.ttf') format('truetype');
+	src: local('☺'), url('fonts/BravoRG.woff') format('woff'), url('fonts/BravoRG.ttf') format('truetype'), url('fonts/BravoRG.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'PTSans';
+	src: url('fonts/PTSans-Regular.eot');
+	src: local('☺'), url('fonts/PTSans-Regular.woff') format('woff'), url('fonts/PTSans-Regular.ttf') format('truetype'), url('fonts/PTSans-Regular.otf') format('opentype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -50,15 +56,15 @@ h1, h2, h3, h4, h5, a, img, ul, li, div, span, p{
 	vertical-align: baseline;
 }
 h1{
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	color: #fff;
-	font-size: 35px;
+	font-size: 40px;
 	text-transform: uppercase;
 	text-align: left;
 	margin: 35px 0 25px 0;
 }
 h2{
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	color: #fff;
 	font-size: 25px;
 	text-transform: uppercase;
@@ -76,17 +82,17 @@ h3{
 }
 p{
 	display: block;
-	font: 15px "Myriad Pro";
+	font: 15px "PTSans";
 	margin-bottom: 15px;
 }
 a{
 	color: #fae27d;
 	text-decoration: underline;
-	font: 16px "Myriad Pro";
+	font: 16px "PTSans";
 }
 span{
-	font-family: 'League Gothic';
-	font-size: 20px;
+	font-family: 'BravoRG';
+	font-size: 27px;
 	color: #fae27d;
 	text-align: left;
 }
@@ -219,13 +225,16 @@ header .top-header{
 	text-transform: uppercase;
 	font-size: 18px;
 	font-weight: bold;
-	font-family: 'BebasNeue';
 	background-color: #fff;
+}
+header .top-header a{
+	font-family: 'BebasNeue';
+	font-size: 21px;
 }
 
 header .top-header .header-icon {
 	display: inline;
-	padding: 15px 0 14px 58px;
+	padding: 15px 0 12px 58px;
 	height: 22px;
 	text-align: center;
 	text-decoration: none;
@@ -312,13 +321,13 @@ header .middle-header .logo p{
 	background: url("../images/bg-test-panel.png") no-repeat;
 	width: 346px;
 	height: 30px;
-	padding: 3px 0 0px 35px;
+	padding: 3px 0 0 35px;
 	margin-right: -15px;
 	z-index: 3;
 	position: relative;
 }
 
-.btn-login-line a{
+.btn-login-line .login{
 	background: url("../images/login.png") no-repeat;
 	text-decoration: none;
 	width: 125px;
@@ -354,15 +363,15 @@ header .middle-header .logo p{
 	margin-top: 10px;
 }
 .main .bottom-header .slogan span{
-	font-family: "League Gothic";
-	font-size: 70px;
+	font-family: "BravoRG";
+	font-size: 68.68px;
 	color: #fae27d;
 	text-transform: uppercase;
 	height: 40px;
-	margin:0px;
+	margin:0;
 }
 .main .bottom-header .slogan p{
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	font-size: 30px;
 	color: #f69116;
 	text-transform: uppercase;
@@ -375,13 +384,13 @@ header .middle-header .logo p{
 }
 .main .bottom-header .phone{
 	display: inline-block;
-	margin-left: 120px;
+	margin-left: 170px;
 	vertical-align: 15px;
 }
 .main .bottom-header .phone a{
 	display: list-item;
 	list-style: none;
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	font-size: 35px;
 	color: #f69116;
 	text-decoration: none;
@@ -412,10 +421,11 @@ header .middle-header .logo p{
 }
 .main nav ul li a{
 	text-decoration: none;
-	font-family: "League Gothic";
-	font-size: 36px;
+	font-family: "BravoRG";
+	color: #fff;
+	font-size: 40px;
 	text-transform: uppercase;
-	min-height: 0px;
+	min-height: 0;
 }
 .main nav ul li a:hover{
 	border-bottom: solid 2px #f69116;
@@ -434,13 +444,14 @@ header .middle-header .logo p{
 }
 .breadcrumbs .separator{
 	margin: 0 10px;
+	vertical-align: bottom;
 }
 .main .breadcrumbs a:hover{
 	color: #f69116;
 }
 .main .breadcrumbs a{
 	text-decoration: underline;
-	font-family: "Myriad Pro";
+	font-family: "PTSans";
 	font-size: 15px;
 	color: #e6d076;
 	text-transform: none;
@@ -449,7 +460,7 @@ header .middle-header .logo p{
 .main .breadcrumbs span:last-child{
 	font-size: 16px;
 	color: #9592a1;
-	font-family: Myriad Pro;
+	font-family: "PTSans";
 }
 
 /* breadcrumbs END */
@@ -482,11 +493,16 @@ header .middle-header .logo p{
 	left: 25px;
 	top: 10px;
 	font-size: 35px;
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	color: #201c33;
 }
 .main .service h2{
 	margin: 0 0 0 80px;
+	font-size: 32px;
+}
+.service-inner .service h2{
+	margin: 0 0 0 80px;
+	font-size: 27px;
 }
 .main .service p{
 	margin-left: 80px;
@@ -514,14 +530,14 @@ header .middle-header .logo p{
 .main .feedback-inner h1{
 	display: inline-block;
 }
-.main .feedback-title:after{
-	content: '';
-	display: inline-block;
-	width: 100%;
-	height: 0;
-	font-size: 0;
-	line-height: 0;
-}
+/*.main .feedback-title:after{*/
+	/*content: '';*/
+	/*display: inline-block;*/
+	/*width: 100%;*/
+	/*height: 0;*/
+	/*font-size: 0;*/
+	/*line-height: 0;*/
+/*}*/
 .main .feedback-title{
 	width: 100%;
 	text-align: justify;
@@ -542,7 +558,7 @@ header .middle-header .logo p{
 .main .feedback-link-form{
 	font-size:25px;
 	text-transform: uppercase;
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	color: #fae27d;
 	display: inline-block;
 }
@@ -553,8 +569,8 @@ header .middle-header .logo p{
 	width: 20px;
 	height: 20px;
 	position: absolute;
-	right: 10px;
-	bottom: 10px;
+	right: 20px;
+	bottom: 21px;
 	background: url("/images/arrow-orange.jpg");
 }
 
@@ -607,8 +623,8 @@ header .middle-header .logo p{
 .main .feedback-line .feedback-item .feedback-date{
 	padding: 0;
 	margin: 0;
-	font-family: "League Gothic";
-	font-size: 20px;
+	font-family: "BravoRG";
+	font-size: 23px;
 	text-transform: uppercase;
 	color: #f69116;
 	position: absolute;
@@ -634,7 +650,7 @@ header .middle-header .logo p{
 }
 .main .feedback-inner .feedback-item-date{
 	color: #f69116;
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	font-size: 20px;
 	text-transform: uppercase;
 	margin: 15px 0 0 130px;
@@ -674,8 +690,9 @@ header .middle-header .logo p{
 	background: rgba(41,37,59,0.66);
 	color: #fff;
 	text-align: left;
-	font-size: 16px;
-	font-family: "Myriad Pro";
+	font-size: 15px;
+	line-height: 20px;
+	font-family: "PTSans";
 	padding: 10px 0px 30px 10px;
     height: 43px;
 }
@@ -694,6 +711,7 @@ header .middle-header .logo p{
 .main .news-item h2{
 	margin: 0 0 0 20px;
 	padding: 15px 0 0 0;
+	font-size: 27px;
 }
 .main .news-line .news-item:first-of-type{
 	/*margin-top: 50px;*/
@@ -710,9 +728,8 @@ header .middle-header .logo p{
 	text-transform: lowercase;
 }
 .main .news-line .news .news-item p{
-	font-family: 'Myriad Pro';
-	font-size: 16px;
-	color: #fff;
+	font-family: 'PTSans';
+ 	color: #fff;
 	float: left;
 	padding: 5px 30px 0 20px;
 	line-height: 1.3em;
@@ -732,12 +749,12 @@ header .middle-header .logo p{
 	z-index: 0;
 }
 .main .bottom-line .left-col{
-	font-family: "Myriad Pro";
+	font-family: "PTSans";
 	text-transform: uppercase;
 	font-size: 15px;
 	color: #fff;
 	padding-top: 45px;
-	width: 220px;
+	width: 240px;
 	margin: 0 0 0 100px;
 	float: left;
 
@@ -745,27 +762,9 @@ header .middle-header .logo p{
 .main .bottom-line .right-col{
 	float: right;
 	margin-top: 35px;
-	margin-right: 101px;
+	margin-right: 86px;
 }
-.main .bottom-line .right-col .socialnet{
-	display: inline-block;
-	width: 37px;
-	height: 38px;
-	margin-right: 24px;
-}
-.main .bottom-line .right-col .socialnet.vk{
-	background: url("../images/social-networks-icons.png") -2px 0 no-repeat #fff;
-}
-.main .bottom-line .right-col .socialnet.fb{
-	background: url("../images/social-networks-icons.png") -81px 0 no-repeat #fff;
-}
-.main .bottom-line .right-col .socialnet.in{
-	background: url("../images/social-networks-icons.png") -161px 0 no-repeat #fff;
-}
-.main .bottom-line .right-col .socialnet.tw{
-	background: url("../images/social-networks-icons.png") -240px 0 no-repeat #fff;
-	margin-right: 0;
-}
+
 .content-inner iframe{
 	display: inline-block;
 }
@@ -795,6 +794,8 @@ header .middle-header .logo p{
 	text-align: center;
 	margin: 0px;
 	padding: 25px 0 30px 0;
+	font-size: 40px;
+	text-transform: uppercase;
 }
 .content-inner .form-contacts form input {
 	display: block;
@@ -845,7 +846,7 @@ header .middle-header .logo p{
 	background: url("../images/bg-form-submit.png") no-repeat;
 	border: 0px;
 	color:#fff;
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	font-size: 25px;
 }
 
@@ -924,7 +925,7 @@ header .middle-header .logo p{
 }
 
 .form-feedback form a{
-	font-family: "Myriad Pro";
+	font-family: "PTSans";
 	font-size: 14px;
 	text-decoration: underline;
 	color: #fff;
@@ -947,7 +948,7 @@ header .middle-header .logo p{
 	background: url("../images/bg-form-submit.png") no-repeat;
 	border: 0;
 	color:#fff;
-	font-family: "League Gothic";
+	font-family: "BravoRG";
 	font-size: 25px;
 	margin: 27px auto 0;
 	border-radius: 3px;
@@ -1025,7 +1026,7 @@ footer .bottom-foot{
 }
 footer .bottom-foot .left-col{
 	float: left;
-	font-family: 'Myriad Pro';
+	font-family: 'PTSans';
 	font-size: 16px;
 	color: #fff;
 	text-decoration: none;
@@ -1081,7 +1082,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 }
 
 .main .content-line .content-inner .news-item span{
-	font-size: 25px;
+	font-size: 27px;
 	float: left;
 	padding-left: 20px;
 	padding-top: 15px;
@@ -1095,13 +1096,13 @@ footer .bottom-foot .right-col .socialnet.tw{
 	text-transform: lowercase;
 }
 .main .content-line .content-inner .news-item p {
-	font-family: 'Myriad Pro';
-	font-size: 16px;
+	font-family: 'PTSans';
+	font-size: 15px;
 	color: #fff;
 	padding: 10px 40px 40px 20px;
 }
 .main .content-line .content-inner .news-item-view p {
-	font-family: 'Myriad Pro';
+	font-family: 'PTSans';
 	font-size: 16px;
 	color: #fff;
 }
@@ -1148,6 +1149,8 @@ footer .bottom-foot .right-col .socialnet.tw{
 .photo-gallery-items-line .image-block a img{
 	max-width: 260px;
 	max-height: 260px;
+	min-width: 260px;
+	min-height: 260px;
 }
 
 .photo-gallery-items-line .image-block a.photo-gallery-item:hover:after{
@@ -1161,7 +1164,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 	color: #fff;
 	text-align: left;
 	font-size: 16px;
-	font-family: "Myriad Pro";
+	font-family: "PTSans";
 	padding: 5px 10px;
 	height: 47px;
 }
@@ -1202,8 +1205,8 @@ footer .bottom-foot .right-col .socialnet.tw{
 	border: none;
 	background-color: #fae27d;
 	color: #000;
-	font-family: "League Gothic";
-	font-size: 20px;
+	font-family: "BravoRG";
+	font-size: 21px;
 	text-decoration: none;
 	list-style-type: none;
 }
