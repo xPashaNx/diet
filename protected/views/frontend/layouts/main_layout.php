@@ -40,7 +40,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
 <div class="wrapper">
     <div class="header-scroll wrapper-inner">
 
-        <a href=".." class="back"></a>
+        <a href="http://plusonecms.ru/" class="back"></a>
         <div class="grid"></div>
         <a href="" class="logo">корпоративный сайт</a>
         <div class="grid"></div>
@@ -58,7 +58,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
         <div class="top-header">
             <div class="wrapper-inner">
                 <div class="left-col">
-                    <a href="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>" class="header-icon back-home">вернуться на главную</a>
+                    <a href="http://plusonecms.ru/" class="header-icon back-home">вернуться на главную</a>
                 </div>
                 <div class="right-col">
                     <a href="#" class="header-icon visitka">сайт-визитка</a>
