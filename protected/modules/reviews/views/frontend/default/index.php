@@ -48,6 +48,7 @@ $cs->registerScript('New Reviews',"
 
 ", CClientScript::POS_READY);
 ?>
+<?php $this->breadcrumbs = array('Отзывы',); ?>
 <div class="feedback-inner">
         <?php if ($reviews): ?>
             <div class="feedback-title">

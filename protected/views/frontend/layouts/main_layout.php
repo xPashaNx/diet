@@ -42,13 +42,13 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
 
         <a href=".." class="back"></a>
         <div class="grid"></div>
-        <a href="" class="logo">сайт-визитка</a>
+        <a href="" class="logo">корпоративный сайт</a>
         <div class="grid"></div>
-        <a href="" class="corp">корпоративный сайт</a>
+        <a href="" class="visitka">сайт-визитка</a>
         <a href="" class="shop">интернет-магазин</a>
 
         <div class="btn-login-line">
-            <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>">
+            <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>" target="_blank">
                 <span>Протестировать панель администратора</span>
                 <div class="login">войти</div>
             </a>
@@ -76,12 +76,13 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
     <div class="main wrapper-inner">
         <div class="bottom-header-inner">
             <div class="btn-login-line">
-                <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>">
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>" target="_blank">
                     <span>Протестировать панель администратора</span>
                     <div class="login">войти</div>
                 </a>
             </div>
             <div class="bottom-header">
+                <a href="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>" class="link-shark"></a>
                 <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
                 <div class="phone">
                     <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'telefony-v-shapke')); ?>

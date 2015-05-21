@@ -178,7 +178,7 @@ ul{
 	text-decoration: none;
 	color: #fff;
 }
-.header-scroll .corp{
+.header-scroll .visitka{
 	background: url("/images/icons-header-scroll3.svg") 0px -45px no-repeat;
 	height: 31px;
 	float: left;
@@ -193,7 +193,7 @@ ul{
 	color: #fff;
 }
 .header-scroll .shop{
-	background: url("/images/icons-header-scroll3.svg") 0px -92px no-repeat;
+	background: url("/images/icons-header-scroll3.svg") 0 -138px no-repeat;
 	height: 31px;
 	float: left;
 	padding-left: 58px;
@@ -309,7 +309,7 @@ header .middle-header .logo p{
 }
 .header-scroll .btn-login-line{
 	float: right;
-	margin-top: 7px;
+	margin-top: 2px;
 }
 .btn-login-line span{
 	font-family: 'BebasNeue';
@@ -350,12 +350,18 @@ header .middle-header .logo p{
 }
 .main .bottom-header{
 	height: 200px;
-	background: url("../images/header-bottom-shark.png") 140px 0px no-repeat;
+	background: url("../images/header-bottom-shark.png") 140px 0 no-repeat;
 	margin-top:44px;
 	text-decoration: none;
 }
 .main .bottom-header a{
 	text-decoration: none;
+}
+.main .bottom-header .link-shark{
+	width: 121px;
+	height: 151px;
+	position: absolute;
+	left: 140px;
 }
 .main .bottom-header .slogan{
 	display: inline-block;
