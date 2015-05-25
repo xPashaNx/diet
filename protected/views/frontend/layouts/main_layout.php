@@ -40,29 +40,26 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
 <div class="wrapper">
     <div class="header-scroll wrapper-inner">
 
-        <a href="http://plusonecms.ru/" class="back"></a>
+        <a href=".." class="back"></a>
         <div class="grid"></div>
-        <a href="" class="logo">корпоративный сайт</a>
+        <a href="" class="logo">сайт-визитка</a>
         <div class="grid"></div>
-        <a href="" class="visitka">сайт-визитка</a>
+        <a href="" class="corp">корпоративный сайт</a>
         <a href="" class="shop">интернет-магазин</a>
 
         <div class="btn-login-line">
-            <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>" target="_blank">
-                <span>Протестировать панель администратора</span>
-                <div class="login">войти</div>
-            </a>
+            <span>Протестировать панель администратора</span><a href="/manage">войти</a>
         </div>
     </div>
     <header>
         <div class="top-header">
             <div class="wrapper-inner">
                 <div class="left-col">
-                    <a href="http://plusonecms.ru/" class="header-icon back-home">вернуться на главную</a>
+                    <a href="http://plusonecms.ru" class="header-icon back-home">вернуться на главную</a>
                 </div>
                 <div class="right-col">
-                    <a href="#" class="header-icon visitka">сайт-визитка</a>
-                    <a href="#" class="header-icon shop">интернет-магазин</a>
+                    <a href="http://viz.plusonecms.ru" class="header-icon visitka">сайт-визитка</a>
+                    <a href="http://shop.plusonecms.ru" class="header-icon shop">интернет-магазин</a>
                 </div>
             </div>
         </div>
@@ -76,13 +73,9 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
     <div class="main wrapper-inner">
         <div class="bottom-header-inner">
             <div class="btn-login-line">
-                <a href="<?php echo Yii::app()->createAbsoluteUrl('/manage'); ?>" target="_blank">
-                    <span>Протестировать панель администратора</span>
-                    <div class="login">войти</div>
-                </a>
+                <span>Протестировать панель администратора</span><a href="/manage">войти</a>
             </div>
             <div class="bottom-header">
-                <a href="<?php echo Yii::app()->createAbsoluteUrl('/'); ?>" class="link-shark"></a>
                 <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'zagolovok-v-shapke')); ?>
                 <div class="phone">
                     <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'telefony-v-shapke')); ?>
@@ -96,7 +89,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
             <?php echo $content; ?>
         </div>
         <div class="bottom-line">
-            <div class="left-col">© ООО «SHARKPANGRAM», 2015</div>
+            <div class="left-col">© ООО «Sharkcompany», 2015</div>
             <div class="right-col">
                 <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'sotsseti-v-podvale-shablona')); ?>
             </div>
