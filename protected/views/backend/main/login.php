@@ -35,5 +35,5 @@
 
 <div class="forgotten">
 	<span>!</span>
-	"Логин: admin , пароль:demo"
+	"Логин: admin, пароль: demo"
 </div>
