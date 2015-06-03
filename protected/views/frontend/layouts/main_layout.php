@@ -116,7 +116,7 @@ Yii::app()->clientScript->registerScript('show_header_scroll', "
         </div>
         <div class="btn-order-line">
             <div class="wrapper-inner">
-                <a href="#">заказать</a>
+                <a href="http://plusonecms.ru/?kind=2">заказать</a>
             </div>
         </div>
         <div class="bottom-foot">
