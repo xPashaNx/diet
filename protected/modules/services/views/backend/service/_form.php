@@ -110,13 +110,13 @@ $cs->registerScript('translit', "
 	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
+<!-- выбор категории
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_category'); ?>
-		<?php echo $form->dropDownList($model,'id_category',CatalogCategory::getListed()); ?>
-		<?php echo $form->error($model,'id_category'); ?>
+		<?php// echo $form->labelEx($model,'id_category'); ?>
+		<?php// echo $form->dropDownList($model,'id_category',CatalogCategory::getListed()); ?>
+		<?php// echo $form->error($model,'id_category'); ?>
 	</div>
-
+!-->
 	<div class="row">
 		<?php echo $form->labelEx($model,'short_title'); ?>
 		<?php echo $form->textField($model,'short_title',array('size'=>60,'maxlength'=>256, 'id'=>'serviceTitle')); ?>

@@ -24,23 +24,14 @@ class DefaultController extends BaseCatalogController
 		if ($this->catalog_config->layout)
 			$this->layout = $this->catalog_config->layout;
 
-		$sql = "SELECT
-					id,
-					short_title,
-					text,
-					link
-				FROM
-					`catalog_category`
-				UNION
+		$sql = "
 				SELECT
 					id,
 					short_title,
-					text,
+					description,
 					link
 				FROM
-					`catalog_service`
-				WHERE
-					id_category = 0;";
+					`catalog_service`";
 
 		$rawData=Yii::app()->db->createCommand($sql)->queryAll();
 
@@ -48,7 +39,7 @@ class DefaultController extends BaseCatalogController
 			'id'=>'user',
 			'sort'=>array(
 				'attributes'=>array(
-					'id', 'short_title', 'text', 'link',
+					'id', 'short_title', 'link',
 				),
 			),
 			'pagination'=>array(
@@ -96,7 +87,36 @@ class DefaultController extends BaseCatalogController
 			'dataProvider' => $dataProvider,
 		));
 	}
+	public function actionView($id)
+    {
+	
+        $model = $this->loadModel($id);
 
+        //Фотогалерея
+        $criteria = new CDbCriteria();
+        $criteria->compare('id_service', $id);
+
+        $imagesDataProvider = new CActiveDataProvider('CatalogImage', array(
+            'criteria' => $criteria,
+            'pagination' => false,
+        ));
+
+        //формируем short_title страницы, description, keywords
+        //$this->title = "УСЛУГА" . " - " . $model->short_title;
+        $this->description = $model->description;
+        $this->keywords = $model->keywords;
+
+        $this->render('view', array(
+            'model' => $model,
+            //'titleListNews' => $this->config->title,
+            'titleBreadcrumbs' => $model->link,
+            'imagesDataProvider' => $imagesDataProvider,
+            //'folder_upload' => CatalogService::FOLDER_UPLOAD,
+
+        ));
+		/*
+		*/
+    }
     /**
      * List service
      *
@@ -179,5 +199,12 @@ class DefaultController extends BaseCatalogController
         }
 
         return parent::createUrl($route, $params, $ampersand);
+    }
+	public function loadModel($id)
+    {
+        $model = CatalogService::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
     }
 }

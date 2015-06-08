@@ -19,7 +19,6 @@ $this->breadcrumbs = array(
     <p><?php echo $model->description; ?></p>
 </div>
 
-
 <div class="img_news">
     <?php foreach ($model->newsImages as $image) : ?>
         <?php //if ($image->id != $model->cover_id) : ?>
