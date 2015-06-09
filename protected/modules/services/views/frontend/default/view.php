@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    'Новости' => 'http://corp.plusonecms.ru/services/',
+    'Услуги' => 'http://corp.plusonecms.ru/services/',
     $model->short_title,
 );
 ?>
