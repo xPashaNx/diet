@@ -51,7 +51,7 @@ class ServiceController extends BackEndController
 		}
 		else
 		{
-			$model->id_category = $id_category;
+			$model->id_category = 0; //$id_category если категория выбирается из списка
 			$this->breadcrumbs = CatalogCategory::getParents($model->id_category, true);
 			$this->breadcrumbs[] = 'Добавление услуги';
 		}

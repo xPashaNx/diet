@@ -1,8 +1,11 @@
+
 <h1><?php echo $category->short_title;?></h1>
-<?if ($category->id == 0):?>
+<?php if ($category->id == 0):?>
+<!-- 
 <div class="block">
 <h2>Список категорий</h2>
 <?php 
+/*
 echo CHtml::link('+ Добавить категорию', array('default/create', 'id'=>$category->id), array('class'=>'add_element'));
 
 $this->widget('ext.plusone.ExtGridView', array(
@@ -28,9 +31,12 @@ $this->widget('ext.plusone.ExtGridView', array(
 		),
 	),
 ));
+*/
 ?>
 </div>
 	<br />
+
+!-->
 <div class="block">
 	<h2>Список услуг</h2>
 	<?php echo CHtml::link('+ Добавить услугу', array('service/create'), array('class'=>'add_element'));?>

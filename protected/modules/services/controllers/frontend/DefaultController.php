@@ -9,6 +9,11 @@ class DefaultController extends BaseCatalogController
      * @var int
      */
     public $category = 0;
+    public $long_title = 'Полное название';
+    public $short_title = 'Короткое название';
+    public $text = 'Текст';
+    public $photo = 'Имя фото';
+    public $keywords = 'Ключевые слова';
 
     /**
      * Lists all models
@@ -18,29 +23,22 @@ class DefaultController extends BaseCatalogController
 		$this->breadcrumbs[] = $this->catalog_config->title;
 		$services_criteria = new CDbCriteria;
 		$services_criteria->compare('id_category', 0);
-
 		$this->metaInfoGenerate($this->catalog_config->title, $this->catalog_config->keywords, $this->catalog_config->description);
 
 		if ($this->catalog_config->layout)
 			$this->layout = $this->catalog_config->layout;
 
-		$sql = "SELECT
-					id,
-					short_title,
-					text,
-					link
-				FROM
-					`catalog_category`
-				UNION
+		$sql = "
 				SELECT
 					id,
 					short_title,
-					text,
-					link
+					description,
+					keywords,
+					link,
+					sort_order
 				FROM
 					`catalog_service`
-				WHERE
-					id_category = 0;";
+				ORDER BY `sort_order`";
 
 		$rawData=Yii::app()->db->createCommand($sql)->queryAll();
 
@@ -48,14 +46,14 @@ class DefaultController extends BaseCatalogController
 			'id'=>'user',
 			'sort'=>array(
 				'attributes'=>array(
-					'id', 'short_title', 'text', 'link',
+					'id', 'short_title', 'link',
 				),
 			),
 			'pagination'=>array(
 				'pageSize' => CatalogConfig::model()->findByPk(1)->category_perpage,
 			),
 		));
-
+	
 		$this->render('index',array(
 			'dataProvider' => $dataProvider,
 		));
@@ -96,7 +94,40 @@ class DefaultController extends BaseCatalogController
 			'dataProvider' => $dataProvider,
 		));
 	}
+	public function actionView($id)
+    {
+	
+        $model = $this->loadModel($id);
 
+        //Фотогалерея
+        $criteria = new CDbCriteria();
+        $criteria->compare('id_service', $id);
+
+        $imagesDataProvider = new CActiveDataProvider('CatalogImage', array(
+            'criteria' => $criteria,
+            'pagination' => false,
+        ));
+
+        //формируем short_title страницы, description, keywords
+        //$this->title = "УСЛУГА" . " - " . $model->short_title;
+		$this->long_title = $model->long_title;
+		$this->short_title = $model->short_title;
+        $this->description = $model->description;
+        $this->keywords = $model->keywords;	
+        $this->text = $model->text;	
+        $this->photo = $model->photo;	
+
+        $this->render('view', array(
+            'model' => $model,
+            //'titleListNews' => $this->config->title,
+            'titleBreadcrumbs' => $model->link,
+            'imagesDataProvider' => $imagesDataProvider,
+            //'folder_upload' => CatalogService::FOLDER_UPLOAD,
+
+        ));
+		/*
+		*/
+    }
     /**
      * List service
      *
@@ -179,5 +210,12 @@ class DefaultController extends BaseCatalogController
         }
 
         return parent::createUrl($route, $params, $ampersand);
+    }
+	public function loadModel($id)
+    {
+        $model = CatalogService::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
     }
 }
