@@ -6,7 +6,7 @@ class m150608_134856_catalog_service_add extends CDbMigration
 	{
 		$this->dbConnection->createCommand("
 		
-			DELETE FROM `corp-plusonecms`.`catalog_service` 
+			DELETE FROM `catalog_service`
 			WHERE `link` 
 				IN ('Recruiting', 'Screening','Executive_Search','Assessment_Center');
 			
@@ -23,7 +23,7 @@ class m150608_134856_catalog_service_add extends CDbMigration
 	public function down()
 	{
 		$this->dbConnection->createCommand("
-			DELETE FROM `corp-plusonecms`.`catalog_service` 
+			DELETE FROM `catalog_service`
 			WHERE `link` 
 				IN ('Recruiting', 'Screening','Executive_Search','Assessment_Center');		
 		")->execute();

@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    'Услуги' => 'http://corp.plusonecms.ru/services/',
+    'Услуги' => $this->createAbsoluteUrl('/services'),
     $model->short_title,
 );
 ?>
