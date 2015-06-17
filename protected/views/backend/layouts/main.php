@@ -48,7 +48,7 @@
 		<div class="prokladka"></div>
 	</div>
 	<div class="footer">
-		Система управления контентом разработана в <a href="http://plusodin-web.ru" target="_blank">Студии</a>
+        Система управления контентом разработана в компании "<a href="http://plusonedev.ru/" target="_blank">Плюс один</a>"
 	</div>
 </body>
 </html>

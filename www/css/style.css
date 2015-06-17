@@ -42,7 +42,7 @@
 }
 
 html { height: 100%; margin: 0; padding: 0; background-color: #fff; }
-body {margin: 0; padding: 0; color: #fff; min-width: 940px; font: 16px "MyriadPro"; line-height: 1.5em; vertical-align: top;}
+body {margin: 0; padding: 0; color: #fff; min-width: 940px; font: 16px "PTSans"; line-height: 1.5em; vertical-align: top;}
 
 h1, h2, h3, h4, h5, a, img, ul, li, div, span, p{
 	margin: 0;
@@ -71,14 +71,15 @@ h2{
 	text-align: left;
 	vertical-align: top;
 	line-height: 25px;
-	margin: 30px 0 20px 0 ;
+	margin: 30px 0 10px 0 ;
 }
 h3{
 	color: #fff;
-	font-size: 20px;
+	font-size: 27px;
 	text-transform: none;
 	text-align: left;
-	margin: 26px 0 15px 0;
+	margin: 20px 0 10px 0;
+	font-family: "BravoRG";
 }
 p{
 	display: block;
@@ -112,7 +113,6 @@ table, th, tr {
 }
 table caption{
 	text-align: left;
-	margin-bottom: 15px;
 }
 th {
 	height: 40px;
@@ -789,7 +789,7 @@ header .middle-header .logo p{
 	display: inline-block;
 	vertical-align: top;
 	height: 550px;
-	width: 320px;
+	width: 318px;
 }
 
 .content-inner .form-contacts .contact-form{
