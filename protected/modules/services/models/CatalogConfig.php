@@ -11,6 +11,7 @@
  * @property string $layout
  * @property integer $category_perpage
  * @property integer $service_perpage
+ * @property integer $widget_count
  * @property integer $c_image_small_w
  * @property integer $c_image_small_h
  * @property integer $s_image_middle_w
@@ -65,7 +66,7 @@ class CatalogConfig extends CActiveRecord
 			array('title', 'length', 'max' => 100),
 			array('layout', 'length', 'max' => 255),
             array('title, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode', 'required'),
-            array('category_perpage, service_perpage', 'numerical', 'min' => 0, 'integerOnly' => true),
+            array('category_perpage, service_perpage', 'numerical', 'min','widget_count' => 0, 'integerOnly' => true),
             array('c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, watermark_x, watermark_y', 'numerical', 'min' => 1, 'integerOnly' => true),
 			array(
                 'watermark_image',
@@ -73,8 +74,8 @@ class CatalogConfig extends CActiveRecord
                 'types' => 'png',
                 'allowEmpty' => true,
 			),
-            array('id, title, keywords, description, layout, category_perpage, service_perpage, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode, watermark_image, watermark_x, watermark_y, no_watermark, text', 'safe'),
-			array('id, title, keywords, description, layout, category_perpage, service_perpage, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode, watermark_image, watermark_x, watermark_y, no_watermark, text', 'safe', 'on' => 'search'),
+            array('id, title, keywords, description, layout, category_perpage, service_perpage, widget_count, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode, watermark_image, watermark_x, watermark_y, no_watermark, text', 'safe'),
+			array('id, title, keywords, description, layout, category_perpage, service_perpage, widget_count, c_image_small_w, c_image_small_h, s_image_middle_w, s_image_middle_h, s_image_small_w, s_image_small_h, resize_mode, watermark_image, watermark_x, watermark_y, no_watermark, text', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -102,6 +103,7 @@ class CatalogConfig extends CActiveRecord
             'layout' => 'Шаблон первой страницы',
             'category_perpage' => 'Категорий на странице',
             'service_perpage' => 'Услуг на странице',
+			'widget_count' => 'Услуг на главной странице',
             'c_image_small_w' => 'Ширина превью',
             'c_image_small_h' => 'Высота превью',
             's_image_middle_w' => 'Ширина среднего превью',
@@ -135,6 +137,7 @@ class CatalogConfig extends CActiveRecord
 		$criteria->compare('layout',$this->layout,true);
 		$criteria->compare('category_perpage',$this->category_perpage,true);
 		$criteria->compare('service_perpage',$this->service_perpage,true);
+		$criteria->compare('widget_count',$this->widget_count,true);
 		$criteria->compare('c_image_small_w',$this->c_image_small_w,true);
 		$criteria->compare('c_image_small_h',$this->c_image_small_h,true);
 		$criteria->compare('s_image_middle_w',$this->s_image_middle_w,true);

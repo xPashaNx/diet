@@ -8,15 +8,18 @@
 
     <div class="service-line">
         <div class="line-inner">
-            <h1>Услуги компании</h1>
+            <a href="services/"><h1>Услуги компании</h1></a>
             <div class="service-inner">
-                <?php $this->widget('application.widgets.OutAreaWidget', array('name' => 'vashi-uslugi-na-glavnoj')); ?>
+                <?php $this->widget('application.modules.services.widgets.MainPageServicesWidget'); ?>
             </div>
         </div>
     </div>
 
-    <div class="feedback-line">
-        <h1>отзывы</h1>
+    <div class="feedback-line justify">
+        <a href="reviews/"><h1>отзывы</h1></a>
+        <a href=""><span>ДОБАВИТЬ ОТЗЫВ</span></a>
+        <div class="justify"></div>
+        <div class="clear"></div>
         <?php $this->widget('application.modules.reviews.widgets.ReviewsWidget'); ?>
     </div>
 
