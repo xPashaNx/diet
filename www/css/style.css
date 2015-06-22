@@ -473,6 +473,7 @@ header .middle-header .logo p{
 /* MAIN */
 .main .service-line{
 	background: url("../images/bg-service.png") right bottom no-repeat #29253b;
+    padding-bottom: 18px;
 }
 .main .service-line h1{
 	margin: 37px 0 0 0;
@@ -1240,7 +1241,7 @@ footer .bottom-foot .right-col .socialnet.tw{
 
 
 /*Прикрутка*/
-.block{display: inline-block;}
+.block{display: inline-block; vertical-align: top;}
 
 /*Баннер в контенте*/
 .content .banners {height: 328px; width: 1025px; margin: 0 auto; margin-top: 38px;}
